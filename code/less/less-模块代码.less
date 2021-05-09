@@ -1,0 +1,50 @@
+.triangle(@_,@www,@c) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.triangle(L,@w,@c) {
+  //L相当于是一个标识符
+  border-width: @w;
+  border-color: transparent @c transparent transparent;
+}
+
+.triangle(R,@w,@c) {
+  border-width: @w;
+  border-color: transparent transparent transparent @c;
+}
+
+.triangle(D,@w,@c) {
+  border-width: @w;
+  border-color: @c transparent transparent transparent;
+}
+
+.triangle(U,@w,@c) {
+  border-width: @w;
+  border-color: transparent transparent @c transparent;
+}
+
+// .middle(@w,@h,@c) {
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   bottom: 0;
+//   margin: auto;
+//   width: @w;
+//   height: @h;
+//   background-color: @c;
+// }
+.middle2 {
+  //它定义的是一个类，不能加（）
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.middle2:hover {
+  background-color: darkcyan !important;
+}

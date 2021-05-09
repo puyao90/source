@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>学习CSS第一课</title>
+
+    <!-- <link rel="stylesheet" href="./style.css">  -->
+
+    <style>
+        /* 元素选择器(标签选择器)（类型选择器）（type selector） 标签名{} 权重10*/
+        
+        p {
+            color: blueviolet;
+            font-size: 14px;
+        }
+        
+        h1 {
+            font-size: 42px;
+        }
+        /* id选择器 #id属性值{} 权重1000 */
+        
+        #b {
+            color: rgb(221, 119, 36);
+        }
+        /* 类选择器 .属性值{} 权重100 */
+        
+        .big {
+            color: darkkhaki;
+            font-size: 66px;
+        }
+        
+        .adjust {
+            font-size: 14px;
+        }
+        /* 通配选择器*{} 权重1 */
+        /* * {
+            color: rgb(240, 126, 126);
+        } */
+        /* 交集选择器 选择器1选择器2选择器n{}  如果有元素选择器，需要以元素选择器开头*/
+        
+        div.big {
+            color: royalblue;
+        }
+        /* 并集选择器(选择器分组) 选择器1,选择器2,选择器n{} */
+        
+        h1,
+        div {
+            color: rgb(253, 38, 38);
+        }
+    </style>
+
+    <style>
+        /*CSS里的注释*/
+        /* 快捷键是command+/ */
+    </style>
+</head>
+
+<body>
+    <h1>我是标题</h1>
+    <!-- 内联样式/行内样式 -->
+    <p style="color: rgb(53, 167, 114); font-size: 20px;">开发时不要使用内联样式</p>
+
+    <p>第一句话</p>
+    <p id="b">第二句话</p>
+    <p class="big adjust">第三句话</p>
+    <p class="big">第四句话</p>
+    <p class="big">第五句话</p>
+    <p>第六句话</p>
+    <p>第七句话</p>
+    <p>第八句话</p>
+
+    <div class="big">我是div</div>
+    <div class="small">我是div2</div>
+    <div>我是一个div
+        <p>我是div中的p元素
+            <span>我是p中的span</span>
+        </p>
+        <span>我是div中的span</span>
+    </div>
+
+</body>
+
+</html>

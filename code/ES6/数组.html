@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        //ES6引入rest参数，用于获取函数的实参，用来代替arguments
+        function data(s, ...args) { //rest参数必须要放到参数最后
+            console.log(args)
+        }
+        data('aaa', 'bbb', 'ccc') // ["bbb", "ccc"]
+
+
+        // ...扩展运算符能将数组转换为逗号分隔的参数序列 好比 rest 参数的逆运算
+        console.log(...[1, 2, 3]) // 1 2 3
+        console.log(Math.max(...[14, 3, 77])) //等同于Math.max(14, 3, 77);  ES5 的写法Math.max.apply(null, [14, 3, 77])
+
+        const tfboys = ['abc', 'bcd', 'cde']
+
+        function chunwan() {
+            console.log(arguments)
+        }
+        chunwan(tfboys)
+        chunwan(...tfboys) //相当于传入三个参数chunwan('abc', 'bcd', 'cde')
+
+        //用在数组的合并
+        const kuaizi = ['ab', 'bc']
+        const fenghuang = ['cd', 'de']
+        const zuixuanxiaopingguo = [...kuaizi, ...fenghuang]
+        console.log(zuixuanxiaopingguo)
+
+        //数组的克隆
+        const sanzhihua = ['E', 'G', 'M']
+        const sanyecao = [...sanzhihua]
+        console.log(sanyecao)
+
+        //将伪数组转为真正的数组
+        const divs = document.querySelectorAll('div')
+        console.log(divs)
+        const divArr = [...divs]
+        console.log(divArr)
+
+
+        //(补充)bind()方法创建一个新的函数，在bind()被调用时，这个新函数的this被指定为bind()的第一个参数，而其余参数将作为新函数的参数，供调用时使用。
+        //返回一个原函数的拷贝，并拥有指定的this值和初始参数。
+    </script>
+</body>
+
+</html>

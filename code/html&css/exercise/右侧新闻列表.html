@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        body {
+            background-color: rgb(253, 238, 221);
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .cardbg {
+            width: 266px;
+            height: 330px;
+            background-color: white;
+            /* padding: 10px 14px 20px; */
+            border-top: cornflowerblue solid 1px;
+            margin-top: 10px;
+        }
+        
+        .cardbg h2 {
+            /* font-size: 18px;
+            font-weight: 900; */
+            /* height: 40px; */
+            display: inline-block;
+            border-top: crimson solid 1px;
+            margin-top: -1px;
+            padding-top: 10px;
+            height: 30px;
+        }
+        
+        h2 a {
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .pic {
+            height: 145px;
+        }
+        
+        img {
+            width: 260px;
+            /* margin-top: 12px; */
+        }
+        
+        .links {
+            margin-top: 18px;
+            /* padding-left: 12px; */
+        }
+        
+        .item {
+            /* height: 30px; */
+            margin-bottom: 12px;
+        }
+        /* 通过before伪元素，来为每一个链接添加项目符号。 */
+        
+        .item a::before {
+            content: "•";
+            color: rgb(185, 185, 185);
+            font-size: 16px;
+            margin-right: 6px;
+        }
+        
+        .item a {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .item a:hover {
+            color: blue;
+        }
+        /* .item span {
+            color: #999;
+            font-size: 17px;
+            margin-right: 2px;
+        } */
+        
+        h3 {
+            color: rgb(255, 255, 255);
+            margin-top: -30px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cardbg">
+        <!-- <a href="#">
+            <h2>体育</h2>
+        </a> -->
+        <h2>
+            <a href="#">体育</a>
+        </h2>
+        <div class="pic">
+            <a href="#">
+                <img src="../frogs.jpg">
+                <h3 class="tu">我是图片上的一句话</h3>
+            </a>
+        </div>
+        <div class="links">
+            <div class="item">
+                <!-- <span>·</span> -->
+                <a href="#">我是第一个链接文字</a>
+            </div>
+            <div class="item">
+                <!-- <span>·</span> -->
+                <a href="#">我是第二个链接文字</a>
+            </div>
+            <div class="item">
+                <!-- <span>·</span> -->
+                <a href="#">我是第三个链接文字</a>
+            </div>
+            <div class="item">
+                <!-- <span>·</span> -->
+                <a href="#">我是第四个链接文字</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

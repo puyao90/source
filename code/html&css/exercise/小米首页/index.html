@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>小米商城 - 小米10 Pro、Redmi K30 Pro、小米MIX Alpha，小米电视官方网站</title>
+    <link rel="stylesheet" href="./CSS/reset.css">
+    <link rel="stylesheet" href="./iconfront/font awesome/css/all.css">
+    <link rel="stylesheet" href="./CSS/base.css">
+    <link rel="stylesheet" href="./CSS/index.css">
+    <!-- 设置网站图标，会在标题栏和收藏栏出现。
+    网站图标一般都存储在网站的根目录下，名字一般都叫做 favicon.ico -->
+    <link rel="icon" href="./favicon.ico">
+</head>
+
+<body>
+    <div class="bg">
+        <div class="nav w clearfix">
+            <div class="navl">
+                <a class="nava" href="javasript:;">小米商城</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">MIUI</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">IoT</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">云服务</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">天星数科</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">有品</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">小爱开发平台</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">企业团购</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">资质证照</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">协议规则</a>
+                <span class="line"></span>
+                <!-- <div class="nava jia">
+                    <a class="po" href="javasript:;">下载app
+                        <div class="dropdown1">
+                            <img src="./img/qrcode.png" alt="">
+                            <span>小米商城APP</span>
+                        </div>
+                    </a>
+                </div> -->
+                <a class="po" href="javasript:;">下载app
+                        <!-- <div class="triangle"></div> -->
+                        <!-- 或者通过给下载app后加伪元素写小三角 -->
+                        <div class="dropdown1">
+                            <!-- <img src="./img/WX20201119-152500.png" alt=""> -->
+                            <img src="./img/qrcode.png" alt="">
+                            <span>小米商城APP</span>
+                        </div>
+                </a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">智能生活</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">Select Location</a>
+            </div>
+            <div class="ncart">
+                <a class="cart" href="javascript">
+                    <i class="fas fa-shopping-cart"></i>购物车（0）
+                </a>
+                <div class="dropdown2">购物车中还没有商品，赶紧选购吧！</div>
+            </div>
+            <div class="navrl">
+                <a class="nava" href="javasript:;">登陆</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">注册</a>
+                <span class="line"></span>
+                <a class="nava" href="javasript:;">消息通知</a>
+            </div>
+        </div>
+    </div>
+    <div class="headerwrapper">
+        <!-- 这里最好给header也设置一个全屏容器，因为header里的导航有下拉是全屏  -->
+        <div class="header w">
+            <!-- <div class="logo"><img src="./img/mi-logo.png" alt=""></div> -->
+            <!-- 可用bg-image做。并且注意logo是可点击的，点击回主页 -->
+            <h1 class="logo" title="小米官网">
+                小米商城
+                <!-- 这是为了方便搜索引擎爬到h1的时候识别这是小米官网 -->
+                <a class="mi" href="/"></a>
+                <a class="home" href="/"></a>
+            </h1>
+            <ul class="headernav">
+                <li class="all">
+                    <a class="alla" href="#">全部商品分类</a>
+                    <ul class="leftnav .clearfix">
+                        <li class="li1"><a href="#">手机 电话卡<i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">电视 盒子<i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">笔记本 显示器<i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">家电 插线板<i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">出行 穿戴<i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">智能 路由器<i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">电源 配件<i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">健康 儿童<i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">耳机 音箱<i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">生活 箱包<i class="fas fa-chevron-right"></i></a></li>
+                    </ul>
+                </li>
+                <li class="normal"><a href="#">小米手机</a></li>
+                <li class="normal"><a href="#">Redmi 红米</a></li>
+                <li class="normal"><a href="#">电视</a></li>
+                <li class="normal"><a href="#">笔记本</a></li>
+                <li class="normal"><a href="#">家电</a></li>
+                <li class="normal"><a href="#">路由器</a></li>
+                <li class="normal"><a href="#">智能硬件</a></li>
+                <li class="no"><a href="#">服务</a></li>
+                <li class="no"><a href="#">社区</a></li>
+                <div class="dropdown3">
+                    <a href="javascript:;">
+                        <div class="phone"><img src="./img/b11742a0be47f9d97bb6a13ea580018d.webp"></div>
+                        <div class="title">小米10至尊纪念版</div>
+                        <div class="price">5299元起</div>
+                    </a>
+                    <span class="line2"></span>
+                    <a href="javascript:;">
+                        <div class="phone"><img src="./img/b11742a0be47f9d97bb6a13ea580018d.webp"></div>
+                        <div class="title">小米10至尊纪念版</div>
+                        <div class="price">5299元起</div>
+                    </a>
+                    <span class="line2"></span>
+                    <a href="javascript:;">
+                        <div class="phone"><img src="./img/b11742a0be47f9d97bb6a13ea580018d.webp"></div>
+                        <div class="title">小米10至尊纪念版</div>
+                        <div class="price">5299元起</div>
+                    </a>
+                    <span class="line2"></span>
+                    <a href="javascript:;">
+                        <div class="phone"><img src="./img/b11742a0be47f9d97bb6a13ea580018d.webp"></div>
+                        <div class="title">小米10至尊纪念版</div>
+                        <div class="price">5299元起</div>
+                    </a>
+                </div>
+
+            </ul>
+            <div class="search" style="background-color: cornflowerblue;">
+                <form action="#">
+                    <input class="search-inp" type="text"><button class="search-btn"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="main w">
+        <div class="imgs">
+            <a href="#"><img src="./img/1cb0358a55614d5f49fa442b1b056cc2.webp" alt=""></a>
+            <a href="#"><img src="./img/9e86067517796d842c7d4d9d3f050bab.jpg" alt=""></a>
+        </div>
+        <div class="dots">
+            <a href="#" class="active"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+        <div class="arrows">
+            <a href="#" class="arrow arrow-left"></a>
+            <a href="#" class="arrow arrow-right "></a>
+        </div>
+    </div>
+    <div class="ads w">
+        <div class="icons">
+            <a class="icon margin" href="#">
+                <img src="./img/82abdba456e8caaea5848a0cddce03db.png" alt="">
+                <div>小米秒杀</div>
+            </a>
+
+            <a class="icon margin" href="#">
+                <img src="./img/806f2dfb2d27978e33fe3815d3851fa3.png" alt="">
+                <div>企业团购</div>
+            </a>
+
+            <a class="icon" href="#">
+                <img src="./img/eded6fa3b897a058163e2485532c4f10.png" alt="">
+                <div>F码通道</div>
+            </a>
+
+            <a class="icon margin margin2" href="#">
+                <img src="./img/43a3195efa6a3cc7662efed8e7abe8bf.png" alt="">
+                <div>米粉卡</div>
+            </a>
+
+            <a class="icon margin margin2" href="#">
+                <img src="./img/f4846bca6010a0deb9f85464409862af.png" alt="">
+                <div>以旧换新</div>
+            </a>
+
+            <a class="icon margin2" href="#">
+                <img src="./img/9a76d7636b08e0988efb4fc384ae497b.png" alt="">
+                <div>话费充值</div>
+            </a>
+        </div>
+    </div>
+    </div>
+    <div class="imgs2">
+        <a href="#"><img src="./img/e5f20a62c3d5b3d6806bd51ab6c5dd12.jpg" alt=""></a>
+        <a href="#" class="margin3"><img src="./img/8a43378b96501d7e227a9018fe2668c5.jpg" alt=""></a>
+        <a href="#" class="margin3"><img src="./img/793913688bfaee26b755a0b0cc8575fd.jpg" alt=""></a>
+    </div>
+    </div>
+
+    <ul class="toorbar">
+        <li>
+            <a href=""><img src="./img/98a23aae70f25798192693f21c4d4039.png" alt=""></a>
+        </li>
+        <li>
+            <a href=""><img src="./img/55cad219421bee03a801775e7309b920.png" alt=""></a>
+        </li>
+        <li>
+            <a href=""><img src="./img/12eb0965ab33dc8e05870911b90f3f13.png" alt=""></a>
+        </li>
+        <li>
+            <a href=""><img src="./img/55cad219421bee03a801775e7309b920.png" alt=""></a>
+        </li>
+        <li>
+            <a href=""><img src="./img/12eb0965ab33dc8e05870911b90f3f13.png" alt=""></a>
+        </li>
+    </ul>
+</body>
+
+</html>

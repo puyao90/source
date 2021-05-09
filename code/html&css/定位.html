@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 26px;
+            height: 2000px;
+        }
+        
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: lightslategrey;
+        }
+        
+        .box5 {
+            width: 400px;
+            height: 400px;
+            background-color: rgb(195, 176, 247);
+            position: relative;
+        }
+        
+        .box4 {
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+            /* position: relative; */
+        }
+        
+        .box2 {
+            width: 200px;
+            /* width: auto; */
+            height: 200px;
+            background-color: rgb(127, 104, 228);
+            /* position: relative; */
+            /* top: 50px; */
+            /* bottom: -200px;
+            left: 100px; */
+            /* position: absolute;
+            top: 0;
+            left: 0; */
+            /* position: fixed;
+            top: 0;
+            left: 0; */
+            /* position: absolute; */
+            /* position: sticky;
+            top: 0; */
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            /* left: auto; */
+            /* right: auto; */
+            top: 0;
+            bottom: 0;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(228, 205, 104);
+            position: absolute;
+            /* z-index: 2; */
+        }
+        
+        .box6 {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(151, 147, 127);
+            position: absolute;
+            left: 50px;
+        }
+        
+        .box7 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(87, 52, 212);
+        }
+        /* 
+        定位（position）通过定位可将元素摆放到页面的任意位置，使用position属性来设置
+        static 默认值，元素是静止的没有开启定位
+
+        relative 开启元素的相对定位
+            开启后可以设置offset偏移量来设置元素的位置
+            offset设置top,bottom,right,left都只会动元素自己，不会动别人（margin不同，margin上左移自己，下右挤别人）
+            top表示定位元素和定位位置上边的距离
+            垂直方向的位置由top或bottom来控制，通常只用其中之一
+            相对定位指相对自身原来的位置
+            会提升元素的层级
+            不会使元素脱离文档流，也不会改变元素的性质
+
+        absolute 开启元素的绝对定位
+            开启后元素会从文档流中脱离，元素位置不变
+            会改变元素性质，行内变成块，宽高被内容撑开
+            会提升元素的层级
+            绝对定位是相对于其包含块（containing block）进行定位的
+                包含块(containing block)指离当前元素最近的祖先块元素
+            绝对定位的包含块是离它最近的开启了定位的祖先元素
+            如果所有祖先元素都没有开启定位则根元素就是它的包含块
+                html（根元素、初始包含块）
+
+            绝对定位元素的水平布局
+            left + margin-left + border-left + padding-left + width + padding-right + border-right + margin-right + right = 包含块的内容区宽度
+            开启绝对定位后水平方向布局等式添加了left和right两个值
+            当发生过度约束时，如果9个值中没有auto，则自动调整right的值
+            如果有auto，则自动调整auto。可设置auto的值有 margin，width，left，right
+            left和right的默认值是auto
+            (调整顺序right>left>width>margin)
+
+            垂直方向的等式也必须满足top + margin-top +border-top + padding-top + height + padding-bottom + border-bottom + margin-bottom + bottom = 包含块的内容区高度
+
+        fixed 开启元素的固定定位
+            是一种绝对定位
+            唯一不同的是它永远参照浏览器的视口进行定位
+            视口是固定不动的，因此固定定位的元素不会随网页的滚动条滚动
+
+        sticky 开启元素的粘滞定位 
+            和相对定位特点基本一致
+            不同的是可以在元素到达某个位置时将其固定
+
+        对于开启了定位的元素，可以通过z-index属性来指定元素的层级
+        z-index需要一个整数作为参数，值越大元素层级越高
+        如果元素的层级一样，则优先显示结构上靠下的元素
+        祖先元素的层级再高也不会盖住后代元素
+
+        */
+    </style>
+</head>
+
+<body>
+    <div class="box1">1</div>
+    <div class="box5">5
+        <div class="box4">4
+            <div class="box2">2</div>
+        </div>
+    </div>
+
+    <div class="box3">3</div>
+    <div class="box6">6
+        <div class="box7">7</div>
+    </div>
+
+
+</body>
+
+</html>

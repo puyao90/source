@@ -1,0 +1,120 @@
+//双斜杠是less中的单行注释，注释中的内容不会被解析到CSS中
+/*
+css中的注释，多行注释，写的内容会出现在CSS文件中
+*/
+
+// 可以通过import来将其他的less引入到当前的less中
+@import "style1.less";
+
+//父子兄弟的写法
+.box1 {
+  background-color: aliceblue;
+  .box2 {
+    background-color: saddlebrown;
+    .box4 {
+      background-color: wheat;
+    }
+  }
+  .box3 {
+    background-color: lavender;
+  }
+}
+.box8{
+    // 后代元素直接写，子元素加个>
+    .box9{color: wheat;}
+    >.box10{
+        color: wheat;
+        &:hover{color: darkblue;}}
+    // & 表示外层的父元素,用$后就不会再给嵌套了
+    &:hover{color: #000;}
+
+    div &{width: 100px;}
+}
+
+//变量，在变量中可以存储任意的值，变量方便修改
+//变量的语法  @变量名：值；
+@a: 100px;
+@b: #fba;
+// 可还以存类的名字
+@c: box6;
+.box5 {
+    // 使用变量时，如果是直接使用则以 @变量名 的形式使用即可
+  width: @a;
+  color: @b;
+}
+// 作为类名，或者作为一部分值的时候，需要以 @{变量名} 的形式使用
+.@{c}{width: @a;
+background-image: url('@{c}/1.png');}
+
+@d:200px;
+@d:300px;
+div{
+    // 变量发生重名时，会优先使用比较近的变量
+    @d:115px;
+    width: @d;
+    height: @e;}
+// 可以在变量声明前就使用变量（不推荐）
+@e:365px;
+
+.box7{
+    //  用$加上属性名，可直接对属性名进行引用
+    width: 100px;height: $width;}
+
+.box11{width: 100px;height: 100px;}
+// :extend() 对当前选择器扩展指定选择器的样式 （分组选择器）
+.box12:extend(.box11){color: darkblue;}
+.box12:extend(.box8>.box10){border-color: darkblue;}
+
+// 直接对指定的样式进行引用，这里就相当于将.box5的样式在这里进行了复制
+// mixin 混合  把.box5的样式混合到.box13里
+
+.box13{.box5()}
+
+// 使用类选择器时可以在选择器后添加一个括号，这事我们实际上就创建了一个mixins(混合函数)
+// 它不会显示在CSS里，但别的就可以用它的样式
+.box14(){
+    display: inline-block;
+    width: 100px;}
+
+.box15{.box14()}
+// 用时括号也可省略不写
+.box16{.box14}
+
+// 在混合函数中可以直接设置变量
+.test(@w,@h,@bg-color){
+    width: @w;
+    height: @h;
+    border:2px solid @bg-color ;
+}
+.box17{
+    // 调用混合函数，按顺序传递参数
+    .test(100px,200px,red)
+}
+.box18{
+    // 调用混合函数，按名传（顺序可不同）
+    .test(@bg-color:red, @h:200px, @w:100px)
+}
+// 可以为混合函数指定默认值,调用时不写值就使用默认值
+.test1(@w:100px, @h:100px, @bg-color:#bfa){
+    width: @w;
+    height: @h;
+    background-color: @bg-color;
+}
+.box19{.test1()}
+// 传一个值就用一个值
+.box20{.test1(300px)}
+
+// functions里列举的都是些定义好的混合函数，可直接用。如average可对颜色取平均数
+.box21{color:average(red,yellow)
+}
+// darken可降低颜色的亮度
+.box22{background-color: hsl(0, 62%, 55%);
+    &:hover{background-color: darken( hsl(0, 62%, 55%),20%);}
+}
+
+.box23{
+    // 在less中所有的数值都可以直接进行运算 + - * / 
+    width: 100px+100px;
+    height: 200px/4;
+    background-color: #bfa;
+}

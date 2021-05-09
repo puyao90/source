@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM2</title>
+    <style>
+        #box1 {
+            width: 80px;
+            height: 80px;
+            background-color: aquamarine;
+            padding: 10px;
+            border: bisque 10px solid;
+        }
+        
+        #box2 {
+            background-color: rgb(167, 141, 132);
+            padding: 10px;
+        }
+        
+        #box3 {
+            background-color: rgb(158, 135, 222);
+            width: 100px;
+            height: 100px;
+            overflow: auto;
+        }
+        
+        #box4 {
+            background-color: burlywood;
+            width: 200px;
+        }
+        
+        #info {
+            width: 150px;
+            height: 200px;
+            background-color: #bfa;
+            overflow: auto;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            function bindBtn(btnId, fun) {
+                document.getElementById(btnId).onclick = fun;
+            }
+            bindBtn("btn01", function() {
+                //通过JS修改元素的样式  语法：元素.style.样式名 = 样式值
+                box1.style.width = "150px";
+                box1.style.height = "150px";
+                //如果CSS样式名中含有-，这种名称在JS里是不合法的，需要将这种样式名改为驼峰命名法
+                box1.style.backgroundColor = "yellow"
+                    //通过style属性设置的样式都是内联样式，内联样式有较高的优先级，所以通过JS修改的样式往往会立即显示
+                    //但如果在样式中写了!important，此时即使JS也不能覆盖该样式
+            })
+
+            bindBtn("btn02", function() {
+                //获取内联样式  语法：元素.style.样式名 
+                //通过style属性设置和读取的都是内联样式，无法读取样式表中的样式
+                alert(box1.style.width);
+            })
+
+            //（只有IE浏览器支持）获取当前正在显示样式,如果当前元素没有设置该样式则获取它的默认值  
+            //box1.currentStyle.width  //语法：元素.currentStyle.样式名
+            //（不支持IE8及以下）在其他浏览器中可以使用 getComputedStyle()这个方法来获取元素当前的样式。该方法会返回一个对象，对象中封装了当前元素对应的样式
+            //是window的方法，两个参数，1要获取样式的元素 2传递一个伪元素，一般都传null
+            //与currentStyle区别：如果获取的样式没有设置，则会获取到真实的值，而不是默认值
+            bindBtn("btn03", function() {
+                    alert(getComputedStyle(box1, null).width);
+                })
+                //通过currentStyle和getComputedStyle()读到的样式都是只读的，不能修改，修改必须通过style属性
+
+            //自己定义函数读取样式支持所有浏览器
+            function getStyle(obj, name) {
+                if (window.getComputerStyle) { //注意如果不写window就会报错，因为变量没找到会报错，属性没找到返回undefined
+                    return getComputerStyle(obj, null)[name];
+                } else {
+                    return obj.currentStyle[name];
+                }
+                // return window.getComputedStyle? getComputedStyle(obj, null)[name] : obj.currentStyle[name]
+            }
+
+            //clientWidth和clientHeight这两个属性可以获取元素的可见宽度和高度，这些属性返回值都是不带px的
+            //获取元素的宽度或高度会包括内容区和内边距。这些属性都是只读的，不能修改。
+            bindBtn("btn04", function() {
+                alert(box1.clientWidth);
+            })
+
+            //offsetWidth和offsetHeight会获取元素的整个的宽度和高度，包括内容区，内边距和边框
+            bindBtn("btn05", function() {
+                alert(box1.offsetWidth);
+            })
+
+            //offsetParent可以用来获取当前元素的定位父元素。
+            //会获取到离当前元素最近的开启了定位的祖先元素，如果所有祖先元素都没有开启定位则返回body
+            bindBtn("btn06", function() {
+                alert(box1.offsetParent.id);
+            })
+
+            //offsetLeft和offsetRight可获取当前元素相对于其定位父元素的水平/垂直偏移量
+            bindBtn("btn07", function() {
+                alert(box1.offsetLeft);
+            })
+
+            //scrollWidth和scrollHeight可以获取元素整个滚动区域的宽度和高度
+            bindBtn("btn08", function() {
+                alert(box3.scrollWidth); //这里是对外层元素使用
+            })
+
+            //scrollLeft和scrollRight可以获取水平/垂直滚动条滚动的距离
+            bindBtn("btn09", function() {
+                alert(box3.scrollLeft);
+            })
+
+            bindBtn("btn10", function() {
+                alert(box3.clientHeight);
+                alert(box3.scrollHeight);
+                alert(box3.scrollHeight - box3.scrollTop);
+                //当满足 scrollHeight-scrollTop == clientHeight 说明垂直滚动条滚动到底了
+                //水平方向同理 当 scrollWidth-scrollLeft == clientWidth 说明水平滚动条滚动到底了
+            })
+
+            var info = document.getElementById("info");
+            var inputs = document.getElementsByTagName("input");
+            //为info绑定一个滚动条滚动的事件  onscroll该事件会在元素的滚动条滚动时触发
+            info.onscroll = function() {
+                if (info.scrollHeight - info.scrollTop == info.clientHeight) {
+                    //checkbox的属性disabled设置或返回checkbook是否应被禁用 设为true表示禁用，设为false表示不禁用
+                    inputs[0].disabled = false;
+                    inputs[1].disabled = false;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">改变样式</button>
+    <button id="btn02">内联样式</button>
+    <button id="btn03">当前样式</button>
+    <button id="btn04">内容+内边距</button>
+    <button id="btn05">内容+内边距+边框</button>
+    <button id="btn06">定位父元素</button>
+    <button id="btn07">相对定位父元素的水平偏移量</button><br><br>
+    <div id="box2" style="position:relative">
+        <div id="box1"></div>
+    </div>
+    <br><br>
+    <button id="btn08">整个滚动区宽度</button>
+    <button id="btn09">水平滚动条滚动距离</button>
+    <button id="btn10">实验</button><br><br>
+    <div id="box3">
+        <div id="box4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, repellat id rem reiciendis odit accusantium quas dolore eius doloremque corporis, dolorem fuga dolores inventore quae. Labore exercitationem blanditiis optio voluptatibus?</div>
+    </div>
+    <br><br>
+    <h3>欢迎注册</h3>
+    <p id="info">请仔细阅读以下协议Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ex minus amet iure quasi, tempore ipsa eaque quod dolores aspernatur corporis placeat animi deserunt nemo quas nesciunt ab officia incidunt.Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Nostrum ex minus amet iure quasi, tempore ipsa eaque quod dolores aspernatur corporis placeat animi deserunt nemo quas nesciunt ab officia incidunt.</p>
+    <input type="checkbox" disabled>我已阅读协议
+    <!-- disabled表示禁用 -->
+    <input type="submit" value="提交" disabled></input>
+    <br>
+    <a href="BOM.html">去BOM页面</a>
+</body>
+
+</html>

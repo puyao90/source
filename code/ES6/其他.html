@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他</title>
+</head>
+
+<body>
+    <script>
+        //ES6引入了第七种数据类型Symbol，表示独一无二的值。
+        //Symbol的值是唯一的，用来解决命名冲突的问题
+        //对象的属性名现在可以有两种类型，一种是原来就有的字符串，另一种就是新增的Symbol类型凡是属性名属于Symbol类型就都是独一无二的。
+        //Symbol的值不能与其他数据进行运算
+        //Symbol定义的对象属性不能使用for...in循环遍历，但可以使用Reflect.ownKeys来获取对象的所以键名
+        let s = Symbol() //创建Symbol  函数
+        console.log(s, typeof s)
+        let s2 = Symbol('shang') //可以接受一个字符串作为参数，表示对 Symbol 实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分。
+        let s3 = Symbol('shang')
+        console.log(s2)
+        console.log(s2 === s3) //false
+
+        let s4 = Symbol.for('shang') //Symbol.for创建   对象
+        console.log(s4, typeof s4)
+
+        // let result = s + 100  //报错
+        //let result = s + "100" //报错
+
+        //用法 像对象中添加方法
+        let game = {
+            name: "豆豆龙"
+        }
+        let methods = {
+            up: Symbol(),
+            down: Symbol()
+        }
+        game[methods.up] = function() { //Symbol 值作为对象属性名时，不能用点运算符。因为点运算符后面总是字符串
+            console.log('xing')
+        }
+        game[methods.down] = function() {
+            console.log('xia')
+        }
+        console.log(game)
+
+        let game2 = {
+            name: "抖音",
+            [Symbol("say")]: function() {}, //同理，在对象的内部，使用Symbol值定义属性时，Symbol值必须放在方括号之中。
+            [Symbol("zi")]: function() {}
+        }
+        console.log(game2)
+
+        //还提供了11个内置的Symbol属性，如Symbol.hasInstance, Symbol.isConcatSpreadable，它们可以作为对象的属性去设置，来改变对象在特定场景下的表现
+        class Person {
+            static[Symbol.hasInstance](param) {
+                console.log(param) //可以把instanceof前面的值传递给这个方法，由它的返回值来决定函数的返回结果
+                console.log('我被用来检测类型了')
+                return true
+            }
+        }
+        let obj = {}
+        console.log(obj instanceof Person)
+
+        //Iterator迭代器是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署Iterator接口，就可以完成遍历操作。
+        //ES6创造了一种新的遍历命令for...of循环，Iterator接口主要供for...of消费
+        //原生具备iterator接口的数据：Array,Arguments,Set,Map,String,TypedArray,NodeList
+        //原理：创建一个指针对象，指向当前数据结构的起始位置。第一次调用对象的next方法，指针自动指向数据结构的第一个成员。接下来不断调用next方法，指针一直往后移动，直到指向最后一个成员。
+        const xiyou = ["唐僧", "孙悟空", "猪八戒", "沙僧"]
+        for (let v of xiyou) {
+            console.log(v)
+        }
+        console.log(xiyou) //iterator接口就是对象里面的一个属性
+
+        let iterator = xiyou[Symbol.iterator]()
+        console.log(iterator)
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+
+        const banji = {
+                name: '终极一班',
+                stus: ['xiaoming', 'xiaoning', 'xiaotian', 'knight'],
+                [Symbol.iterator]() {
+                    let index = 0
+                    return {
+                        next: () => {
+                            // console.log(this)
+                            if (index < this.stus.length) {
+                                const result = {
+                                    value: this.stus[index],
+                                    done: false
+                                }
+                                index++
+                                return result
+                            } else {
+                                return {
+                                    value: undefined,
+                                    done: true
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            // banji[Symbol.iterator]().next()
+        for (let v of banji) {
+            console.log(v)
+        }
+
+        //类
+        function Phone(brand, price) {
+            this.brand = brand;
+            this.price = price
+        }
+        Phone.prototype.call = function() {
+            console.log("打电话")
+        }
+        let Huawei = new Phone("Huawei", 5999)
+        console.log(Huawei)
+        Huawei.call()
+
+        class Phone1 {
+            constructor(brand, price) {
+                this.brand = brand;
+                this.price = price
+            }
+            call() {
+                console.log("打电话")
+            }
+        }
+        let onePlus = new Phone1("1+", 1999)
+        console.log(onePlus)
+
+        class Phone2 {
+            static name = '手机' //静态属性 它属于类，不属于实例对象
+            static change() {
+                '我可以改变世界'
+            }
+        }
+        let nokia = new Phone2
+        console.log(nokia.name)
+        console.log(Phone2.name)
+
+        //类继承
+        class Phone3 {
+            constructor(brand, price) {
+                this.brand = brand
+                this.price = price
+            }
+            call() {
+                console.log('我可以打电话')
+            }
+        }
+        class SmartPhone extends Phone3 {
+            constructor(brand, price, color, size) {
+                super(brand, price) //super就是父类里的constructor方法，相当于Phone3.call(this,brand,price)
+                this.color = color
+                this.size = size
+            }
+            photo() {
+                console.log('拍照')
+            }
+            playGame() {
+                console.log('玩游戏')
+            }
+            call() {
+                console.log('我可以进行视频通话')
+            }
+        }
+        const xiaomi = new SmartPhone('xiaomi', 799, 'hei', '4.7inch')
+        console.log(xiaomi)
+        xiaomi.call()
+    </script>
+</body>
+
+</html>

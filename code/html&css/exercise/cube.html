@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            perspective: 800px;
+        }
+        
+        body {
+            border: black 1px solid;
+        }
+        
+        .cube {
+            width: 200px;
+            height: 200px;
+            /* background-color: #bfa; */
+            margin: 200px auto;
+            transform: rotateY(45deg) rotateX(45deg);
+            /* 默认transform是显示2D变形效果，要看到3D需设置transform-style */
+            transform-style: preserve-3d;
+            transform: rotateX(45deg) rotateZ(45deg);
+            /* animation: ro 9s infinite linear; */
+            transform: rotateY(45deg) scaleZ(2);
+        }
+        
+        .cube img {
+            vertical-align: top;
+            opacity: .6;
+        }
+        
+        .cube div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .cube .box1 {
+            background-color: rgb(255, 115, 115);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        
+        .cube .box2 {
+            background-color: rgb(255, 192, 19);
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        
+        .cube .box3 {
+            background-color: rgb(156, 196, 15);
+            transform: translateZ(-100px);
+        }
+        
+        .cube .box4 {
+            transform: translateZ(100px);
+            background-color: rgb(164, 70, 207);
+        }
+        
+        .cube .box5 {
+            background-color: rgb(22, 206, 190);
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        
+        .cube .box6 {
+            background-color: rgb(18, 124, 223);
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        
+        @keyframes ro {
+            from {
+                transform: rotateX(0) rotateZ(0);
+            }
+            to {
+                transform: rotateX(1turn) rotateZ(1turn);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cube">
+        <div class="box1">
+            <img src="../outer/xx1.png" alt="">
+        </div>
+        <div class="box2">
+            <img src="../outer/xx2.png" alt="">
+        </div>
+        <div class="box3">
+            <img src="../outer/xx3.png" alt="">
+        </div>
+
+        <div class="box5">
+            <img src="../outer/xx5.png" alt="">
+        </div>
+        <div class="box6">
+            <img src="../outer/xx6.png" alt="">
+        </div>
+        <div class="box4">
+            <img src="../outer/xx4.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

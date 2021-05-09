@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wai {
+            border: steelblue 1px solid;
+            font-size: 50px;
+        }
+        
+        .nei {
+            border: tomato 1px solid;
+            font-size: 20px;
+            vertical-align: bottom;
+            vertical-align: middle;
+        }
+        
+        .box1 {
+            width: 300px;
+            height: 300px;
+            background-color: darkgray;
+        }
+        
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 203, 32);
+            float: left;
+        }
+        
+        .box3 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(143, 239, 252);
+            float: left;
+        }
+        
+        .box4 {
+            line-height: 40px;
+            background-color: powderblue;
+            float: right;
+            text-align: center;
+        }
+        
+        .box4 a {
+            background: #fba;
+            /* display: block; */
+            width: 100px;
+        }
+        
+        .box5 {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(255, 181, 181);
+        }
+        
+        .box6 {
+            background-color: royalblue;
+        }
+        
+        .box7 {
+            width: 0px;
+            height: 0px;
+            border: 20px solid red;
+            border-color: transparent transparent purple transparent;
+            border-top: none;
+        }
+        
+        ul {
+            border: turquoise 5px solid;
+        }
+        
+        ul::before {
+            content: "haha";
+        }
+        
+        .box8 {
+            height: 200px;
+            background-color: cadetblue;
+            /* float: left; */
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .box9 {
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+        }
+        
+        .box10 {
+            width: 150px;
+            height: 200px;
+            background-color: rgb(100, 27, 129);
+        }
+        
+        .box11 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 226, 95);
+            display: inline-block;
+            /* vertical-align: middle; */
+        }
+        
+        .box13 {
+            width: 100px;
+            height: 200px;
+            background-color: rgb(18, 95, 31);
+        }
+        
+        .box14 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 226, 95);
+            margin: auto 0;
+            /* 错误 垂直方向没有 */
+        }
+        
+        .box15 {
+            height: 50px;
+            background-color: blanchedalmond;
+            position: relative;
+            /* z-index: 1; */
+            /* z-index: 99; */
+        }
+        
+        .box155 {
+            width: 50px;
+            height: 200px;
+            background-color: blueviolet;
+            position: absolute;
+            z-index: 99;
+        }
+        
+        .box16 {
+            height: 50px;
+            background-color: rgb(205, 214, 255);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .box166 {
+            width: 50px;
+            height: 100px;
+            position: absolute;
+            left: 25px;
+            background-color: chocolate;
+            z-index: 1000;
+        }
+        
+        .box17 {
+            height: 300px;
+            border: cornflowerblue 4px solid;
+        }
+        
+        .box17 .line {
+            display: inline-block;
+            width: 2px;
+            height: 100px;
+            background-color: rgb(255, 44, 44);
+            /* margin-top: 0; */
+            margin-bottom: 100px;
+        }
+        
+        .box18 {
+            line-height: 50px;
+            background-color: #bfa;
+        }
+        
+        .high {
+            background: rgb(255, 177, 177);
+            /* display: block; */
+        }
+        
+        .box19 {
+            height: 100px;
+            background-color: rgb(255, 164, 164);
+            /* position: relative; */
+        }
+        
+        .box191 {
+            width: 800px;
+            height: 80px;
+            margin: 0 auto;
+            background-color: rgb(255, 235, 125);
+        }
+        
+        .box1911 {
+            width: 100%;
+            height: 40px;
+            background-color: rgba(170, 214, 255, .8);
+            position: absolute;
+            left: 0;
+        }
+        
+        .f1 {
+            background-color: rgb(206, 235, 152);
+        }
+        
+        .box20 {
+            line-height: 40px;
+        }
+        
+        .box21 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(97, 150, 247);
+            /* border: rgb(19, 52, 114) 6px dotted; */
+            padding: 10px;
+            outline: 12px blueviolet solid;
+        }
+        
+        .box22 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(223, 192, 53);
+            border: 6px solid rgb(250, 131, 131);
+        }
+        
+        .box23 {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(89, 161, 230, 0.3);
+            float: left;
+            outline: 20px dotted rgb(119, 0, 255);
+        }
+        
+        .box24 {
+            width: 300px;
+            height: 100px;
+            border: 4px solid red;
+            position: relative;
+        }
+        
+        .box24 .span2 {
+            /* margin-left: 20px; */
+            /* margin-right: 20px; */
+            /* display: inline-block; */
+            background-color: #bfa;
+            /* position: absolute; */
+            /* right: 0; */
+            /* top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 16px; */
+            /* display: block; */
+            float: right;
+        }
+        
+        .box25 {
+            width: 500px;
+            height: 300px;
+            border: 8px solid blue;
+            position: relative;
+        }
+        
+        .box26 {
+            /* height: 300px; */
+            /* background-color: rgb(255, 169, 169); */
+            border: 8px dashed red;
+            position: absolute;
+        }
+        
+        .box26-img {
+            background: #bfa;
+            width: 100%;
+        }
+        
+        .box28 {
+            width: 500px;
+            height: 300px;
+            border: 8px solid rgb(255, 174, 0);
+            position: relative;
+        }
+        
+        .box29 {
+            height: 400px;
+            width: 600px;
+            background-color: rgb(218, 218, 218);
+            position: absolute;
+        }
+        
+        .box30father {
+            width: 700px;
+            height: 700px;
+            background-color: rgb(97, 150, 247);
+            position: relative;
+        }
+        
+        .box30 {
+            border: 8px solid rgb(255, 174, 0);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        
+        .box31 {
+            width: 800px;
+            height: 100px;
+            background-color: #fba;
+            text-align: center;
+        }
+        
+        .box31 a {
+            display: block;
+            /* width: 100px; */
+            height: 50px;
+            background-color: red;
+        }
+        
+        .box32 {
+            width: 100px;
+            height: 100px;
+            background-color: darkblue;
+        }
+        
+        .box33 {
+            width: 600px;
+            height: 100px;
+            background-color: #fba;
+            /* line-height: 100px; */
+            display: flex;
+            align-items: center;
+            /* align-items: flex-start; */
+        }
+        
+        .box33 img {
+            /* margin-top: 50px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wai">
+        djhfs<span class="nei">dhsfgjsdfg</span>ksf
+    </div>
+    <div class="box1">
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+    <div class="box4">
+        <a href="#">我是a</a>
+    </div>
+    <div class="box5">
+        <div class="box6">我没有定宽高</div>
+    </div>
+    <div class="box7"></div>
+    <ul>
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+        <li>44</li>
+    </ul>
+    <div class="box8">
+        <div class="box9"></div>
+    </div>
+    <br>
+    <div class="box10">
+        <div class="box11"></div>
+        12 13 14 15 16
+    </div>
+    <div class="box13">
+        <div class="box14"></div>
+    </div>
+    <div class="box15">
+        <div class="box155"></div>
+    </div>
+    <div class="box16">
+        <div class="box166"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="box17">
+        <a href="javascript:;" style="background-color: cornflowerblue;">
+            <img src="./exercise/picture/WX20201117-000401.png" alt="">
+            <span>我是文字</span>
+            <span class="line"></span>
+        </a>
+    </div>
+    <div class="box18">
+        <span class="high">我是行高为50px的文字</span>
+    </div>
+    <br><br>
+    <div class="box19">
+        <div class="box191">
+            <div class="box1911"></div>
+        </div>
+    </div>
+    <br>
+    <div class="box20">
+        <form class="f1" action="#">
+            <input type="text">
+            <button>哈哈</button>
+        </form>
+    </div>
+    <div class="box21"></div>
+    <div class="box22">
+        <div class="box23"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="box24">
+        <span class="span1">woshispan1</span>
+        <span class="span2">woshispan2</span>
+    </div>
+    <br>
+    <div class="box25">
+        <div class="box26">
+            <!-- <div class="box27"></div> -->
+            <img class="box26-img" src="./exercise/picture/jingdong1.webp" alt="">
+        </div>
+    </div>
+    <div class="box28">
+        <div class="box29"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="box30father">
+        <div class="box30">
+            <img src="./exercise/picture/135.webp" alt="">
+        </div>
+    </div>
+    <div class="box31">
+        aa
+        <a href="javascript:;">我是块a</a>
+        <div class="box32"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="box33">
+        <img src="./exercise/picture/WX20201201-181119.png" alt="">
+        <span>我是文字我是文字</span>
+    </div>
+</body>
+
+</html>

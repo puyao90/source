@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font awesome/css/all.css">
+    <link rel="stylesheet" href="./ali iconfont/iconfont.css">
+    <style>
+        /* font-face可以将服务器中的字体直接提供给用户使用 注意版权问题 */
+        
+        @font-face {
+            font-family: "myfont";
+            /* 这里的名字是你给这个字体起的名字 */
+            src: url("./OCRB Regular.ttf") format("truetype");
+            /* src: url("./庞门正道粗书体.ttf"); */
+        }
+        
+        .test1 {
+            /* 字体相关样式 */
+            color: red;
+            font-size: 2em;
+            /* font-family: Georgia, 'Times New Roman', Times, serif; */
+            /* font-family: Alibaba PuHuiTi; */
+            font-family: myfont;
+        }
+        /* 第二种方式 通过伪元素设置图标字体 
+        fab 'Font Awesome 5 Brands'  
+        fas font-family: 'Font Awesome 5 Free';font-weight: 900; */
+        
+        li {
+            list-style: none;
+        }
+        
+        li::before {
+            content: "\f004";
+            /* 注意编码前面加反斜杠 */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 12px;
+            color: rgb(211, 141, 211);
+            margin-right: 8px;
+        }
+        
+        .ali1::before {
+            content: "\e7c2";
+            font-family: "iconfont";
+        }
+        
+        div.test2 {
+            font-size: 50px;
+            border: teal 10px solid;
+            /* 可以通过line-height设置行高 */
+            line-height: 100px;
+            /* 行高可以直接指定大小（px em),也可以写一个整数，代表字体的倍数。默认行高是1.2 */
+            line-height: 1;
+            /* 字体框就是字体存在的格子，设置font-size实际上就是设置字体框的高度
+            行高会在字体框的上下平均分配 */
+            line-height: 4;
+            /* 可以将行高设置为和高度一样的值，使单行文字在一个元素中水平居中 */
+            line-height: 80px;
+            /* height: 80px; */
+        }
+        
+        div.test3 {
+            font-size: 20px;
+            border: tomato 1px solid;
+            line-height: 100px;
+            /* 行高还经常用来设置行间距，行间距=行高-字体大小 */
+        }
+        
+        div.test4 {
+            border: rgb(255, 153, 0) 1px solid;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 50px;
+            line-height: 2;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            /* 字体的简写 注意最后两个一定是font-size和font-family  */
+            font: italic bold 50px/2 Verdana, Geneva, Tahoma, sans-serif;
+            /* 默认值是 font: normal normal 16px/1.2 某字体; */
+        }
+        
+        div.test5 {
+            border: royalblue 1px solid;
+            width: 500px;
+            text-align: left;
+            text-align: right;
+            text-align: center;
+            text-align: justify;
+        }
+        
+        div.test6 {
+            border: springgreen 1px solid;
+            font-size: 50px;
+        }
+        
+        div.test6 span {
+            border: steelblue 1px solid;
+            font-size: 20px;
+            /* vertical-align 设置元素垂直对齐的方式
+            baseline 默认值 基线对齐 */
+            vertical-align: baseline;
+            vertical-align: top;
+            vertical-align: bottom;
+            /* vertical-align: middle;
+            vertical-align: 100px; */
+            /* 相对于父元素的基线往上走100px */
+        }
+        
+        .test7 {
+            border: tomato 1px solid;
+        }
+        
+        .test7 img {
+            /* 图片是替换元素，跟字一样，也有一个基线,所以默认下面会有缝隙*/
+            vertical-align: top;
+        }
+        
+        .test8 {
+            font-size: 50px;
+            text-decoration: underline;
+            text-decoration: none;
+            text-decoration: line-through;
+            text-decoration: overline;
+            text-decoration: underline orange wavy;
+        }
+        
+        .test9 {
+            /* {white-space设置网页如何处理空白。*/
+            /* white-space: normal;
+            white-space: nowrap; */
+            /* 网页里默认多个空格和换行会被解析成一个空格,pre表示保留空格 */
+            /* white-space: pre; */
+            white-space: nowrap;
+            width: 400px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="test1">今天天气不错! Hello How are you?</p>
+    <!-- 图标字体（confront） 较图片小，不失真，更灵活（可换颜色） 
+    因此可以将图片直接设为字体，再通过font-face引入字体-->
+    <!-- 第一种方式直接写i标签 -->
+    <i class="fas fa-cat"></i>
+    <i class="fas fa-snowman" style="font-size: 120px; color: silver;"></i>
+    <!-- fas或fab表示把字体在这个元素上应用，后面的如fa-cat表示指定的哪个字体 -->
+    <h2>《我曾经七次鄙视自己的灵魂》 纪伯伦</h2>
+    <ul>
+        <li>第一次，当它本可进取，却故作谦卑。</li>
+        <li>第二次，当它在空虚时，用爱欲来填充；</li>
+        <li>第三次，在困难和容易之间，它选择了容易；</li>
+        <li>第四次，它犯了错，却借由别人也会犯错来宽慰自己；</li>
+        <li>第五次，它自由软弱，却把它认为是生命的坚韧；</li>
+        <li>第六次，它鄙夷一张罪恶的嘴脸时，却不知那正是自己面具中的一副；</li>
+        <li>第七次，它侧身于生活的污泥中，虽不甘心，却又畏首畏尾。</li>
+    </ul>
+
+    <!-- 第三种方式 使用字符实体（character entities）https://www.w3school.com.cn/html/html_entities.asp 
+    格式 &；中间加#x图标编码-->
+    <span class="fas">&#xf0f4;</span>
+    <i class="iconfont" style="font-size: 40px;color: teal;">&#xe7c3;</i>
+    <i class="iconfont icon-renlianshibie"></i>
+    <P class="ali1">hello</P>
+
+    <div class="test2">我是一行测试行高的字</div><br>
+    <div class="test3">我是多行测试行高的字, 我是多行测试行高的字, 我是多行测试行高的字, Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis cumque sapiente quasi nostrum eius quae ratione, dicta quis dignissimos incidunt. Libero sapiente voluptate culpa suscipit quis exercitationem incidunt
+        facere labore.
+    </div><br>
+    <div class="test4">我是随便什么字 hello hello</div><br>
+    <div class="test5">我是测试文本样式Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, qui voluptatibus. Eum corrupti, facilis nihil id minus dolor recusandae nemo sit harum perspiciatis amet porro numquam animi, voluptate illo non.</div><br>
+    <div class="test6">
+        中午跟同事ytestx<span>different style</span>
+    </div>
+    <p class="test7">
+        <img src="./outer/xiaotu.png" alt="">
+    </p>
+    <div class="test8">其他文本样式</div>
+    <div class="test9">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero ad facere animi quae error, ducimus laborum beatae dolore earum? Unde voluptatibus aliquam eum praesentium. Necessitatibus quae minima totam saepe! Alibaba aaa qq qq
+    </div>
+
+
+
+
+
+</body>
+
+</html>

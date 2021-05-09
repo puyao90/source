@@ -1,0 +1,184 @@
+{
+  "id": "2203485",
+  "name": "text0",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18211365",
+      "name": "谷歌浏览器",
+      "font_class": "gugeliulanqi",
+      "unicode": "e7ad",
+      "unicode_decimal": 59309
+    },
+    {
+      "icon_id": "18211366",
+      "name": "电影",
+      "font_class": "dianying",
+      "unicode": "e7ae",
+      "unicode_decimal": 59310
+    },
+    {
+      "icon_id": "18211382",
+      "name": "拍照",
+      "font_class": "paizhao",
+      "unicode": "e7b2",
+      "unicode_decimal": 59314
+    },
+    {
+      "icon_id": "18211384",
+      "name": "人脸识别",
+      "font_class": "renlianshibie",
+      "unicode": "e7b3",
+      "unicode_decimal": 59315
+    },
+    {
+      "icon_id": "18211409",
+      "name": "指纹",
+      "font_class": "zhiwen",
+      "unicode": "e7b7",
+      "unicode_decimal": 59319
+    },
+    {
+      "icon_id": "18211411",
+      "name": "音乐",
+      "font_class": "yinle",
+      "unicode": "e7b6",
+      "unicode_decimal": 59318
+    },
+    {
+      "icon_id": "18211434",
+      "name": "水滴",
+      "font_class": "shuidi",
+      "unicode": "e7bb",
+      "unicode_decimal": 59323
+    },
+    {
+      "icon_id": "18211435",
+      "name": "火焰",
+      "font_class": "huoyan",
+      "unicode": "e7bc",
+      "unicode_decimal": 59324
+    },
+    {
+      "icon_id": "18211436",
+      "name": "木头",
+      "font_class": "mutou",
+      "unicode": "e7bd",
+      "unicode_decimal": 59325
+    },
+    {
+      "icon_id": "18211444",
+      "name": "矿锄",
+      "font_class": "kuangchu",
+      "unicode": "e7be",
+      "unicode_decimal": 59326
+    },
+    {
+      "icon_id": "18211459",
+      "name": "双人床",
+      "font_class": "shuangrenchuang",
+      "unicode": "e7bf",
+      "unicode_decimal": 59327
+    },
+    {
+      "icon_id": "18211461",
+      "name": "卫浴",
+      "font_class": "weiyu",
+      "unicode": "e7c0",
+      "unicode_decimal": 59328
+    },
+    {
+      "icon_id": "18211462",
+      "name": "植物",
+      "font_class": "zhiwu",
+      "unicode": "e7c1",
+      "unicode_decimal": 59329
+    },
+    {
+      "icon_id": "18211463",
+      "name": "叶子",
+      "font_class": "yezi",
+      "unicode": "e7c2",
+      "unicode_decimal": 59330
+    },
+    {
+      "icon_id": "18211527",
+      "name": "飞机",
+      "font_class": "feiji",
+      "unicode": "e7c3",
+      "unicode_decimal": 59331
+    },
+    {
+      "icon_id": "18211528",
+      "name": "船",
+      "font_class": "chuan",
+      "unicode": "e7c4",
+      "unicode_decimal": 59332
+    },
+    {
+      "icon_id": "18211533",
+      "name": "火箭",
+      "font_class": "huojian",
+      "unicode": "e7c5",
+      "unicode_decimal": 59333
+    },
+    {
+      "icon_id": "18211580",
+      "name": "发货",
+      "font_class": "fahuo",
+      "unicode": "e7ca",
+      "unicode_decimal": 59338
+    },
+    {
+      "icon_id": "18211594",
+      "name": "流程1",
+      "font_class": "liucheng1",
+      "unicode": "e7ce",
+      "unicode_decimal": 59342
+    },
+    {
+      "icon_id": "18211603",
+      "name": "时间",
+      "font_class": "shijian",
+      "unicode": "e7d0",
+      "unicode_decimal": 59344
+    },
+    {
+      "icon_id": "18211056",
+      "name": "篮球",
+      "font_class": "lanqiu",
+      "unicode": "e7a2",
+      "unicode_decimal": 59298
+    },
+    {
+      "icon_id": "18211060",
+      "name": "品牌",
+      "font_class": "pinpai",
+      "unicode": "e7a4",
+      "unicode_decimal": 59300
+    },
+    {
+      "icon_id": "18211063",
+      "name": "礼物盒",
+      "font_class": "liwuhe",
+      "unicode": "e7a3",
+      "unicode_decimal": 59299
+    },
+    {
+      "icon_id": "18211074",
+      "name": "色板",
+      "font_class": "seban",
+      "unicode": "e7a5",
+      "unicode_decimal": 59301
+    },
+    {
+      "icon_id": "18211078",
+      "name": "外星人",
+      "font_class": "waixingren",
+      "unicode": "e7a6",
+      "unicode_decimal": 59302
+    }
+  ]
+}

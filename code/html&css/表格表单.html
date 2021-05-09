@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table1 {
+            width: 50%;
+            margin: 0 auto;
+            border: 1px solid black;
+            /* border-spacing指定边框之间的距离 */
+            border-spacing: 10px;
+            border-spacing: 0px;
+            /* border-collapse collapse设置边框合并。 设置完后再设置border-spacing就没用了*/
+            border-collapse: collapse;
+        }
+        
+        .table1 td {
+            border: black 1px solid;
+            height: 50px;
+            /* 默认元素在td中垂直居中 可以通过vertical-align来调整(可以影响td中的所有元素)。 */
+            vertical-align: top;
+            vertical-align: middle;
+            /* 可以利用vertical-align middle来居中对象 */
+            text-align: center;
+        }
+        /* 如果表格中没有使用<tbody>而是直接使用tr，那么浏览器会自动创建一个<tbody>,并将tr都放到<tbody>中 */
+        
+        .table1>tbody>tr:nth-child(2n) {
+            background-color: blanchedalmond;
+        }
+        
+        .box1 {
+            width: 120px;
+            height: 120px;
+            background-color: cornflowerblue;
+            /* 将元素设置为单元格 */
+            display: table-cell;
+            /* text-align只对里面的文字有用 这里还是只能给box2设margin*/
+            /* text-align: center; */
+            vertical-align: middle;
+        }
+        
+        .box2 {
+            width: 50px;
+            height: 50px;
+            background-color: cornsilk;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1" width="50%" align="center">
+        <!-- 在table中使用tr表示表格中的一行 -->
+        <tr>
+            <!-- 在tr中使用td表示一个单元格 -->
+            <td>A1</td>
+            <td>A2</td>
+            <td>A3</td>
+            <!-- rowspan 纵向合并单元格 -->
+            <td rowspan="2">A4</td>
+        </tr>
+        <tr>
+            <td>B1</td>
+            <td>B2</td>
+            <td>B3</td>
+            <!-- <td>B4</td> -->
+        </tr>
+        <tr>
+            <td>C1</td>
+            <td>C2</td>
+            <td>C3</td>
+            <td>C4</td>
+        </tr>
+        <tr>
+            <td>D1</td>
+            <td>D2</td>
+            <!-- colspan 横向合并单元格 -->
+            <td colspan="2">D3</td>
+            <!-- <td>D4</td> -->
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    <table border="1" width="50%" align="center">
+        <!-- <thead>永远在最上，<tfoot>永远在最下。th表示表格头部单元格。-->
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>收入</th>
+                <th>支出</th>
+                <th>合计</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2020.11.11</td>
+                <td>1000</td>
+                <td>800</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>2020.11.11</td>
+                <td>1000</td>
+                <td>800</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>2020.11.11</td>
+                <td>1000</td>
+                <td>800</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>2020.11.11</td>
+                <td>1000</td>
+                <td>800</td>
+                <td>200</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>合计</td>
+                <td>800</td>
+            </tr>
+        </tfoot>
+    </table>
+    <br>
+    <br>
+    <br>
+    <table class="table1">
+        <tr>
+            <td>日期</td>
+            <td>收入</td>
+            <td>支出</td>
+            <td>备注</td>
+        </tr>
+        <tr>
+            <td>2020.11.11</td>
+            <td>10000</td>
+            <td>8000</td>
+            <td>一般般</td>
+        </tr>
+        <tr>
+            <td>2020.11.20</td>
+            <td>1000</td>
+            <td>800</td>
+            <td>少了点呀</td>
+        </tr>
+        <tr>
+            <td>2020.12.1</td>
+            <td>1000000</td>
+            <td>800000</td>
+            <td>哈哈哈哈哈好开心</td>
+        </tr>
+        <tr>
+            <td>2020.12.12</td>
+            <td>10</td>
+            <td>8</td>
+            <td>诶</td>
+        </tr>
+        <tr>
+            <td>2020.11.11</td>
+            <td>10000</td>
+            <td>8000</td>
+            <td>一般般</td>
+        </tr>
+        <tr>
+            <td>2020.11.11</td>
+            <td>10000</td>
+            <td>8000</td>
+            <td>一般般</td>
+        </tr>
+    </table>
+    <br><br>
+    <div class="box1">
+        <!-- 1 -->
+        <div class="box2"></div>
+    </div>
+    <div class="box1">
+        <!-- 1 -->
+        <div class="box2"></div>
+    </div>
+    td不是块也不是行内。它只能根自己在一行，别的元素上不去
+
+    <!-- 网页中的表单用于将本地数据提交给远程服务器 -->
+    <form action="./outer/target2.html">
+        <!-- action 表示表单要提交的服务器的地址 -->
+        <!-- 文本框。数据要提交，必须要指定name属性值，根据用户填的内容来命名。 （这里input都属于行内块）-->
+        文本框 <input type="text" name="username" autocomplete="on"><br><br> 密码框
+        <input type="password" name="password"><br><br>
+
+        <!-- 单选按钮属于选择框，必须指定一个value属性，value属性最终会作为用户填写的值传递给服务器。
+            单选按钮必须有相同的name属性才能分到一组
+            checked可以将单选按钮设为默认选中 -->
+        单选按钮 <input type="radio" name="sex" value="male">
+        <input type="radio" name="sex" value="female" checked><br><br> 多选框
+        <input type="checkbox" name="hobby" value="eat">
+        <input type="checkbox" name="hobby" value="sleep">
+        <input type="checkbox" name="hobby" value="study">
+        <input type="checkbox" name="hobby" value="reading" checked><br><br> 下拉框
+        <select name="courses" id="">
+            <option value="CS">计算机科学</option>
+            <option value="DS" selected>UI设计</option>
+            <option value="DR">画画</opt>
+        </select><br><br> 文本框也可以指定默认值
+        <input type="text" name="aaa" value="aa"><br><br>
+        <!-- readonly表示表单项只读，数据会提交。disabled表示禁用，数据不会提交。 -->
+        只读 <input type="text" name="aab" value="aa" readonly><br><br> 禁用
+        <input type="text" name="aac" value="aa" disabled><br><br>
+        <input type="text" name="aad" value="aa" autofocus><br><br>
+        <input type="color"><br><br>
+        <input type="email"><br><br>
+        <!-- 提交按钮。value可以指定按钮上的文字 -->
+        <input type="submit" value="哈哈">
+        <input type="reset" value="重置按钮">
+        <input type="button" value="普通按钮"><br><br> 也可以用button标签写按钮
+        <button type="submit">我是提交</button>
+        <button type="reset">我是重置</button>
+        <button type="button">我是按钮</button><br><br>
+
+    </form>
+
+</body>
+
+</html>

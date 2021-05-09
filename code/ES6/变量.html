@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量</title>
+    <script>
+        {
+            let a = 10;
+            var b = 1;
+        }
+        // console.log(a) //报错 只在let命令所在的代码块内有效。
+        console.log(b)
+
+        var a = [];
+        for (var i = 0; i < 10; i++) {
+            a[i] = function() {
+                console.log(i);
+            };
+        }
+        a[1]();
+        a[6]();
+
+        var a = [];
+        for (let i = 0; i < 10; i++) { //当前的i只在本轮循环有效，所以每一次循环的i其实都是一个新的变量（ JS引擎内部会记住上一轮循环的值）
+            a[i] = function() {
+                console.log(i);
+            };
+        }
+        a[1]();
+        a[6]();
+
+        //console.log(bar) // 报错 没有变量提升
+        let bar = 2;
+
+
+        //在代码块内，使用let命令声明变量之前，该变量都是不可用的。（temporal dead zone，简称 TDZ）
+        //暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。
+
+        function fun(x = y, y = 2) {
+            return [x, y];
+        }
+
+        //fun(); //报错 y还没有声明，属于“死区”
+
+
+        //let不允许在相同作用域内， 重复声明同一个变量。
+        function func() {
+            // var a = 10;
+            let a = 1;
+            // let a = 2;
+        }
+
+        function func(arg) {
+            // let arg; //报错
+        }
+        func()
+
+
+        var tmp = new Date();
+
+        function f() {
+            console.log(tmp);
+            if (false) {
+                var tmp = 'hello world';
+            }
+        }
+
+        f();
+
+
+        const PI = 3.14; //const声明一个只读的常量。一旦声明，常量的值就不能改变。一旦声明变量，就必须立即赋值。
+        //const的作用域与let命令相同：只在声明所在的块级作用域内有效。
+        //const命令声明的常量也是不提升，同样存在暂时性死区。
+        //const声明的常量，也与let一样不可重复声明。
+        //let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。
+
+        //const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动。对于对象，变量指向的内存地址只是一个指向实际数据的指针，它指向的数据结构是可以变的。
+
+        function f5() {
+            console.log('I am outside!');
+        }
+
+        (function() {
+            //var f5=undefined; //相当于
+            if (false) {
+                function f5() {
+                    console.log('I am inside!');
+                }
+            }
+
+            //f5(); //报错
+        }());
+        //块级作用域内声明的函数类似于let，对作用域之外没有影响,浏览器的实现可以不遵守
+        //允许在块级作用域内声明函数。
+        //函数声明类似于var，即会提升到全局作用域或函数作用域的头部。
+        //同时，函数声明还会提升到所在的块级作用域的头部。
+
+
+        //变量的解构赋值 
+        let [x, y] = [2, 3] //这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。
+        console.log(y)
+        let [t] = []
+        console.log(t) //undefined
+        let [t1 = 1] = [] //允许指定默认值 默认值可以是一个表达式（惰性求值）undefined就读默认值
+        console.log(t1)
+
+        //对象的解构赋值
+        let {
+            t2,
+            t3
+        } = {
+            t3: "333",
+            t2: "222"
+        }
+        console.log(t2)
+
+        const {
+            log
+        } = console; //对象的解构赋值，可以很方便地将现有对象的方法，赋值到某个变量。console.log赋值到log变量
+        log("hahahah")
+
+        let {
+            foo: baz, //foo是匹配的模式，后面的foo才是变量，真正被赋值的是变量，而不是模式。
+            bar1: bar1
+        } = {
+            foo: 'aaa', //对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。
+            bar1: 'bbb'
+        };
+        //console.log(foo) //报错
+        console.log(baz) //aaa
+
+        var {
+            x1,
+            y1 = 5 //对象的解构也可以指定默认值
+        } = {
+            x1: 1
+        };
+        console.log(y1)
+
+        let x6;
+        ({
+            x6
+        } = {
+            x6: 6
+        }); //加括号因为JS引擎会将{x}理解成一个代码块，从而发生语法错误。只有不将大括号写在行首才行
+        console.log(x6)
+
+        //字符串的解构赋值
+        const [a5, b5, c5, d5, e5] = 'hello'
+        console.log(a5) //字符串被转换成了一个类似数组的对象.(类似数组的对象都有一个length属性)
+
+        //解构赋值时，如果等号右边是数值和布尔值，则会先转为对象。
+
+        //函数参数的解构赋值
+        function add([a, b]) {
+            return console.log(a + b)
+        }
+        add([1, 2])
+
+
+        let p = 1;
+        let q = 2;
+
+        [p, q] = [q, p];
+        console.log(p, q) //2 1 交换变量的值
+
+
+        //数值
+        console.log(Number('0b111')) //将二进制树转化为十进制
+        console.log(Number('0o10'))
+
+        console.log(Number.isNaN(NaN)) // true 用来检查一个数值是否为NaN 
+        console.log(Number.isNaN(15)) // false
+        console.log(Number.isNaN('15a')) // false 如果参数类型不是数值一律返回false
+        console.log(isNaN('15a')) //true 传统方法先调用Number()将非数值的值转为数值
+
+
+        console.log(Number.isInteger(25)) // true //Number.isInteger()用来判断一个数值是否为整数 参数不是数值返回false
+        console.log(Number.isInteger(25.1)) // false
+            //如果对数据精度的要求较高，不建议使用Number.isInteger()判断一个数值是否为整数。
+
+        console.log(Math.trunc(4.1)) //4 去除一个数的小数部分返回整数部分  对于非数值，Math.trunc内部使用Number方法将其先转为数值
+
+        console.log(Math.sign(5)) //判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值。
+        console.log(Math.sign(-5)) //正数，返回+1；负数返回-1；0返回0；-0返回-0;其他值返回NaN。
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

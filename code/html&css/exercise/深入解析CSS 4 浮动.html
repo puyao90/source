@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="../reset.css"> -->
+    <title>Document</title>
+    <style>
+         :root {
+            box-sizing: border-box;
+        }
+        
+        *,
+         ::before,
+         ::after {
+            box-sizing: inherit;
+        }
+        
+        body {
+            background-color: #eee;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        
+        body *+* {
+            margin-top: 1.5em;
+        }
+        
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        
+        img {
+            width: 70px;
+        }
+        
+        header {
+            padding: 1em 1.5em;
+            color: #fff;
+            background-color: #0072b0;
+            border-radius: .5em;
+            margin-bottom: 1.5em;
+        }
+        
+        .main {
+            background-color: #fff;
+            padding: 1.5em;
+            border-radius: 0.5em;
+        }
+        
+        .clearfix::after,
+        .clearfix::before {
+            display: table;
+            content: "";
+            clear: both;
+        }
+        
+        .media {
+            float: left;
+            margin: 1.5em 1.5em 1.5em 0;
+            width: calc(50% - 1.5em);
+            padding: 1.5em;
+            background-color: #eee;
+            border-radius: 0.5em;
+            line-height: 1.3em;
+        }
+        
+        .media:nth-child(2n+2) {
+            clear: both;
+        }
+        /* .m3 {
+            clear: both;
+        } */
+        
+        .media-image {
+            float: left;
+            margin-right: 1.5em;
+        }
+        
+        .media-body {
+            margin-top: 0;
+            overflow: auto;
+        }
+        
+        .media-body h4 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Franklin Running Club</h1>
+        </header>
+        <main class="main clearfix">
+            <h2>Running tips</h2>
+
+            <div class="media">
+                <img class="media-image" src="./picture/iconfinder_Fast_footwear_forward_runner_shoe_speed__4843045.png" alt="">
+                <div class="media-body">
+                    <h4>Strength</h4>
+                    <p>1Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore architecto voluptatum dignissimos distinctio. Tempore architecto voluptatum dignissimos distinctio. </p>
+                </div>
+            </div>
+
+
+            <div class="media">
+                <img class="media-image" src="./picture/iconfinder_Fast_footwear_forward_runner_shoe_speed__4843045.png" alt="">
+                <div class="media-body">
+                    <h4>Strength</h4>
+                    <p>2Lorem ipsum, dolor sit amet consectetur adipisicing elit.Tempore architecto voluptatum dignissimos distinctio.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="media m3">
+                <img class="media-image" src="./picture/iconfinder_Fast_footwear_forward_runner_shoe_speed__4843045.png" alt="">
+                <div class="media-body">
+                    <h4>Strength</h4>
+                    <p>3Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore architecto voluptatum dignissimos distinctio. </p>
+                </div>
+            </div>
+
+
+            <div class="media">
+                <img class="media-image" src="./picture/iconfinder_Fast_footwear_forward_runner_shoe_speed__4843045.png" alt="">
+                <div class="media-body">
+                    <h4>Strength</h4>
+                    <p>4Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore architecto voluptatum dignissimos distinctio. </p>
+                </div>
+            </div>
+
+            <!-- <div class="" style="clear:both"></div>div -->
+        </main>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="test1">
+        <div class="test2"></div>
+        <div class="test3"></div>
+        <div class="test4"></div>
+        <div class="test5"></div>
+    </div>
+</body>
+
+</html>

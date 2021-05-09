@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <style>
+        #areaDiv {
+            border: black 1px solid;
+            width: 380px;
+            height: 120px;
+        }
+        
+        #showMsg {
+            border: rgb(22, 179, 61) 1px solid;
+            width: 380px;
+            height: 40px;
+        }
+        
+        #box1 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            /* position: absolute; */
+        }
+        
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(167, 128, 240);
+        }
+        
+        #s1 {
+            background-color: rgb(118, 221, 178);
+        }
+        
+        #box6 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 166, 0);
+            position: absolute;
+        }
+        
+        #box7 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(94, 255, 156);
+            position: absolute;
+            left: 200px;
+        }
+        
+        #box8 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(233, 218, 3);
+        }
+        
+        #box9 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(39, 164, 236);
+            position: absolute;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body style="height: 1000px; width: 2000px;">
+    <div id="areaDiv"></div> <br>
+    <div id="showMsg"></div><br>
+    <input type="text">
+    <div id="box1"></div>
+    <div id="box2">我是box2
+        <span id="s1">我是span</span>
+    </div><br><br>
+    <div id="box8"></div><br>
+    <button id="btn01">添加链接</button>
+    <ul id="ul">
+        <li><a href="javascript:;" class="link">超链接一</a></li>
+        <li><a href="javascript:;" class="link">超链接二</a></li>
+        <li><a href="javascript:;" class="link">超链接三</a></li>
+    </ul><br>
+    <button id="btn02">点我一下</button><br><br>
+    <div id="box3" style="width: 300px; height:300px; background-color: rgb(236, 132, 132);">我是box3
+        <div id="box4" style="width: 150px; height:150px; background-color: rgb(132, 142, 236);">我是box4
+            <div id="box5" style="width: 50px; height:50px; background-color: rgb(225, 236, 132);">我是box5</div>
+        </div>
+    </div><br>
+    <p>我是一段文字</p>
+    <button id="btn03">按钮1</button>
+    <button id="btn04">按钮2</button><br>
+    <div id="box6"></div>
+    <div id="box7"></div><br><br><br><br><br><br><br><br>
+    <div id="box9"></div><br>
+    <script>
+        //onmousemove 该事件将会在鼠标在元素中移动时被触发
+        //事件对象 当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数
+        //在事件对象中封装了当前事件相关的一切信息，比如：鼠标的坐标，键盘哪个按键按下，鼠标滚轮滚动的方向...
+        //clientX 返回当事件被触发时，鼠标指针的水平坐标。 clientY 垂直
+        areaDiv.onmousemove = function(event) {
+            //在IE8中，响应函数被触发时，浏览器不会传递事件对象，是将事件对象作为window对象的属性保存的
+            // if (!event) {
+            //     event = window.event;
+            // }
+            event = event || window.event //更常见的写法 如果第一个是true，第二个就不看了直接返回第一个，如果第一个是false，返回第二个
+            var x = event.clientX;
+            var y = event.clientY;
+            showMsg.innerHTML = "x=" + x + ",y=" + y
+        }
+        document.onmousemove = function(event) { //注意是给整个文档绑定这个事件
+            event = event || window.event;
+            var x = event.clientX;
+            var y = event.clientY;
+            //clientX clientY是相对于可见窗口区域来算坐标的，box1的决定定位是相对于整个页面的
+            // var x = event.pageX; //改成pageX pageY可以获取鼠标相对于当前页面的坐标（在IE8中不支持）
+            // var y = event.pageY;    
+
+            //获取滚动条滚动的距离 浏览器认为滚动条是html的（不是body的，是body的父元素容不下它才出的滚动条）
+            var scrollTop = document.documentElement.scrollTop
+            var scrollLeft = document.documentElement.scrollLeft
+                // console.log(scroll);
+            box1.style.left = x + scrollLeft + "px"; //注意x是一个数值，没有单位
+            box1.style.top = y + scrollTop + "px"
+        }
+
+        function bindClick(elementId, fun) {
+            document.getElementById(elementId).onclick = fun;
+        }
+        //事件的冒泡（Bubble）指事件向上传导，当后代元素上的事件被触发时，其祖先元素的相同事件也会被触发
+        //可通过事件对象来取消冒泡，将事件对象的cancelBubble设置为true即可取消冒泡
+        bindClick("s1", function(event) {
+            alert("我是span的单击响应函数");
+            event = event || window.event;
+            event.cancelBubble = true;
+        })
+        bindClick("box2", function(event) {
+                alert("我是box2的单击响应函数");
+                event = event || window.event;
+                event.cancelBubble = true;
+            })
+            // document.body.onclick = function() {
+            //     alert("body");
+            // }
+
+
+        //为每个超链接都绑定了单击响应函数，这种操作只能为已有的超链接设置事件，而新添加的超链接必须重新绑定
+        // var allA = document.getElementsByTagName("a");
+        // for (let index = 0; index < allA.length; index++) {
+        //     allA[index].onclick = function() {
+        //         alert("a");
+        //     }
+        // }
+        //我们希望，只绑定一次事件，即可应用到多个元素上，我们可以尝试将其绑定给元素的共同的祖先元素
+        //事件的委派
+        //指将事件统一绑定给元素共同的祖先元素，这样当后代元素上的事件触发时，会一直冒泡到祖先元素，从而通过祖先元素的响应函数来处理
+        ul.onclick = function(event) {
+            //alert(event.target);
+            //event中的target 返回触发此事件的元素
+            if (event.target.className == "link") { //如果触发事件的对象是我们期望的元素则执行，否则不执行
+                alert("我是link的响应函数")
+            }
+        }
+
+        bindClick("btn01", function(event) {
+            var li = document.createElement("li");
+            li.innerHTML = "<a href='javascript:;' class='link'>新的超链接 </a>"
+            ul.appendChild(li);
+        })
+
+        //使用对象.事件=函数 的形式绑定响应函数，它只能同时为一个元素的一个事件绑定一个响应函数，如果绑定了多个，则后面的会覆盖掉前面的
+        // bindClick("btn02", function() {
+        //     alert("1");
+        // });
+        // bindClick("btn02", function() {
+        //     alert("2");
+        // });
+        //addEventListener() 通过这个方法也可以为元素绑定响应函数 可同时为一个元素的相同事件绑定多个响应函数，按绑定顺序执行
+        //参数 1事件的字符串，不要on 2回调函数，当事件触发时函数会被调用  3是否在捕获阶段触发事件，需要一个布尔值，一般都用false
+        btn02.addEventListener("click", function() {
+            alert("1");
+        }, false)
+        btn02.addEventListener("click", function() {
+                alert("2");
+            }, false)
+            //IE8及以下不支持addEventListener()，但可以使用attachEvent()来代替,参数1事件字符串，要on 2回调函数  它是后绑定先执行
+            //IE8及以下不支持addEventListener()中的this是绑定事件的对象，而attachEvent()中的this是window
+        function bind(obj, eventStr, callback) {
+            //on加上容易，因此eventStr是不要on的
+            if (obj.addEventListener) {
+                obj.addEventListener(eventStr, callback, false);
+            } else {
+                //callback是浏览器调的，因此调用方式控制不了，这里先改成自己调用的
+                obj.attachEvent("on" + eventStr, function() {
+                    //callback();  //改成自己调用的就可以指定this了
+                    callback.call(obj);
+                });
+            }
+        }
+        bind(box3, "click", function() {
+            alert("box3");
+        })
+        bind(box4, "click", function() {
+            alert("box4");
+        })
+        bind(box5, "click", function() {
+                alert("box5");
+            })
+            //事件的传播分为三个阶段
+            //1.捕获阶段 从最外层的祖先元素向目标元素进行事件的捕获，默认此时不会触发事件
+            //2.目标阶段 事件捕获到目标元素，捕获结束开始在目标元素上触发事件
+            //3.冒泡阶段 事件从目标元素向它的祖先元素传递，依次触发祖先元素上的事件
+            //如果希望在捕获阶段就触发事件，可以将addEventListener()的第三个参数设为true
+
+        //拖拽
+        //1 当鼠标在被拖拽元素上按下时，开始拖拽 onmousedown
+        //2 当鼠标移动时，被拖拽元素跟随鼠标移动 onmousemove
+        //3 当鼠标松开时，被拖拽元素固定在当前位置 onmouseup
+        function drag(obj) {
+            obj.onmousedown = function(event) { //注意是点下去就把偏移量求出来，点下去的时候位置就定了
+                var shiftX = event.pageX - obj.offsetLeft;
+                var shiftY = event.pageY - obj.offsetTop;
+                document.onmousemove = function(event) {
+                    event = event || window.event;
+                    var mouseX = event.pageX;
+                    var mouseY = event.pageY;
+                    obj.style.left = mouseX - shiftX + "px";
+                    obj.style.top = mouseY - shiftY + "px";
+                }
+                document.onmouseup = function() { //还得给document绑定，如果只给box6绑，移到它上层的元素上触发的就不是它的onmouseup
+                    document.onmousemove = null; //取消onmousemove元素就不会跟着动了
+                    document.onmouseup = null; //取消document上的onmouseup这样它只会触发一次
+                    // alert("q")
+                }
+                return false;
+                //当我们拖拽网页中的内容时，浏览器会默认去搜索引擎中搜索，此时会导致拖拽功能异常，这是浏览器的默认行为，可通过return false来取消
+            }
+        }
+        drag(box6);
+        drag(box7);
+
+        // btn03.onclick = function() {
+        //     alert("1");
+        // }
+        // btn04.onclick = function() {
+        //         alert("2");
+        //     }
+        //btn03.setCapture();  //IE支持 当调用一个元素的setCapture后，这个元素会把下一次所以鼠标按下的相关事件捕获到自己身上
+        //对付IE 当鼠标按下时设置拖拽对象捕获，当鼠标松开时，应该取消对事件捕获 obj.releaseCapture()
+        //onmousedown后前面加判断 if(obj.setCapture){obj.setCapture();}  或者写obj.setCapture && obj.setCapture()  如果前面有就执行后面的
+        //同理后面写成obj.releaseCapture && obj.releaseCapture()
+
+        box8.onmousewheel = function(event) {
+            //onmousewheel 鼠标滚轮滚动事件，会在滚轮滚动时触发，但是火狐不支持
+            //在火狐中需要使用DOMMouseScroll来绑定滚动事件 该事件需要通过addEventListener()函数来绑定
+            event = event || window.event;
+            //event.wheelDelta可以获取鼠标滚轮滚动的方向  向上是正向下是负
+            //在火狐里用event.detail 向上是负向下是正
+            if (event.wheelDelta > 0 || event.detail < 0) {
+                box8.style.height = box8.clientHeight - 10 + "px"
+            } else {
+                box8.style.height = box8.clientHeight + 10 + "px"
+            };
+            //当滚轮滚动时，如果浏览器有滚动条，滚动条会随之滚动，这是浏览器的默认行为，如果不希望发生，则可通过return false取消
+            return false;
+            //使用addEventListener()方法绑定响应函数，取消默认行为时需要使用 event.preventDefault();
+            //event.preventDefault(); //IE8不支持，不能直接调用
+            event.preventDefault && event.preventDefault(); //需要先做判断
+        }
+        box8.addEventListener("DOMMouseScroll", box8.onmousewheel, false); //为火狐绑定滚动
+
+        //键盘事件
+        //onkeydown 键盘被按下 一直按着某个按键不松手则事件会一直触发 连续触发时第一次和第二次会间隔稍微长一点时间
+        //onkeyup 按键松开
+        //键盘事件一般都会绑定给一些可以获取焦点的对象或者是document
+        document.onkeydown = function(event) {
+            //可以通过keyCode来获取按键编码
+            // console.log(event.keyCode);
+            //altKey ctrlKey shiftkey 这三个属性是用来判断alt ctrl和shift是否被按下  如果按下则返回true否则返回false
+            if (event.keyCode === 69 && event.ctrlKey) {
+                console.log("ctrl和e都被按下了")
+            }
+        }
+        var input = document.getElementsByTagName("input")[0];
+        input.onkeydown = function(event) {
+            //数字的keyCode是48到57
+            if (event.keyCode >= 48 && event.keyCode <= 57) {
+                //在文本框中输入内容，属于onkeydown默认行为，如果onkeydown中取消了默认行为，则输入内容不会出现在文本框中
+                return false;
+            }
+        }
+        document.onkeydown = function(event) {
+            var speed = 50; //定义一个变量来表示移动的速度
+            switch (event.keyCode) {
+                case 37:
+                    box9.style.left = box9.offsetLeft - speed + "px";
+                    break;
+                case 39:
+                    box9.style.left = box9.offsetLeft + speed + "px";
+                    break;
+                case 38:
+                    box9.style.top = box9.offsetTop - speed + "px";
+                    break;
+                case 40:
+                    box9.style.top = box9.offsetTop + speed + "px";
+                    break;
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 0.13333333vw;
+  font-family: sans-serif;
+  background-color: #f2f3f5;
+}
+body {
+  font-size: 32rem;
+  color: #2b293c;
+}
+.w {
+  width: 690rem;
+  margin: 0 auto;
+}
+.title {
+  display: flex;
+  font-size: 50rem;
+  height: 174rem;
+  color: #2b293c;
+  align-items: center;
+  justify-content: space-between;
+}
+.title i {
+  font-size: 42rem;
+  color: #a2a3a4;
+}
+.main-img img {
+  width: 100%;
+}
+.category {
+  margin-top: 32rem;
+  display: flex;
+  flex-wrap: wrap;
+  height: 248rem;
+  align-content: space-between;
+  justify-content: space-between;
+}
+.category .cat {
+  text-decoration: none;
+  width: 330rem;
+  height: 110rem;
+  border-radius: 16rem;
+  color: white;
+  line-height: 110rem;
+}
+.category .cat i {
+  margin-left: 38rem;
+  margin-right: 20rem;
+}
+.category .cat1 {
+  background-image: linear-gradient(#f18673, #f57f5c);
+}
+.category .cat2 {
+  background-image: linear-gradient(#d694fc, #ca69ff);
+}
+.category .cat3 {
+  background-image: linear-gradient(#f95c8a, #f94c7d);
+}
+.category .cat4 {
+  background-image: linear-gradient(#42cffc, #389eff);
+}
+.title1 {
+  display: flex;
+  align-items: center;
+  margin: 40rem auto 30rem auto;
+  justify-content: space-between;
+}
+.title1 .s1 {
+  font-size: 35rem;
+  border-left: 3rem #2b293c solid;
+  padding-left: 14rem;
+}
+.title1 .s2 {
+  font-size: 30rem;
+  color: #a2a3a4;
+}
+.cards {
+  margin-left: 30rem;
+  display: flex;
+  overflow: auto;
+  height: 350rem;
+  align-items: center;
+}
+.cards .card1 {
+  flex: none;
+  box-sizing: border-box;
+  width: 330rem;
+  height: 330rem;
+  padding: 20rem;
+  background-color: #fff;
+  box-shadow: 2rem 2rem 8rem rgba(0, 0, 0, 0.1);
+  margin-right: 23rem;
+}
+.cards .card1 .mainp {
+  width: 100%;
+}
+.cards .card1 .maint {
+  margin: 8rem auto 8rem 0;
+}
+.cards .card1 .author {
+  height: 58rem;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.cards .card1 .author img {
+  width: 46rem;
+}
+.cards .card1 .author span {
+  font-size: 28rem;
+  color: #a2a3a4;
+  margin-left: 14rem;
+}
+/*# sourceMappingURL=./style1.css.map */

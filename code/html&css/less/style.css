@@ -1,0 +1,112 @@
+/*
+css中的注释，多行注释，写的内容会出现在CSS文件中
+*/
+body {
+  height: 400px;
+  background-color: #fba;
+}
+body div {
+  color: blue;
+}
+.box1 {
+  background-color: aliceblue;
+}
+.box1 .box2 {
+  background-color: saddlebrown;
+}
+.box1 .box2 .box4 {
+  background-color: wheat;
+}
+.box1 .box3 {
+  background-color: lavender;
+}
+.box8 .box9 {
+  color: wheat;
+}
+.box8 > .box10,
+.box12 {
+  color: wheat;
+}
+.box8 > .box10:hover {
+  color: darkblue;
+}
+.box8:hover {
+  color: #000;
+}
+div .box8 {
+  width: 100px;
+}
+.box5 {
+  width: 100px;
+  color: #fba;
+}
+.box6 {
+  width: 100px;
+  background-image: url('box6/1.png');
+}
+div {
+  width: 115px;
+  height: 365px;
+}
+.box7 {
+  width: 100px;
+  height: 100px;
+}
+.box11,
+.box12 {
+  width: 100px;
+  height: 100px;
+}
+.box12 {
+  color: darkblue;
+}
+.box12 {
+  border-color: darkblue;
+}
+.box13 {
+  width: 100px;
+  color: #fba;
+}
+.box15 {
+  display: inline-block;
+  width: 100px;
+}
+.box16 {
+  display: inline-block;
+  width: 100px;
+}
+.box17 {
+  width: 100px;
+  height: 200px;
+  border: 2px solid red;
+}
+.box18 {
+  width: 100px;
+  height: 200px;
+  border: 2px solid red;
+}
+.box19 {
+  width: 100px;
+  height: 100px;
+  background-color: #bfa;
+}
+.box20 {
+  width: 300px;
+  height: 100px;
+  background-color: #bfa;
+}
+.box21 {
+  color: #ff8000;
+}
+.box22 {
+  background-color: hsl(0, 62%, 55%);
+}
+.box22:hover {
+  background-color: hsl(0, 62%, 35%);
+}
+.box23 {
+  width: 200px;
+  height: 50px;
+  background-color: #bfa;
+}
+/*# sourceMappingURL=./style.css.map */

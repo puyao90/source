@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 原生CSS也支持变量 html{减号减号变量名：值} 兼容性不好*/
+        
+        html {
+            --color: orange;
+            --length: 100px;
+        }
+        
+        .box1 {
+            /* width: 100px;
+            height: 100px; */
+            width: var(--length);
+            height: var(--length);
+            /* background-color: #bfa; */
+            /* 用变量的时候写var(减号减号变量名) */
+            background-color: var(--color);
+        }
+        
+        .box2 {
+            /* width: 100px;
+            height: 100px; */
+            width: var(--length);
+            height: var(--length);
+            /* color: #bfa; */
+            color: var(--color);
+        }
+        
+        .box3 {
+            /* width: 100px;
+            height: 100px; */
+            width: var(--length);
+            height: var(--length);
+            border: #bfa 5px solid;
+            border-color: var(--color);
+        }
+        
+        .box4 {
+            /* calc() 是计算函数 兼容性不好*/
+            width: calc(400px/2);
+            height: calc(100px*2);
+            background-color: #bfa;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- less是一门css的预处理语言
+less是一个css的增强版，通过less可以编写更少的代码实现更强大的样式
+在less中添加了许多新特性，像对变量的支持
+less的语法大体上和css语法一致，但less中添加了许多对css的扩展
+浏览器无法直接执行less代码，要执行必须将less转化为css -->
+    <!-- 输入.box$*3 $表示任意值 -->
+    <div class="box1">aaaa</div>
+    <div class="box2">aaaa</div>
+    <div class="box3">aaaa</div>
+    <div class="box4"></div>
+</body>
+
+</html>

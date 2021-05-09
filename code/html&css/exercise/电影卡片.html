@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="../font awesome/css/all.css">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #eee;
+        }
+        
+        .cardbg {
+            width: 320px;
+            /* 注意只需要指定宽度，不需要指定高，高度会随内容自动撑开 */
+            /* height: 444px; */
+            background-color: white;
+            border: 1px rgb(216, 216, 216) solid;
+            box-shadow: 0 0 6px rgba(31, 31, 31, 0.2);
+        }
+        /* .tu {
+            width: 310px;
+            height: 204px;
+            background-image: url(./picture/WX20201117-000401.png);
+        } */
+        
+        .tu1 img {
+            /* 当width设置为100%之后，它的宽度就是父级的width */
+            width: 100%;
+        }
+        
+        .textblock {
+            width: 256px;
+            margin: 14px auto
+        }
+        
+        .title {
+            font-size: 26px;
+            color: rgb(110, 110, 110);
+        }
+        
+        .location {
+            font-size: 20px;
+            color: rgb(165, 165, 165);
+            margin-top: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .fa-map-marker-alt {
+            font-size: 16px;
+            margin-right: 10px;
+            color: rgb(190, 190, 190);
+            /* vertical-align: middle; */
+        }
+        
+        .text {
+            font-size: 18px;
+            color: rgb(165, 165, 165);
+            margin-bottom: 26px;
+            /* 记得调整行间距，注意调大行间距后会导致上下距离变大*/
+            line-height: 23px;
+        }
+        
+        .mark {
+            line-height: 61px;
+            border-top: 1px rgb(216, 216, 216) solid;
+            padding-left: 16px;
+        }
+        
+        .fa-star {
+            font-size: 18px;
+            vertical-align: middle;
+        }
+        
+        .f1 {
+            color: rgb(167, 202, 122);
+        }
+        
+        .f2 {
+            color: rgb(218, 218, 218);
+        }
+        
+        .fa-facebook {
+            font-size: 30px;
+            vertical-align: middle;
+            color: rgb(218, 218, 218);
+            margin-left: 125px;
+        }
+        
+        .testblock {
+            width: 100px;
+            height: 100px;
+            background-color: royalblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class=" cardbg ">
+        <!-- <div class="tu "></div> -->
+        <!-- 范例中用的img设置图片。background-image是背景图片。
+            是css的一个样式，不占位；img是一个块状元素，它是一个图片，是html的一个标签，占位。
+            在网页加载的过程中，以css背景图存在的图片background-image会等到结构加载完成（网页的内容全部显示以后）才开始加载。
+            如果是装饰性的图片就使用background-img，如果和文体内容很相关就使用img。 -->
+        <div class="tu1"><img src="./picture/WX20201117-000401.png" alt=""></div>
+        <div class="textblock ">
+            <div class="title ">Animation films</div>
+            <div class="location "><i class="fas fa-map-marker-alt "></i>Animations</div>
+            <div class="text ">Lorem ipsum is simply dummy text of the printing & typesetting industry. </div>
+        </div>
+        <div class="mark">
+            <i class="fas fa-star f1 "></i>
+            <i class="fas fa-star f1"></i>
+            <i class="fas fa-star f2"></i>
+            <i class="fas fa-star f2"></i>
+            <i class="fab fa-facebook "></i>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="teststar">
+        <ul>
+            <li class="fas fa-star"></li>
+            <li class="fas fa-star"></li>
+            <li class=testblock></li>
+            <li>aa</li>
+            <li>aa</li>
+            <li>aa</li>
+        </ul>
+    </div>
+</body>
+
+</html>

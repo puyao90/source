@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+@c1: #2b293c;
+@c2: #a2a3a4;
+// 可以把设计图的大小定义成变量
+// @total-width: 750;
+// html {
+//   font-size: 100vw / @total-width;
+// }
+html {
+  font-size: 0.1333333333333333vw;
+  font-family: sans-serif;
+  background-color: #f2f3f5;
+}
+body {
+  font-size: 32rem;
+  color: @c1;
+}
+.w {
+  width: 690rem;
+  margin: 0 auto;
+}
+.title {
+  display: flex;
+  font-size: 50rem;
+  //   line-height: 174rem;
+  height: 174rem;
+  color: @c1;
+  align-items: center;
+  //   这里用justify-content就可以很好的达到效果
+  justify-content: space-between;
+  i {
+    // line-height: 174rem;
+    font-size: 42rem;
+    color: @c2;
+    // flex-grow: 0;
+  }
+  //   span {
+  //      flex-grow: 1;
+  //      display: flex;
+  //     justify-content: center;
+  //   }
+}
+.main-img img {
+  width: 100%;
+}
+.category {
+  margin-top: 32rem;
+  //   .catbox {
+  //     display: flex;
+  //     justify-content: space-between;
+  //   }
+  //   .catbox + .catbox {
+  //     margin-top: 30rem;
+  //   }
+  .cat {
+    text-decoration: none;
+    width: 330rem;
+    height: 110rem;
+    // background-color: orange;
+    border-radius: 16rem;
+    color: white;
+    line-height: 110rem;
+    i {
+      margin-left: 38rem;
+      margin-right: 20rem;
+    }
+  }
+  .cat1 {
+    background-image: linear-gradient(#f18673, #f57f5c);
+  }
+  .cat2 {
+    background-image: linear-gradient(#d694fc, #ca69ff);
+  }
+  .cat3 {
+    background-image: linear-gradient(#f95c8a, #f94c7d);
+  }
+  .cat4 {
+    background-image: linear-gradient(#42cffc, #389eff);
+  }
+  display: flex;
+  flex-wrap: wrap;
+  height: 248rem;
+  align-content: space-between;
+  justify-content: space-between;
+}
+.title1 {
+  //   line-height: 120rem;
+  display: flex;
+  align-items: center;
+  //   如果把上下的间距另外用margin写，这里的小竖线还可以用border实现哦
+  //   .line {
+  //     width: 3rem;
+  //     height: 30rem;
+  //     background-color: @c1;
+  //     margin-top: 45rem;
+  //     flex-grow: 0;
+  //   }
+  margin: 40rem auto 30rem auto;
+  justify-content: space-between;
+  .s1 {
+    font-size: 35rem;
+    // flex-grow: 1;
+    // margin-left: 14rem;
+    border-left: 3rem @c1 solid;
+    padding-left: 14rem;
+  }
+  .s2 {
+    // flex-grow: 0;
+    font-size: 30rem;
+    color: @c2;
+  }
+}
+.cards {
+  //   width: 1100rem;
+  margin-left: 30rem;
+  display: flex;
+  // 不希望缩的话可以把下面弹性元素的flex设置为none
+  //   这时候有个问题是水平滚动的时候整个页面都跟着动了 记得把需要滚动的区域加上overflow
+  //  有个小细节，开了overflow后把投影裁掉了，因此我把滚动区域设置的高一点
+  overflow: auto;
+  height: 350rem;
+  align-items: center;
+  //   background-color: #fba;
+
+  .card1 {
+    flex: none;
+    box-sizing: border-box;
+    width: 330rem;
+    height: 330rem;
+    padding: 20rem;
+    background-color: #fff;
+    box-shadow: 2rem 2rem 8rem rgba(0, 0, 0, 0.1);
+    margin-right: 23rem;
+    .mainp {
+      width: 100%;
+    }
+    .maint {
+      margin: 8rem auto 8rem 0;
+    }
+    .author {
+      height: 58rem;
+      display: flex;
+      align-content: center;
+      align-items: center;
+      & img {
+        width: 46rem;
+        // height: $width;
+      }
+      & span {
+        font-size: 28rem;
+        color: @c2;
+        margin-left: 14rem;
+      }
+    }
+  }
+}

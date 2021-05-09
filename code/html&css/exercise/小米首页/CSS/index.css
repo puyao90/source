@@ -1,0 +1,643 @@
+        /* 主页 index.html 的样式表 */
+        
+        .bg {
+            background-color: #424242;
+            line-height: 40px;
+        }
+        /* .nav {
+            width: 1226px;
+            margin: 0 auto;
+        } */
+        
+        .nav a {
+            color: #b0b0b0;
+            font-size: 12px;
+            display: inline-block;
+        }
+        
+        a.nava:hover {
+            color: #fff;
+        }
+        
+        .line {
+            display: inline-block;
+            width: 1px;
+            height: 10px;
+            background-color: rgb(112, 112, 112);
+            vertical-align: middle;
+            margin: 0 4px;
+        }
+        
+        .navl {
+            float: left;
+        }
+        
+        .navrl {
+            float: right;
+            margin-right: 22px;
+        }
+        
+        .ncart {
+            float: right;
+            position: relative;
+            /* background-color: rgba(255, 255, 255, .1);
+            padding: 0 16px;
+            width: 120px;
+            text-align: center; */
+        }
+        
+        .ncart a {
+            background-color: rgba(255, 255, 255, .1);
+            width: 120px;
+            text-align: center;
+        }
+        
+        .ncart i.fa-shopping-cart {
+            padding-right: 6px;
+        }
+        /* .ncart:hover {
+            background-color: #fff;
+        }*/
+        
+        .po {
+            position: relative;
+            /* z-index: 999; */
+        }
+        /* .triangle {
+        border: 6px solid red;
+        width: 0px;
+        height: 0px;
+        border-color: transparent transparent rgb(255, 255, 255) transparent;
+        border-top: none;
+        position: absolute;
+        left: 22px;
+        bottom: 0;
+    } */
+        /* 或者通过给下载app后加伪元素写小三角 */
+        
+        .po::after {
+            content: "";
+            display: block;
+            border: 6px solid transparent;
+            border-top: none;
+            border-bottom-color: rgb(255, 255, 255);
+            width: 0;
+            height: 0;
+            position: absolute;
+            bottom: 0;
+            /* 注意采用这种方式让小三角水平居中  */
+            left: 0;
+            right: 0;
+            margin: auto;
+            display: none;
+            z-index: 999;
+        }
+        
+        .dropdown1 {
+            width: 124px;
+            height: 148px;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+            /* 注意重置下拉里面的行高 */
+            line-height: 1;
+            text-align: center;
+            left: -38px;
+            /* display: none; */
+            /* 隐藏元素的方式除了先设置为display none以外，还可以先把高度设为0，配合overflow hidden */
+            height: 0;
+            overflow: hidden;
+            /* transition用于对样式设置过渡效果。以下表示当高度发生变化的时候，有0.3秒的时间去过渡 */
+            transition: height 0.3s;
+            z-index: 999;
+        }
+        
+        .dropdown1 img {
+            width: 90px;
+            margin: 17px;
+            margin-bottom: 14px;
+        }
+        
+        .dropdown1 span {
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .cart {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .dropdown2 {
+            width: 318px;
+            /* height: 100px; */
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+            right: 0;
+            text-align: center;
+            line-height: 100px;
+            font-size: 12px;
+            z-index: 999;
+            height: 0px;
+            overflow: hidden;
+            transition: height .3S;
+        }
+        
+        .po:hover::after {
+            display: block;
+        }
+        
+        .po:hover .dropdown1 {
+            height: 148px;
+        }
+        
+        .ncart:hover a {
+            color: #ff6700;
+            background-color: #fff;
+        }
+        
+        .ncart:hover .dropdown2 {
+            height: 100px;
+        }
+        /* 之前因为先把小三角写出来后面hover时候找不到。因此需要直接写到hover里 */
+        /* .jia {
+    display: inline-block;
+}
+
+.jia:hover .dropdown1 {
+    display: block;
+} */
+        /* .jia:hover .po::after {
+    content: "";
+    display: block;
+    border: 6px solid transparent;
+    border-top: none;
+    border-bottom-color: rgb(255, 255, 255);
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+} */
+        
+        .headerwrapper {
+            position: relative;
+            /* background-color: rgb(242, 255, 169); */
+        }
+        
+        .header {
+            height: 100px;
+            line-height: 100px;
+            /* background-color: rgb(255, 187, 187); */
+        }
+        /* .logo {
+        height: 100px;
+        background-color: teal;
+        display: table-cell;
+        vertical-align: middle;
+    } */
+        
+        .logo {
+            width: 55px;
+            height: 55px;
+            background-color: rgb(119, 119, 119);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            overflow: hidden;
+            text-indent: -9999px;
+            /* 用于隐藏logo中的文字 */
+        }
+        
+        .logo a {
+            position: absolute;
+            height: 55px;
+            width: 55px;
+            background-color: #ff6700;
+            background-image: url("../img/mi-logo.png");
+            background-position: center;
+        }
+        
+        .logo .home {
+            left: -55px;
+            background-image: url("../img/mi-home.png");
+            transition: left .3s;
+        }
+        
+        .logo .mi {
+            left: 0;
+            transition: left .3s;
+        }
+        
+        .logo:hover .home {
+            left: 0;
+        }
+        
+        .logo:hover .mi {
+            left: 55px;
+        }
+        
+        .headernav {
+            width: 850px;
+            /* background-color: wheat; */
+            left: 55px;
+            font-size: 16px;
+            margin-left: 62px;
+        }
+        
+        .headernav>li>a {
+            display: block;
+            color: #333;
+            padding: 0 10px 0 10px;
+        }
+        
+        .headernav .all {
+            margin-left: 56px;
+            /* color: transparent; */
+            /* visibility: hidden; */
+            /* 用visibility hidden隐藏元素，保证元素依然占位 */
+            /* background-color: rgb(231, 233, 146); */
+            position: relative;
+        }
+        
+        .headernav .all .alla {
+            visibility: hidden;
+        }
+        
+        .headernav>li>a:hover {
+            color: #ff6700;
+        }
+        
+        .logo,
+        .headernav,
+        .headernav>li {
+            float: left;
+        }
+        
+        .search {
+            float: right;
+        }
+        
+        .dropdown3 {
+            height: 232px;
+            line-height: 1.5;
+            width: 100%;
+            background-color: white;
+            /* box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgb(214, 214, 214); */
+            /* 先不设置阴影和边框，等它显示的时候再设置 */
+            position: absolute;
+            left: 0px;
+            top: 100px;
+            height: 0;
+            overflow: hidden;
+            transition: height .3s;
+            z-index: 999;
+        }
+        
+        .dropdown3 a {
+            display: inline-block;
+            width: 202px;
+            font-size: 12px;
+            color: #333;
+            margin-top: 38px;
+            background-color: #fff;
+        }
+        
+        .dropdown3 .line2 {
+            display: inline-block;
+            width: 1px;
+            height: 100px;
+            background-color: rgb(214, 214, 214);
+            margin-bottom: 56px;
+        }
+        
+        .dropdown3 .title,
+        .dropdown3 .price,
+        .dropdown3 .phone {
+            text-align: center;
+        }
+        
+        .dropdown3 .phone {
+            margin-bottom: 12px;
+        }
+        
+        .dropdown3 .price {
+            color: #ff6700;
+            margin-top: 4px;
+        }
+        /* .headernav li {
+        background-color: rgb(170, 255, 244);
+    } */
+        
+        .headernav>li.normal:hover~.dropdown3,
+        .dropdown3:hover {
+            height: 232px;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            border-top: 1px solid rgb(221, 221, 221);
+        }
+        
+        .search {
+            line-height: normal;
+            width: 296px;
+            height: 50px;
+            margin-top: 22px;
+            /* border: rgb(255, 34, 34) 1px solid; */
+        }
+        
+        .search .search-inp {
+            padding: 0;
+            /* height: 50px;
+        border: none; */
+            height: 48px;
+            border: rgb(223, 223, 223) 1px solid;
+            width: 223px;
+            padding: 0 10px;
+            /* 给搜索框加左右padding使得输入内容不贴盒子 */
+            font-size: 16px;
+            border-right: none;
+        }
+        
+        .search .search-btn {
+            border: none;
+            height: 50px;
+            width: 52px;
+            padding: 0;
+            /* box-sizing: content-box; */
+            background-color: #fff;
+            color: #616161;
+            font-size: 16px;
+            border: rgb(223, 223, 223) 1px solid;
+            /* border-left: none; */
+            /* border-left: rgb(223, 223, 223) 1px solid; */
+            /* outline: 1px #ff6700 solid; */
+        }
+        /* .search-inp:focus,
+    .search-inp:focus+.search-btn {
+        outline: 1px #ff6700 solid;
+    } */
+        /* 轮廓线在border外，因此还是要用border */
+        /* .search-inp:focus {
+            border: 1px #ff6700 solid;
+        }
+        
+        .search-inp:focus+.search-btn {
+            border: 1px #ff6700 solid;
+            border-left: none;
+        } */
+        /* 可直接用border-color */
+        
+        .search-inp:focus,
+        .search-inp:focus+.search-btn {
+            border-color: #ff6700;
+        }
+        
+        .search-btn:hover {
+            background-color: #ff6700;
+            color: white;
+            /* border-color: #ff6700 */
+            border: none;
+            /* button默认box-sizing是border-box */
+        }
+        /* 不能把.leftnav写到文档流里，因为后面它是个下拉层 */
+        
+        .leftnav {
+            height: 460px;
+            width: 234px;
+            background: rgba(105, 101, 101, .6);
+            /* clear: both;
+            margin-left: -62px; */
+            position: absolute;
+            left: -118px;
+            z-index: 99;
+        }
+        
+        .leftnav .li1 {
+            margin-top: 20px;
+        }
+        
+        .leftnav li a {
+            display: block;
+            line-height: 42px;
+            padding-left: 30px;
+            padding-right: 26px;
+            color: white;
+            font-size: 14px;
+            /* position: relative; */
+        }
+        
+        .leftnav li a i {
+            /* position: absolute;
+            right: 26px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 1em; */
+            /* 用浮动也可以解决 */
+            float: right;
+            line-height: 42px;
+        }
+        
+        .leftnav li a:hover {
+            background-color: #ff6700;
+        }
+        
+        .main {
+            height: 460px;
+            background: hsl(0, 0%, 82%);
+            position: relative;
+        }
+        
+        .main .imgs a {
+            display: block;
+            position: absolute;
+        }
+        
+        .main .imgs img {
+            width: 100%;
+        }
+        
+        .main .dots {
+            position: absolute;
+            right: 30px;
+            bottom: 25px;
+        }
+        
+        .main .dots a {
+            width: 6px;
+            height: 6px;
+            background-color: rgba(0, 0, 0, .4);
+            border-radius: 5px;
+            border: rgba(255, 255, 255, .3) 2px solid;
+            float: left;
+            margin: 0 4px;
+        }
+        
+        .main .dots a:hover,
+        .main .dots .active {
+            background-color: rgba(255, 255, 255, .4);
+            border-color: rgba(0, 0, 0, .4);
+        }
+        
+        .main .arrow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 69px;
+            /* border: 8px solid rgb(255, 174, 0); */
+            width: 40px;
+            background-image: url("../img/icon-slides.png");
+        }
+        
+        .main .arrow-left {
+            left: 234px;
+            background-position: -83px 0;
+        }
+        
+        .main .arrow-left:hover {
+            background-position: 0 0;
+        }
+        
+        .main .arrow-right {
+            right: 0;
+            background-position: -124px 0;
+        }
+        
+        .main .arrow-right:hover {
+            background-position: -42px 0;
+        }
+        
+        .toorbar {
+            width: 25px;
+            height: 206px;
+            border: 1px solid rgb(243, 243, 243);
+            position: fixed;
+            right: 50%;
+            margin-right: -640px;
+            bottom: 92px;
+            /* 布局等式 
+            left + margin-left + width + margin-right + right = 视口宽度
+            如果将right设置为某一固定值50px
+            auto + 0           + 26px  + 0            + 50px = 视口宽度
+            现在我将right设置为50%（意思是视口宽度的50%）
+            auto + 0           + 26px  + 0            + 50% = 视口宽度
+            因此这是要使left在auto的基础上再向右移动一个距离（1226/2+25+2=640），
+            但是不能设置left值，因此可考虑设置将margin-left或margin-right减少这么多
+            显然如果让margin-left减小，和left的增量相抵消，因此只能用margin-right
+           */
+        }
+        
+        .toorbar li {
+            width: 25px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        
+        .toorbar li:not(:last-child) {
+            border-bottom: 1px solid rgb(243, 243, 243)
+        }
+        
+        .toorbar img {
+            width: 20px;
+        }
+        
+        .ads {
+            margin-top: 14px;
+        }
+        
+        .ads .icons {
+            width: 234px;
+            height: 170px;
+            background-color: #5f5750;
+        }
+        
+        .ads .icons img {
+            width: 24px;
+            opacity: .7;
+            margin-top: 20px;
+        }
+        
+        .ads .icons .icon {
+            width: 76px;
+            height: 84px;
+            /* background: rgb(255, 160, 160); */
+            float: left;
+            text-align: center;
+            /* padding-top: 20px; */
+            position: relative;
+        }
+        
+        .ads .icons .icon div {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .6);
+            margin-top: 4px;
+        }
+        
+        .ads .icons .icon:hover img {
+            opacity: 1;
+        }
+        
+        .ads .icons .icon:hover div {
+            color: #fff;
+        }
+        
+        .ads .icons .margin {
+            margin-right: 3px;
+        }
+        /* 注意用伪元素写边框 */
+        
+        .ads .icons .margin::after {
+            content: "";
+            width: 1px;
+            height: 70px;
+            background-color: #665e57;
+            position: absolute;
+            right: -2px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        
+        .ads .icons .margin2 {
+            margin-top: 2px;
+        }
+        
+        .ads .icons .margin2::before {
+            content: "";
+            width: 64px;
+            height: 1px;
+            background-color: #665e57;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: -2px;
+        }
+        
+        .imgs2 a {
+            display: block;
+            float: left;
+        }
+        
+        .imgs2 img {
+            width: 316px;
+        }
+        
+        .icons,
+        .imgs2 {
+            float: left;
+        }
+        
+        .imgs2 {
+            margin-left: 14px;
+        }
+        
+        .imgs2 .margin3 {
+            margin-left: 15px;
+        }

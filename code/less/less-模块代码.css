@@ -1,0 +1,12 @@
+.middle2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.middle2:hover {
+  background-color: darkcyan !important;
+}
+/*# sourceMappingURL=./less-模块代码.css.map */

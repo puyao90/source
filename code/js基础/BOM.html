@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            position: absolute;
+        }
+        
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(170, 224, 255);
+            position: absolute;
+            left: 200px;
+        }
+        
+        #box3 {
+            width: 1px;
+            height: 300px;
+            background-color: rgb(0, 0, 0);
+            position: absolute;
+            left: 800px;
+            top: 380px;
+        }
+        
+        #box4 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(250, 200, 107);
+            position: absolute;
+            left: 200px;
+            top: 550px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn01">back</button>
+    <button id="btn02">forward</button>
+    <button id="btn03">go</button>
+    <button id="btn04">设置路径</button>
+    <a href="DOM.html">去DOM</a>
+    <input type="text">
+    <h1 id="count">0</h1>
+    <img src="./练习/素材/60418e6b5ed1d.jpg" alt="">
+    <button id="btn05">开始</button>
+    <button id="btn06">停止</button><br>
+    <button id="btn07">测试小蓝块</button>
+    <button id="btn08">测试小黄块</button>
+    <button id="btn09">更多效果</button>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+
+    <script>
+        //BOM   browser object model浏览器对象模型
+        //BOM可以使我们通过JS来操作浏览器
+        //BOM为我们提供了一组对象来完成对浏览器的操作
+        //Window 代表的是整个浏览器的窗口，同时window也是网页中的全局对象
+        //Navigator 代表当前浏览器的信息，通过该对象可以来识别不同的浏览器
+        //Location 代表当前浏览器的地址栏信息，通过它可以获取地址栏信息，或操作跳转页面
+        //History 代表浏览器的历史记录。由于隐私的原因，该对象不能获取到具体历史记录，只能操作浏览器向前或向后翻页。而且该操作只在当次访问时有效。        
+        //Screen 代表用户的屏幕信息，通过该对象可以获取到用户的显示器的相关信息
+        //这些BOM对象在浏览器中都是作为window对象的属性保存的，可以通过window对象来使用，也可以直接使用
+
+        console.log(navigator);
+        //由于历史原因，navigator对象中的大部分属性已经不能帮助我们识别浏览器了
+        //一般我们只会用userAgent来判断浏览器的信息
+        console.log(navigator.userAgent); //userAgent是一个字符串，这个字符串中含有用来描述浏览器信息的内容
+        var ua = navigator.userAgent;
+        if (/firefox/i.test(ua)) {
+            console.log("你是火狐");
+        } else if (/chrome/i.test(ua)) {
+            console.log("你是chrome");
+        } else if (/msie/i.test(ua)) {
+            console.log("你是IE");
+        } else if ("ActiveXObject" in window) {
+            console.log("你是IE11");
+        }
+
+        console.log(history.length); //length可以获取当前访问链接的数量
+        btn01.onclick = function() {
+            history.back(); //back() 可以用来回退到上一个页面，作用和浏览器的回退按钮一样
+        }
+        btn02.onclick = function() {
+            history.forward(); //forward() 可以跳转下一个页面，作用和浏览器的前进按钮一样
+        }
+        btn03.onclick = function() {
+            //go()可以用来跳转到指定的页面，它需要一个整数作为参数，1表示向前跳转一个页面  2表示向前跳转二个页面  -1表示向后跳转一个页面
+            history.go(1);
+        }
+
+        console.log(location); //如果直接打印，则可获取到当前页面的地址栏信息
+        btn04.onclick = function() {
+            //如果直接将location改为一个完整的路径，或相对路径，则我们页面会自动跳转到该路径，并且生成相应的历史记录
+            // location = "http://www.baidu.com"
+            // location = "DOM.html";
+
+            //assign()用来跳转到其他页面，作用和直接修改location一样
+            //location.assign("http://www.baidu.com"); 
+
+            //reload()用于重新加载当前页面，作用和刷新按钮一样
+            //location.reload(); 
+            //location.reload(true); //如果在方法中传递一个true，则会强制清空缓存刷新当前页面
+
+            //replace()可以使用一个新的页面替换当前页面，调用完毕也会跳转页面。但不会生成历史记录，不能使用回退按钮回退
+            location.replace("DOM.html");
+        }
+
+        //定时调用 
+        //JS的程序的执行速度很快，如果希望一段程序可以每间隔一段时间执行一次，可以使用定时调用
+        // for (let i = 0; i < 9; i++) {
+        //     count.innerHTML = i;
+        // }
+        //setInterval() 参数：1回调函数，该函数会每隔一段时间被调用一次 2每次调用间隔的时间，单位是毫秒
+        //返回值是一个Number类型的数据，用来作为定时器的唯一标识
+        var num = 1;
+        var timer = setInterval(function() {
+            count.innerHTML = num++;
+            if (num == 4) {
+                console.log("让它失效吧！", timer)
+                    //clearInterval()可用来关闭一个定时器，这个方法中需要一个定时器的标识作为参数，这样将关闭标识对应的定时器
+                clearInterval(timer);
+            }
+        }, 1000);
+        console.log(timer);
+
+        var img = document.getElementsByTagName("img")[0];
+        // showImageEveryNSeconds("./练习/素材/60418e6b5ed1d.jpg", 3);
+        // setTimeout(() => showImageEveryNSeconds("./练习/素材/60418e48dab27.jpg", 3), 1000);
+        // setTimeout(() => showImageEveryNSeconds("./练习/素材/60418e7b21d2a.jpg", 3), 2000);
+
+        // function showImageEveryNSeconds(img_src, seconds) {
+        //     setInterval(function() {
+        //         img.src = img_src
+        //     }, seconds * 1000);
+        // }
+        var arr = ["./练习/素材/60418e6b5ed1d.jpg", "./练习/素材/60418e7b21d2a.jpg", "./练习/素材/60418e48dab27.jpg"]
+        var i = 0;
+        var timer1 //在外面定义一个变量来保存定时器的标识
+        btn05.onclick = function() {
+            //目前我们每点击一次开始按钮，就会开启一个定时器。并且我们只能关闭最后一次开启的定时器
+            clearInterval(timer1); //在开启定时器之前，需要将上一个定时器关闭（一般是作用在同一个元素上的定时器才需要这样）
+            timer1 = setInterval(function() {
+                i++;
+                // if (i == arr.length) {
+                //     i = 0;
+                // }
+                i %= arr.length //i = i % arr.length; 和上面一个意思
+                img.src = arr[i];
+            }, 1000);
+        }
+        btn06.onclick = function() {
+            clearInterval(timer1); //clearInterval()可以接受任意参数，如果参数是一个有效的定时器标识，则停止对应的定时器，如果参数不是一个有效的标识，则什么也不做
+        }
+
+
+        var speed = 10;
+        var direction; //创建一个变量表示方向
+        setInterval(function() { //开启一个定时器，来控制div的移动
+            switch (direction) { //可以通过修改direction来影响移动的方向
+                case 37:
+                    box1.style.left = box1.offsetLeft - speed + "px";
+                    break;
+                case 39:
+                    box1.style.left = box1.offsetLeft + speed + "px";
+                    break;
+                case 38:
+                    box1.style.top = box1.offsetTop - speed + "px";
+                    break;
+                case 40:
+                    box1.style.top = box1.offsetTop + speed + "px";
+                    break;
+            }
+        }, 100)
+        document.onkeydown = function(event) {
+            if (event.shiftKey) {
+                speed = 50;
+            } else {
+                speed = 10;
+            } //如果不写speed由于speed是全局变量，按一次后speed就是50了
+            direction = event.keyCode;
+
+        }
+        document.onkeyup = function() { //当松开按键时，对象停止
+            direction = 0;
+        }
+
+
+        //延时调用
+        //延时调用一个函数不马上执行，而是隔一段时间以后再执行，而且只会执行一次
+        // 延时调用和定时调用实际上是可以互相代替的
+        var timer3 = setTimeout(function() {}, 1000);
+        // console.log("我是新timer", timer)
+        clearTimeout(timer3); //关闭延时调用
+
+
+        //var timer4 //目前我们的定时器的标识由全局变量timer4保存，所有的正在执行的定时器都由这个变量保存
+        // btn07.onclick = function() {
+        //     clearInterval(timer4); //记得开始时关闭上一个定时器，避免点击多次触发多个定时器
+        //     timer4 = setInterval(function() {
+        //         var oldV = parseInt(getComputedStyle(box2, null)["left"]);
+        //         console.log(oldV);
+        //         var newV = oldV + 19;
+        //         if (newV >= 800) {
+        //             newV = 800;
+        //             console.log("newV", newV);
+        //         }
+        //         box2.style.left = newV + "px";
+        //         if (newV == 800) {
+        //             clearInterval(timer4);
+        //         }
+        //     }, 20)
+        // }
+
+        function move(obj, attr, target, speed, callback) {
+            clearInterval(obj.timer4);
+            var current = parseInt(getComputedStyle(obj, null)[attr]); //一上来就判断元素目前的位置
+            if (current > target) { //speed为正值的时候不管。加上speed的判断后调用时speed就不用考虑正负了
+                speed = -speed;
+            }
+            obj.timer4 = setInterval(function() { //向执行动画的对象中添加一个timer属性，用来保存它自己的定时器的标识。这样有效的避免了使用外部变量timer4
+                var oldV = parseInt(getComputedStyle(obj, null)[attr]);
+                // console.log(oldV);
+                var newV = oldV + speed;
+                if (speed > 0 && newV >= target || speed < 0 && newV <= target) {
+                    newV = target;
+                }
+                obj.style[attr] = newV + "px";
+                if (newV == target) {
+                    clearInterval(obj.timer4);
+                    callback && callback(); //动画执行完毕，调用回调函数，只会调用一次
+                    //前面加一个判断，如果有就掉
+                }
+            }, 20)
+        }
+        btn07.onclick = function() {
+            move(box2, "left", 800, 19); //下面不做判断的话，不传最后一个参数就是undefined，会报错
+        }
+        btn08.onclick = function() {
+            move(box4, "left", 800, 1);
+        }
+        btn09.onclick = function() {
+            // move(box4, "width", 800, 20);
+            // move(box4, "height", 800, 20);
+            move(box4, "top", 800, 20, function() {
+                move(box4, "left", 800, 19)
+            });
+        }
+    </script>
+</body>
+
+</html>

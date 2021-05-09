@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        img {
+            height: 300px;
+        }
+        
+        .pic1,
+        .pic2,
+        .pic3,
+        .dot1,
+        .dot2,
+        .dot3 {
+            position: absolute;
+        }
+        
+        .dot1 {
+            width: 20px;
+            height: 20px;
+            background-color: magenta;
+        }
+        
+        .dot2 {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(60, 255, 0);
+        }
+        
+        .dot3 {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(241, 235, 255);
+        }
+        /* --------------------以下再尝试----------------------- */
+        
+        .bg {
+            width: 561px;
+            height: 300px;
+            position: relative;
+            top: 400px;
+        }
+        
+        li,
+        nav {
+            position: absolute;
+        }
+        
+        li:nth-child(3) {
+            z-index: 1;
+        }
+        
+        nav a {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            display: block;
+            float: left;
+            margin: 0 2px;
+        }
+        
+        nav {
+            left: 16px;
+            bottom: 8px;
+        }
+        /* .firstdot {
+            position: absolute;
+        } */
+        /* .seconddot {
+            position: absolute;
+        }
+        
+        .thirddot {
+            position: absolute;
+        } */
+        /* .firstdot:hover {
+            border: rgba(255, 0, 0) solid 2px;
+        } */
+        /* --------------------------以下参考----------------------- */
+        /* 解决小点hover位置不变问题 */
+        
+        nav {
+            /* 要把nav的层级调高，不然就会被图片盖住了 */
+            z-index: 9;
+        }
+        
+        nav a {
+            /* border: red solid 2px; */
+            /* 将边框设置为transparent边框就不显示，但背景色默认会延伸到边框下面 */
+            border: solid 4px transparent;
+            /* 利用background-clip设置content-box指将背景颜色设置到内容区 */
+            background-clip: content-box;
+        }
+        
+        nav a.firstdot,
+        nav a:hover {
+            background-color: rgb(255, 255, 255);
+            border: rgba(255, 255, 255, 0.3) 4px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pic1">
+        <a href="#">
+            <img src="./picture/jingdong1.webp">
+        </a>
+        <div class="dot1">1</div>
+    </div>
+    <div class="pic2">
+        <a href="#">
+            <img src="./picture/jingdong2.webp">
+        </a>
+        <div class="dot2">2</div>
+    </div>
+    <div class="pic3">
+        <a href="#">
+            <img src="./picture/jingdong3.webp">
+        </a>
+        <div class="dot3">3</div>
+    </div>
+
+    <!-- -----------------------以下再尝试---------------------- -->
+    <ul class="bg">
+        <li>
+            <a href="#">
+                <img src="./picture/jingdong3.webp">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/jingdong2.webp">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/jingdong1.webp">
+            </a>
+        </li>
+        <nav>
+            <a href="#" class="firstdot"></a>
+            <a href="#" class="seconddot"></a>
+            <a href="#" class="thirddot"></a>
+        </nav>
+    </ul>
+
+
+
+</body>
+
+</html>

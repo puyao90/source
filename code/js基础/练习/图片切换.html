@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #outer {
+            margin: 50px auto;
+            width: 420px;
+            background-color: rgb(241, 218, 111);
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id=outer>
+        <p id=info></p>
+        <img src="./素材/60418e48dab27.jpg" alt="龙">
+        <button id="prev">上一张</button>
+        <button id="next">下一张</button>
+    </div>
+    <script>
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+        var img = document.getElementsByTagName("img")[0];
+        var arr = ["./素材/60418e6b5ed1d.jpg", "./素材/60418e48dab27.jpg", "./素材/60418e7b21d2a.jpg"];
+        var index = 0;
+        var info = document.getElementById("info");
+        info.innerHTML = "一共" + arr.length + "张图片，当前显示第" + (index + 1) + "张";
+        prev.onclick = function() {
+            index--;
+            if (index < 0) {
+                index = arr.length - 1
+            }
+            console.log("current", index)
+                // index = ((index - 1) + arr.length) % arr.length;
+            img.src = arr[index]
+            info.innerHTML = "一共" + arr.length + "张图片，当前显示第" + (index + 1) + "张";
+        }
+        next.onclick = function() {
+            index++;
+            if (index > arr.length - 1) {
+                index = 0;
+            }
+            console.log("current", index)
+                // index = (index + 1) % arr.length;
+            img.src = arr[index]
+            info.innerHTML = "一共" + arr.length + "张图片，当前显示第" + (index + 1) + "张";
+        }
+    </script>
+</body>
+
+</html>

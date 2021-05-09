@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件语句练习2</title>
+    <script>
+        var score = "a";
+        var invalidNum = !isNaN(score) && score >= 0 && score <= 100;
+        var crossLine = score > 60;
+        switch (invalidNum * 10 + crossLine) {
+            case 11:
+                console.log("合格");
+                break;
+            case 10:
+                console.log("BU合格");
+                break;
+            default:
+                console.log("Invalid input: " + score);
+                break
+        }
+
+        switch (parseInt(score / 10)) { //利用除以10再取整把情况简化为有限几种
+            case 10: //利用满足这个case，则从当前case处到后的所有代码都会被执行的特点
+            case 9:
+            case 8:
+            case 7:
+            case 6:
+                console.log("合格");
+                break;
+            default:
+                console.log("不合格");
+                break;
+        }
+        //另一种方法，switch后直接跟true。这种方式就和if else一样了
+        switch (true) {
+            case score >= 60:
+                console.log("合格");
+                break;
+            default:
+                console.log("不合格");
+                break;
+        }
+
+        var day = 2;
+        switch (day) {
+            case 1:
+                console.log("星期一");
+                break;
+            case 2:
+                console.log("星期二");
+                break;
+            case 3:
+                console.log("星期三");
+                break;
+            case 4:
+                console.log("星期四");
+                break;
+            case 5:
+                console.log("星期五");
+                break;
+            case 6:
+                console.log("星期六");
+                break;
+            case 7:
+                console.log("星期七");
+                break;
+            default:
+                console.log("非法参数");
+                break;
+        }
+
+
+        var i = 1000,
+            // n = 1;
+            count = 0; //定义一个计数器
+        while (i <= 5000) {
+            i = i * 1.05 //可写作 i *= 1.05
+                // console.log(n++ + "," + i);
+            count++; //使count自增
+        }
+        console.log("一共需要" + count + "年"); //输出结果
+
+
+        // do {
+        //     // prompt("请输入小明的期末成绩：");  //这句可以不写，下面那句就行了
+        //     var score = prompt("请输入小明的期末成绩：");
+        // }
+        // while (score > 100 || score < 0 || isNaN(score))
+
+        // while (true) {
+        //     var score = prompt("请输入小明的期末成绩：");
+        //     if (score <= 100 && score >= 0 && !isNaN(score)) {
+        //         break; //满足该条件证明用户输入的合法性，退出循环
+        //     }
+        //     alert("请输入有效的分数，0到100之间的数字"); //加入提示，在输错时出现
+        // }
+        // if (score == 100) {
+        //     alert("奖励一辆BMW");
+        // } else if (score >= 80) {
+        //     alert("奖励一台iPhone15s");
+        // } else if (score >= 60) {
+        //     alert("奖励一本参考书");
+        // } else {
+        //     alert("什么也没有");
+        // }
+
+        var result = 0;
+        for (var n = 1; n <= 100; n = n + 2) {
+            result += n;
+        }
+        console.log(result);
+
+        //var sum = 0; 
+        for (var i = 1, sum = 0; i <= 100; i++) { // 也可以把sum写在初始化变量里
+            if (i % 2 != 0) { //判断i是否为奇数，不能被2整除的数为奇数
+                //console.log(i);
+                sum = sum + i;
+            }
+        }
+        console.log("奇数之和为：" + sum);
+
+
+        for (var n = 1, sum = 0, count = 0; n <= 100; n++) { //注意count从0开始
+            if (n % 7 == 0) {
+                sum = sum + n;
+                count++
+            }
+        }
+        console.log("7的倍数之和为：" + sum + "," + "个数为" + count);
+
+
+        for (var n = 100; n <= 999; n++) {
+            var n1 = parseInt(n / 100),
+                n2 = parseInt((n - n1 * 100) / 10),
+                n3 = n - n1 * 100 - n2 * 10; //求个位可以用这个数字除以3取余数 n3=n%10  
+            if (n1 * n1 * n1 + n2 * n2 * n2 + n3 * n3 * n3 == n) {
+                console.log(n);
+            }
+        }
+
+
+        var num = 8;
+        var is_prime = true; //采用一个旗帜用来标识当前的数是否为质数，默认是质数
+        if (num > 1 && typeof num === "number" && parseInt(num) == num) {
+            for (var n = 2; n < num; n++) {
+                if (num % n == 0) { //如果写！=0，不能被当前的n整除，不能说明num是质数，所以要反过来考虑，如果能被整除，则说明它不是质数
+                    is_prime = false;
+                    break;
+                }
+            }
+            console.log("is prime? " + is_prime)
+        } else {
+            console.log("请输入整数")
+        }
+
+
+        function isPrime(num) {
+            for (var n = 2; n < num / 2; n++) {
+                if (num % n == 0) {
+                    return false;
+                }
+            }
+            return true
+        }
+
+
+        for (var row = 1; row <= 9; row++) {
+            for (var num = 1; num <= row; num++) {
+                document.write("<span>" + num + "*" + row + "=" + num * row + "</span>");
+            }
+            document.write("<br>");
+        }
+
+        //测试如下程序的性能
+        //在程序执行前，开启计时器  console.time(“计时器的名字”)可以用来开启一个计时器，它需要一个字符串作为参数，这个字符串将作为计时器的标识
+        console.time("test");
+        //var flag = true;  //或者把flag放到里面
+        for (var n = 2; n < 1000; n++) {
+            var flag = true;
+            //for (var i = 2; i < n; i++) {
+            for (var i = 2; i <= Math.sqrt(i); i++) { //可以优化为小于平方根，通过Math.sqrt()对一个数进行开方
+                if (n % i == 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            // if (flag) {
+            //     console.log(n);
+            // }
+            //flag = true;  //记得把flag重置为true，不然遇到第一个false后flag就一直为false了
+        }
+        console.timeEnd("test"); //console.tineEnd()用来停止一个计时器
+    </script>
+    <style>
+        span {
+            display: inline-block;
+            width: 80px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            background-color: rgb(219, 248, 212);
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

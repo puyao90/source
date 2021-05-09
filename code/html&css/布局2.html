@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: burlywood;
+            border: coral solid 10px;
+            padding: 10px;
+            /* 默认情况下，盒子可见框的大小由内容区，内边距和边框共同决定。
+            box-sizing用来设置盒子尺寸的计算方式（设置width和height）
+            content-box 默认值，宽度和高度用来设置内容区的大小
+            border-box 宽度和高度指整个盒子可见框的大小 */
+            box-sizing: border-box;
+        }
+        
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: cornflowerblue;
+            /* border: darkblue 10px solid; */
+            /* outline和border不同之处在于outline不会影响可见框的大小 */
+            /* outline: darkblue 10px solid; */
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, .3);
+            /* 投影也不会影响页面布局，四个值分别为：水平偏移，垂直偏移，模糊半径，颜色 */
+            /* border-radius: 50px; */
+            /* border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px; */
+            border-bottom-right-radius: 20px;
+            border-bottom-right-radius: 50px 100px;
+            /* 圆角半径设置两个值时第一个表x方向半径，第二个表y方向半径。 */
+            border-radius: 10px 30px 50px 70px;
+            border-radius: 10px 30px 50px;
+            border-radius: 10px 30px;
+            /* 圆角半径设置四个值的时候从上左，上右到下右，下左。 */
+            border-radius: 20px/40px;
+            border-radius: 50%;
+            /* 设置为圆形用50% */
+        }
+        
+        .box3 {
+            width: 400px;
+            height: 200px;
+            background-color: rosybrown;
+            /* 通过float来设置元素向其父元素的左侧或右侧移动,但不会从父元素中移出(可选none，left，right)
+            设置浮动后水平布局的等式就不需要强制成立了
+            元素设置浮动后会完全从文档流中脱离，不再占用文档流的位置，所以下边还在文档流中的元素会直接上移
+            浮动元素向左或向右浮动时不会超过前边其他的浮动元素（水平方向）
+            浮动元素不会超过它上边的兄弟元素，最多就是和它一样高（垂直方向）
+            浮动元素不会盖住文字，文字会自动环绕
+             */
+            float: left;
+        }
+        
+        .box4 {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(196, 113, 212);
+            float: left;
+        }
+        
+        .box5 {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(230, 194, 78);
+            float: right;
+        }
+        /* 设置浮动后元素脱离文档流后，元素的一些特点也会发生变化
+        块元素不再独占一行，宽高默认被内容撑开；行内元素脱离文档流后变成了块元素
+        脱离文档流后就不要区分块和行内
+         */
+        
+        .box6 {
+            background-color: royalblue;
+            float: left;
+        }
+        
+        span.aaa {
+            background-color: cadetblue;
+            float: left;
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <span>hello</span>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum ipsa temporibus obcaecati recusandae adipisci itaque ducimus animi. Maiores iusto culpa velit vitae voluptate omnis harum, accusantium quam excepturi eaque explicabo!Lorem ipsum dolor
+        sit, amet consectetur adipisicing elit. Dolorum ipsa temporibus obcaecati recusandae adipisci itaque ducimus animi. Maiores iusto culpa velit vitae voluptate omnis harum, accusantium quam excepturi eaque explicabo!Lorem ipsum dolor sit, amet consectetur
+        adipisicing elit. Dolorum ipsa temporibus obcaecati recusandae adipisci itaque ducimus animi. Maiores iusto culpa velit vitae voluptate omnis harum, accusantium quam excepturi eaque explicabo!
+    </p>
+
+    <span class="aaa">woshispan</span>
+    <div class="box6">hahahahah</div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            perspective: 800px;
+        }
+        
+        body {
+            border: 1px red solid;
+        }
+        
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin: 0 auto;
+            margin-top: 200px;
+            transition: 1s;
+            /* margin-bottom: 200px; */
+        }
+        
+        body:hover .box1 {
+            transform: translateZ(200px);
+            transform: rotateX(90deg);
+            transform: rotateY(180deg) translateZ(300px);
+            transform: translateZ(300px) rotateY(180deg);
+        }
+        
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(131, 244, 248);
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box1"></div>
+    <!-- <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div> -->
+</body>
+
+</html>

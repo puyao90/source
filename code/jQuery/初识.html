@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //一个优秀的JS函数库
+        //功能：HTML元素选择，HTML元素操作，CSS操作，HTML事件处理，JS动画效果，链式调用，读写合一，浏览器兼容，易扩展插件，ajax封装...
+        window.onload = function() {
+            var btn1 = document.getElementById("btn1")
+            btn1.onclick = function() {
+                var username = document.getElementById("username").value
+                console.log(username)
+            }
+        }
+    </script>
+    <script src="jquery-3.6.0.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
+    <script>
+        $(function() { //绑定文档加载完成的监听 使用jQuery核心函数：$或Query
+            $('#btn2').click(function() { //给btn2绑定点击监听 使用jQuery核心对象：执行$()函数返回的对象
+                var username = $('#username').val()
+                console.log("jQuery", username)
+            })
+        })
+
+
+        console.log($) //函数
+        console.log(jQuery === $)
+
+        console.log($()) //是对象
+    </script>
+</head>
+
+<body>
+    <input type="text" id='username'>
+    <button id="btn1">确定(原生版)</button>
+    <button id="btn2">确定(jQuery版)</button>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+.middle2,
+.container2 .inner2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.middle2:hover,
+.container2 .inner2:hover {
+  background-color: darkcyan !important;
+}
+.class {
+  width: 1;
+}
+.class .brass {
+  height: 3;
+}
+.class1 {
+  color: black;
+}
+#wrap .inner {
+  width: 50px;
+  height: 100px;
+}
+.tra {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 40px;
+  border-color: transparent transparent transparent pink;
+}
+.class2 {
+  border: 1px solid black;
+  width: 200px;
+}
+.container {
+  width: 800px;
+  border: 10px solid black;
+  display: flex;
+}
+.container #b1 {
+  width: 200px;
+  height: 100px;
+  background-color: green;
+  flex: 0 1 100px;
+}
+.container #b2 {
+  width: 200px;
+  height: 100px;
+  background-color: chocolate;
+}
+.container #b3 {
+  width: 200px;
+  height: 100px;
+  background-color: brown;
+}
+.container2 {
+  width: 340px;
+  height: 340px;
+  border: chocolate 4px solid;
+  position: relative;
+  margin: 10px auto;
+}
+.container2 .inner2:nth-child(1) {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}
+.container2 .inner2:nth-child(2) {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+}
+.container3 {
+  width: calc(100px + 100px);
+  height: 100px;
+  border: 10px orchid solid;
+}
+/*# sourceMappingURL=./less-test.css.map */

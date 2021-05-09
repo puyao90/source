@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型对象</title>
+    <script>
+        //我们所创建的每一个函数，解析器都会向函数中添加一个属性 prototype
+        //这个属性对应着一个对象，这个对象就是原型对象
+        function Person() {}
+        console.log(Person.prototype);
+        //如果函数作为普通函数调用prototype没有任何作用，当函数以构造函数调用时，它所创建的对象中都有一个隐含属性指向该构造函数的原型对象
+        //可以通过__proto__来访问该属性
+        var per = new Person();
+        console.log(per.__proto__);
+        console.log(per.__proto__ == Person.prototype); //是同一个对象
+        var per2 = new Person();
+        console.log(per2.__proto__ == Person.prototype); //也是同一个
+        //原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问这个原型对象。我们可以将对象中共有的内容统一设置到原型对象中
+        Person.prototype.a = 123; //向原型对象里添加一个属性a
+        console.log(per.a); //当我们访问一个对象的属性或方法时，它会现在对象自身中寻找，如果有则直接使用，如果没有则会去原型对象中寻找
+
+        console.log("a" in per); //使用in检查对象中是否含有某个属性时，如果对象中没有但原型中有，也会返回true
+        //可使用对象的hasOwnProperty()来检查对象自身中是否含有该属性
+        console.log(per.hasOwnProperty("a")); //这时返回false 使用该方法只有当对象自身含有属性时才会返回true
+        console.log(per.hasOwnProperty("hasOwnProperty")); //返回false 说明这个方法在原型里
+        console.log(per.__proto__.hasOwnProperty("hasOwnProperty")); //返回false 说明原型里也没有
+        //原型对象也是对象，所以它也有原型。当我们使用一个对象或属性时，会先在自身中寻找，自身中有，则则直接使用
+        //自身没有，则去原型对象中找，如果有则使用。如果没有则去原型的原型中找，直到找到Object对象的原型，如果依然没找到则返回undefined
+        console.log(per.b);
+        console.log(per.__proto__.__proto__); //有原型的原型
+        console.log(per.__proto__.__proto__.hasOwnProperty("hasOwnProperty")); //true 说明在原型的原型里
+        console.log(per.__proto__.__proto__.__proto__); //返回null 说明原型的原型再往上没有原型了  这里有__proto__属性，只是值是空
+
+        per2.a = "我是per2中的a";
+        console.log(per2.a);
+        Person.prototype.sayHello = function() {
+            console.log("hello");
+        }; //同样可以在prototype中添加方法
+        per.sayHello();
+        //以后我们创建构造函数时，可以将这些对象共有的属性和方法统一添加到构造函数的原型对象中。这样不用分别对每一个对象添加就可以使每个对象都具有这些属性和方法了。
+
+        function Dog(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        var dog1 = new Dog("旺旺", "1", "male")
+        console.log(dog1);
+        //当我们直接在页面中打印一个对象时，实际上是输出的对象的toString方法的返回值 (？？？)
+        console.log(dog1.toString()); //对象的toString()方法的返回值是【object object】
+        console.log(dog1.__proto__.__proto__.hasOwnProperty("toString")); //true 原型的原型里有toString方法
+        //可通过修改toString()方法的返回值来控制输出结果
+        dog1.toString = function() {
+            return "hahaha";
+        }
+        console.log(dog1);
+        console.log(dog1.toString());
+
+        //垃圾回收(GC)
+        //就像人生活时间长了会产生垃圾一样，程序运行过程中也会产生垃圾。这些垃圾积攒过多后会导致程序运行速度过慢
+        //所以我们需要一个垃圾回收的机制来处理程序运行过程中产生的垃圾
+        //当一个对象没有任何的变量或属性对它进行引用，我们将永远无法操作该对象，这种对象过多会占用大量内存空间，导致程序运行变慢。所以必须清理。
+        //在JS中拥有自动的垃圾回收机制，会自动将这些垃圾对象从内存中销毁。我们不需要也不能进行垃圾回收的操作。只需要将不再使用的对象设置为null即可。
+        var obj = new Object();
+        obj = null; //此时堆内存中这个对象成了垃圾
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

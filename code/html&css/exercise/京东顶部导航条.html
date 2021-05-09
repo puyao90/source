@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="./icons/iconfont.css">
+    <title>Document</title>
+    <style>
+        .bg1 {
+            width: 100%;
+            height: 46px;
+            line-height: 46px;
+            background-color: #eee;
+            border-bottom: rgb(226, 226, 226) 1px solid;
+        }
+        
+        .bg2 {
+            /* height: 46px; */
+            width: 1190px;
+            margin: 0 auto;
+        }
+        
+        .bg2 a:hover {
+            color: red;
+        }
+        
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .bg2 a {
+            text-decoration: none;
+            color: rgb(148, 148, 148);
+        }
+        
+        .nav0,
+        .nav {
+            /* line-height: 46px; */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 14px;
+            height: 46px;
+            /* overflow: hidden; */
+        }
+        
+        .nav0 {
+            padding: 0 10px 0 6px;
+            position: relative;
+            z-index: 1000;
+            /* background-color: thistle; */
+            /* height: 46px;
+            box-sizing: border-box; */
+            /* 正常情况下就把边框显示出来，这样hover上去北京就不会动。把正常情况下的边框设为透明就行 */
+            border: transparent 1px solid;
+            border-bottom: none;
+            line-height: 44px;
+        }
+        
+        .navleft {
+            float: left;
+        }
+        /* .nav0::before {
+            content: "\e607";
+            font-family: "iconfont";
+            font-size: 18px;
+            color: red;
+        } */
+        
+        .location {
+            color: red;
+            font-size: 19px;
+            vertical-align: middle;
+            margin-right: 1px;
+        }
+        
+        .nav {
+            float: right;
+        }
+        /* .nav .line {
+            color: rgb(206, 206, 206);
+            margin: 0 4px;
+        } */
+        
+        .nav .drawline {
+            width: 1px;
+            height: 20px;
+            background-color: rgb(202, 202, 202);
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0px 4px;
+            /* margin-top: 8px; */
+        }
+        
+        .nav .red {
+            color: red;
+        }
+        
+        .nav .dropdown::after {
+            content: "\e74e";
+            font-family: "iconfont";
+            color: rgb(182, 182, 182);
+        }
+        
+        .testp {
+            border: sandybrown 1px solid;
+            width: 500px;
+        }
+        
+        .span1,
+        .span2 {
+            border: saddlebrown 1px solid;
+            /* display: inline-block; */
+            margin: 10px 0;
+            padding: 10px 0;
+        }
+        
+        .dropdownbox {
+            /* 把display设置为none先让它隐藏 */
+            display: none;
+            background-color: white;
+            width: 350px;
+            height: 250px;
+            border: rgb(230, 230, 230) 1px solid;
+            margin-top: -1px;
+            box-shadow: 0 2px 4px rgb(202, 202, 202);
+            line-height: 30px;
+            /* 设置绝对定位，使其不占页面的位置 */
+            position: absolute;
+            /* 这种浮层一定要设置一个较高的层级，确保他不会被别的东西盖住 */
+            z-index: 999;
+        }
+        /* 当鼠标hover到.nav的时候它下面的兄弟展示。这样写的问题是当鼠标移出.nav时下拉框就不展示了 */
+        /* .nav0:hover+.dropdownbox {
+            display: block;
+        } */
+        /* 因此应该把hover绑定到.nav和.dropdownbox上。在html里再把它两包一层div */
+        
+        .navleft:hover .dropdownbox {
+            display: block;
+        }
+        
+        .navleft:hover .nav0 {
+            background-color: white;
+            border: rgb(230, 230, 230) 1px solid;
+            border-bottom: none;
+            /* line-height: 44px; */
+        }
+        
+        .dropdownitem {
+            font-size: 14px;
+            /* background-color: rgb(189, 189, 189); */
+            display: inline-block;
+            padding: 2px 10px;
+            margin: 1px 8px;
+        }
+        
+        .test9 {
+            line-height: 40px;
+            background-color: teal;
+            height: 40px;
+        }
+        
+        .test10 {
+            background-color: rgb(197, 197, 197);
+            height: 40px;
+            width: 100px;
+            border: 4px solid sienna;
+            box-sizing: border-box;
+        }
+        
+        .test11 {
+            background-color: rgb(255, 82, 255);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="bg1">
+        <div class="bg2 clearfix">
+            <div class="navleft">
+                <div class="nav0">
+                    <a href="#"><i class="iconfont icon-xiaochengxu_tubiao location" ></i>北京</a>
+                </div>
+                <div class="dropdownbox">
+                    <span class="dropdownitem">北京</span>
+                    <span class="dropdownitem">上海</span>
+                    <span class="dropdownitem">天津</span>
+                    <span class="dropdownitem">重庆</span>
+                    <span class="dropdownitem">河北</span>
+                    <span class="dropdownitem">山西</span>
+                    <span class="dropdownitem">河南</span>
+                    <span class="dropdownitem">辽宁</span>
+                    <span class="dropdownitem">吉林</span>
+                    <span class="dropdownitem">黑龙江</span>
+                    <span class="dropdownitem">内蒙古</span>
+                    <span class="dropdownitem">江苏</span>
+                    <span class="dropdownitem">山东</span>
+                    <span class="dropdownitem">安徽</span>
+                    <span class="dropdownitem">浙江</span>
+                </div>
+            </div>
+            <div class="nav">
+                <a class="navys" href="#">你好，请登陆</a>&nbsp;
+                <a class="red">免费注册</a>
+                <span class="drawline"></span>
+                <!-- <span class="line">∣</span> -->
+                <a class="navys" href="#">我的订单</a>
+                <span class="drawline"></span>
+                <!-- <span class="line">∣</span> -->
+                <a class="navys dropdown" href="#">我的京东</a>
+                <span class="drawline"></span>
+                <!-- <span class="line">∣</span> -->
+                <a class="navys" href="#">京东会员</a>
+                <span class="drawline"></span>
+                <!-- <span class="line">∣</span> -->
+                <a class="navys red dropdown" href="#">企业采购</a>
+                <span class="drawline"></span>
+                <!-- <span class="line">∣</span> -->
+                <a class="navys dropdown" href="#">客户服务</a>
+                <span class="drawline"></span>
+                <!-- <span class="line">∣</span> -->
+                <a class="navys dropdown" href="#">网站导航</a>
+                <span class="drawline"></span>
+                <!-- <span class="line">∣</span> -->
+                <a class="navys" href="#">手机京东</a>
+            </div>
+
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h2 style="font-size: 24px;color: slateblue ;">以下为行内元素垂直方向padding和margin实验🧪</h2>
+    <p class="testp">头
+        <span class="span1">span1span1</span>
+        <span class="span2">span2span2</span>
+        <span class="span2">span3span3</span>
+        <span class="span2">span4span4</span>
+        <span class="span2">span5span5</span>
+        <span class="span2">span6span6</span>
+        <span class="span2">span7span7</span>
+        <span class="span2">span8span8</span>
+        <span class="span2">span9span9</span>
+        <span class="span2">span10span10</span>
+        <span class="span2">span11span11</span> 尾部
+    </p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h2 style="font-size: 24px;color: slateblue ;">以下为实验🧪</h2>
+    <div class="test9">
+        <div class="test10">
+            <a class="test11" href="javascript:;">我是一行字</a>
+        </div>
+    </div>
+</body>
+
+</html>

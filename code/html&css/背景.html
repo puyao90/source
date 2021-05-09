@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 500px;
+            height: 500px;
+            /* border: 10px dotted blueviolet; */
+            background-color: rgb(255, 183, 255);
+            /* 如果背景图片大于元素，则会有一部分图片无法显示 */
+            /* background-image: url("./outer/PinClipart.com_dance-shoes-clipart_212012.png"); */
+            /* 如果背景图片小于元素，则背景图片会自动在元素中平铺将元素铺满 */
+            background-image: url("outer/PinClipart.com_snowflake-border-clipart_5777411\ \(1\).png");
+            /* 设置背景重复方式。默认repeat，表示会延x轴y轴重复 */
+            background-repeat: repeat;
+            background-repeat: repeat-x;
+            background-repeat: repeat-y;
+            background-repeat: no-repeat;
+            /* background-position设置图片位置，通过top,left,right,bottom,center几个表示方向的词来设置
+            一般需要两个词，如果只写一个，则第二个默认为center */
+            background-position: top right;
+            background-position: right center;
+            background-position: left;
+            /* 还可以设置偏移量，分别为x轴和y轴偏移 */
+            background-position: 0px 0px;
+            /* background-clip设置背景的范围。默认值为border-box背景会出现在边框下面*/
+            /* background-clip: border-box;
+            background-clip: padding-box;*/
+            padding: 10px;
+            /*background-clip: content-box;*/
+            /* background-origin背景图片的偏移量计算原点，padding-box为默认值,表背景图片的偏移量从内边距开始计算 */
+            background-origin: padding-box;
+            /* background-origin: content-box;
+            background-origin: border-box; */
+            background-image: url(./outer/cheetah-5689870_1280.jpg);
+            /* background-size设置图片大小，两个值分别值宽高。只写一个值另一个等比缩放 */
+            background-size: 200px;
+            background-size: 100% 100%;
+            /* cover表示图片比例不变，将图片铺满。可能图片有些部分无法显示 */
+            background-size: cover;
+            /* contain表示图片比例不变，将图片在容器中完整显示 */
+            background-size: contain;
+            overflow: auto;
+        }
+        
+        .box2 {
+            width: 300px;
+            height: 1000px;
+            background-color: cornsilk;
+            background-image: url("./outer/PinClipart.com_snowflake-border-clipart_5777411 (1).png");
+            background-repeat: no-repeat;
+            /* background-attachment设置背景图片是否会跟随元素移动 */
+            background-attachment: scroll;
+            /* 设置fixed就和position设fixed一样，是参照浏览器的视口来进行定位的 */
+            background-attachment: fixed;
+            background-position: 18px 18px;
+        }
+        
+        .box3 {
+            border: cyan 10px dashed;
+            padding: 20px;
+            width: 400px;
+            height: 400px;
+            /* 背景的简写，注意size一定写在position后面,用/隔开 
+            background-orign和background-clip的值是一样的，注意background-origin应该写在前面*/
+            background: #bfa url("./outer/PinClipart.com_dance-shoes-clipart_212012.png") center center/contain no-repeat border-box content-box;
+        }
+        
+        .box4 {
+            width: 990px;
+            height: 32px;
+            background: #000;
+            /* 保持所截图片高度和容器一样 */
+            background-image: url(./outer/Untitled-bg.png);
+            background-repeat: repeat-x;
+        }
+        
+        .button1:link {
+            width: 160px;
+            height: 36px;
+            display: block;
+            background-image: url(./outer/normal.png);
+        }
+        
+        .button1:hover {
+            background-image: url(./outer/hover.png);
+        }
+        
+        .button1:active {
+            background-image: url(./outer/click.png);
+        }
+        /* 图片属于网页的外部资源，外部资源都需要浏览器单独发送请求加载，用则加载，不用则不加载 
+        所以第一次出现hover和active状态的时候会闪烁一下*/
+        
+        .button2:link {
+            width: 160px;
+            height: 36px;
+            display: block;
+            background-image: url(./outer/buttons.png);
+            background-position: 0 0;
+        }
+        
+        .button2:hover {
+            background-position: -160px 0;
+        }
+        
+        .button2:active {
+            background-position: -320px 0;
+        }
+        /* 雪碧图的使用步骤
+        1.先确定要使用的图标
+        2.测量图标大小
+        3.根据测量结果创建一个容器
+        4.将雪碧图设置为元素的背景图片
+        5.设置偏移量以显示正确图片  
+        
+         雪碧图的特点：一次将多个图片加载进页面，降低请求次数，加快访问速度，同时减少图片大小*/
+        
+        .box5 {
+            width: 72px;
+            height: 102px;
+            background-image: url(./outer/sprite.png);
+            background-position: -362px -395px;
+        }
+        /* 渐变是图片，需要通过background-image来设置 */
+        
+        .box6 {
+            width: 200px;
+            height: 200px;
+            /* 线性渐变的开头可以指定一个方向,to left,to right,to bottom(默认),to top。
+            也可写组合如to top left
+            也可以写度数 xxxdeg,默认180度 
+            也可以写1turn,.5turn,.25turn */
+            background-image: linear-gradient(orange, green);
+            /* background-image: linear-gradient(to top, orange, green); */
+            /* background-image: linear-gradient(30deg, orange, green); */
+            background-image: linear-gradient(.125turn, orange, green);
+            /* 渐变可同时指定多个颜色，多颜色默认情况下平均分布。可手动指定分布情况 */
+            background-image: linear-gradient(red, orange, green);
+            /* 默认红色滑块在最开头，黄色滑块在最后面。指定后表示红色滑块在50px处，黄色滑块在100px处 */
+            background-image: linear-gradient(red 50px, orange 100px);
+            /* repeating-linear-gradient表示可以平铺的线性渐变 */
+            background-image: repeating-linear-gradient(red 50px, orange 100px);
+            background-image: repeating-linear-gradient(to right, red, orange 50px);
+        }
+        
+        .box7 {
+            width: 200px;
+            height: 200px;
+            background-image: radial-gradient(rgb(255, 94, 0), #bfa);
+            /* 默认情况下径向渐变的形状根据元素的尺寸来计算。如元素是正方形，径向渐变的形状是圆形，如元素是长方形，径向渐变的形状是椭圆形 
+            也可手动指定径向渐变的大小,以下表示径向渐变在50px*50px的圆里 */
+            background-image: radial-gradient(50px 50px, rgb(255, 94, 0), #bfa);
+            background-image: radial-gradient(50px 100px, rgb(255, 94, 0), #bfa);
+            /* background-image: repeating-radial-gradient(50px 50px, rgb(255, 94, 0), #bfa); */
+            background-image: radial-gradient(circle, rgb(255, 94, 0), #bfa);
+            /* background-image: radial-gradient(ellipse, rgb(255, 94, 0), #bfa); */
+            /* 也可以手动指定渐变的位置,位置可用像素，也可用top,bottom,left,right,center */
+            background-image: radial-gradient(50px 50px at 0 0, rgb(255, 94, 0), #bfa);
+            background-image: radial-gradient(50px 50px at 50px 50px, rgb(255, 94, 0), #bfa);
+            background-image: radial-gradient(50px 50px at center center, rgb(255, 94, 0), #bfa);
+            background-image: radial-gradient(at top left, rgb(255, 94, 0), #bfa);
+            /* closest-side表示渐变只到离圆心最近的一侧 */
+            background-image: radial-gradient(closest-side at 50px 50px, rgb(255, 94, 0), #bfa);
+            background-image: radial-gradient(farthest-side at 50px 50px, rgb(255, 94, 0), #bfa);
+            background-image: radial-gradient(closest-corner at 50px 50px, rgb(255, 94, 0), #bfa);
+            background-image: radial-gradient(farthest-corner at 50px 50px, rgb(255, 94, 0), #bfa);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box1">
+        <div class="box2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum repudiandae dignissimos aliquam eos atque commodi. Illum tenetur aperiam vitae iure nemo odit ea, quia, ipsum perspiciatis sunt hic ab quo.</div>
+    </div>
+    <div class="box3"></div>
+    <div class="box4"></div><br><br>
+    <a class="button1" href="javascript:;"></a><br><br>
+    <a class="button2" href="javascript:;"></a>
+    <div class="box5"></div><br>
+    <div class="box6"></div><br>
+    <div class="box7"></div>
+</body>
+
+</html>

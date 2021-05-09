@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+        }
+         */
+        
+        .box1 {
+            width: 500px;
+            height: 500px;
+            background-color: #eee;
+        }
+        
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(233, 73, 73);
+            /* transition: all 1s; */
+            /* 过渡（transition）：过渡可以指定一个属性发生变化时的切换方式 */
+            /* transition-property 指定要执行过渡的属性，多个属性用逗号隔开。
+            写all表示所有属性都需要过渡。大部分属性都支持过渡效果（只要值可计算）。
+            注意过渡必须是一个有效数值向另一个有效数值过渡 */
+            /* transition-property: width, height, background-color; */
+            transition-property: all;
+            /* transition-durition 指定过渡持续时间,单位s或ms, 1s=1000ms 
+            和上面配合用，可以对不同属性分别指定时间 */
+            transition-duration: 2s;
+            /* transition-duration: 10ms, 2s, 2s; */
+            /* margin-left: auto; */
+            /* margin-left: 400px; */
+            /* transition-timing-function 指定过渡的时间函数
+            默认ease 开始慢，再加速，再减速
+            linear 匀速运动
+            ease-in 加速运动（慢速开始，再加速）
+            ease-out 减速运动 (开始快，再减速)
+            ease-in-out 先加速，后减速 （比ease更明显）
+            cubic-bezier() 用贝塞尔曲线来指定 配合网站工具https://cubic-bezier.com/一起用
+            steps（）分步执行过渡效果，前一个值表步数，后一个值表是这个分配的时间开始还是结束开始执行，默认end。
+            */
+            /* transition-timing-function: ease;
+            transition-timing-function: linear;
+            transition-timing-function: ease-in;
+            transition-timing-function: ease-out;
+            transition-timing-function: ease-in-out;
+            transition-timing-function: cubic-bezier(.56, .43, 1, -0.25);
+            transition-timing-function: steps(2);
+            transition-timing-function: steps(2, start); */
+            /* transition-delay 设置过渡效果的延迟，表示等待一段时间后再开始执行过渡 */
+            transition-delay: 2s;
+            /* 简写transition， 只有一个顺序要求，如果要写延迟，则两个时间中第一个是持续时间，第二个是延迟时间
+            all可以省略不写 */
+            transition: margin-left 2s 1s linear
+        }
+        /*         
+        .box1:hover .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(255, 127, 7);
+            margin-left: 0;
+        } */
+        
+        .box3 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(73, 142, 233);
+            margin-top: 50px;
+            transition-property: all;
+            transition-duration: 2s;
+        }
+        
+        .box1:hover div {
+            margin-left: 400px;
+        }
+        
+        .box4 {
+            width: 132px;
+            height: 271px;
+            background-image: url("./outer/bigtap-mitu-queue-big.png");
+            margin-left: 20px;
+            background-position: 0 0;
+            /* transition: steps(3) 800ms; */
+            animation: test2 1s 4 steps(4);
+        }
+        /* .box4:hover {
+            background-position: -396px 0;
+        } */
+        
+        @keyframes test2 {
+            0% {
+                background-position: 0 0;
+            }
+            /* 25% {
+                background-position: -132px 0;
+            }
+            50% {
+                background-position: -264px 0;
+            }
+            75% {
+                background-position: -396px 0;
+            } */
+            100% {
+                /* 由于图片默认在背景上平铺，因此默认首位想接，图片末尾的坐标就代表显示第一张图 */
+                background-position: -528px 0;
+            }
+        }
+        
+        .box5 {
+            width: 500px;
+            height: 500px;
+            background-color: #eee;
+        }
+        
+        .box6 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(233, 73, 212);
+            /* transition: 2s; */
+        }
+        /* .box5:hover .box6 {
+            margin-left: 400px;
+        } */
+        /* 动画和过渡不同之处在于 过渡是要在某个属性发生变化时才会触发，动画可以自动触发 
+        设置动画时，必须先设置一个关键帧。关键帧设置了动画执行的每一个步骤 */
+        
+        @keyframes test1 {
+            /* from表示动画的开始位置，也可以用0% */
+            from {
+                margin-left: 100px;
+            }
+            /* to表示动画的结束位置，也可以用100% */
+            to {
+                margin-left: 400px;
+            }
+        }
+        /* 再设置box6的动画 */
+        
+        .box6 {
+            /* animation-name 表示要对当前元素生效的关键帧的名字 
+            animation-duration animation-timing-function animation-delay和transition类似  */
+            animation-name: test1;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-delay: 2s;
+            /* animation-iteration-count表示动画执行次数 可写infinite表示无限次 */
+            animation-iteration-count: 2;
+            /* animation-iteration-count: infinite; */
+            /* animation-direction指定动画运行的方向 默认值normal
+            normal 从from向to运行，每次都是这样
+            reverse 从to向from运行，每次都是这样 
+            alternate 从from向to运行，重复执行时反向
+            alternate-reverse 从to向from，重复执行时反向 */
+            animation-direction: normal;
+            /* animation-direction: reverse;
+            animation-direction: alternate;
+            animation-direction: alternate-reverse; */
+            /* animation-play-state设置动画的执行状态 默认值running表示执行 可选值paused 表示暂停 */
+            animation-play-state: running;
+            /* animation-fill-mode 表示动画的填充模式
+            none表示动画执行完毕回到它原来的位置
+            forwards表示动画执行完毕元素停止在动画结束的位置 
+            backwards表示动画延时等待时，元素就会处于开始位置
+            both 同时具备了forwards和backwards的特性 */
+            /* margin-left: 10px; */
+            animation-fill-mode: none;
+            animation-fill-mode: forwards;
+            animation-fill-mode: backwards;
+            animation-fill-mode: both;
+            /* 同样可简写成animation 顺序只需注意持续时间在延迟时间之前 */
+            animation: test1 4s 3 1s backwards alternate linear paused;
+        }
+        /* .box5:hover .box6 {
+            animation-play-state: paused;
+        } */
+        
+        .box7 {
+            width: 134px;
+            height: 134px;
+            background-image: url("./outer/gaming_DinoSprites_walk.png");
+            animation: test3 2s 4 steps(6);
+        }
+        
+        @keyframes test3 {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -800px 0;
+            }
+        }
+        
+        .box8 {
+            height: 500px;
+            border-bottom: rgb(0, 0, 0) 10px solid;
+            margin: 20px;
+            overflow: hidden;
+        }
+        
+        .box9 {
+            width: 80px;
+            height: 80px;
+            background-color: rgb(68, 224, 224);
+            border-radius: 50%;
+            animation: ball 4s ease-in forwards paused;
+        }
+        
+        @keyframes ball {
+            from {
+                margin-top: 0;
+            }
+            14%,
+            42%,
+            70%,
+            to {
+                margin-top: 420px;
+                animation-timing-function: ease-out;
+            }
+            28% {
+                margin-top: 120px;
+            }
+            56% {
+                margin-top: 220px;
+            }
+            84% {
+                margin-top: 320px;
+            }
+        }
+        
+        .box10 {
+            height: 200px;
+            width: 350px;
+            border-bottom: rgb(194, 83, 216) 10px solid;
+            margin: 20px;
+            overflow: hidden;
+        }
+        
+        .box10 .box12 {
+            background-color: rgb(248, 161, 62);
+            animation-delay: 100ms;
+        }
+        
+        .box10 .box13 {
+            background-color: rgb(90, 62, 248);
+            animation-delay: 200ms;
+        }
+        
+        .box10 .box14 {
+            background-color: rgb(248, 214, 62);
+            animation-delay: 300ms;
+        }
+        
+        .box10 .box15 {
+            background-color: rgb(116, 238, 122);
+            animation-delay: 400ms;
+        }
+        
+        .box10 .box16 {
+            background-color: rgb(62, 205, 248);
+            animation-delay: 500ms;
+        }
+        
+        .box10 .box17 {
+            background-color: rgb(164, 62, 248);
+            animation-delay: 600ms;
+        }
+        
+        .box10 div {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(224, 68, 128);
+            border-radius: 50%;
+            animation: balls linear 500ms 4 alternate forwards paused;
+            float: left;
+        }
+        
+        @keyframes balls {
+            0% {
+                margin-top: 0;
+            }
+            100% {
+                margin-top: 150px;
+            }
+        }
+        /* 变形是通过CSS改变元素的形状或位置。变形不会影响到页面的布局。transform用来设置元素的变形效果。
+        translateX() 沿着X轴方向平移
+        translateY() 沿着Y轴方向平移
+        translateZ() 沿着Z轴方向平移
+        一个元素，只有一个transform生效，如果想设置多个，只能把参数连着写，中间用空格隔开 */
+        
+        html {
+            /* 设置当前网页视距为800px,人眼距离网页的距离。一般设置600～1200px */
+            perspective: 800px;
+        }
+        
+        body {
+            border: red 1px solid;
+        }
+        
+        .box18 {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            /* border: rgb(64, 106, 168) 50px solid; */
+            background-color: rgb(150, 202, 236);
+            /* transform: translateX(-100px);
+            transform: translateY(100px); */
+            /* 平移元素，百分比是相对于自身宽度计算 */
+            /* transform: translateX(50%) translateY(50px); */
+            transition: 1s;
+            transform-origin: 0px 0px;
+        }
+        
+        body:hover .box18 {
+            /* Z轴平移，调整元素在Z轴的位置，距离越大，离人眼越近
+            Z轴平移属于立体效果（近大远小），默认情况下网页不支持透视，如果需要看见效果必须要设置网页的视距 */
+            transform: translateZ(100px);
+            transform: translateZ(200px);
+            /* 通过旋转可以使元素沿X，Y或Z轴旋转指定的角度 */
+            transform: rotateZ(45deg);
+            transform: rotateZ(1turn);
+            transform: rotateX(35deg);
+            /* 注意参数顺序会影响元素的运动效果 */
+            transform: rotateY(180deg) translateZ(100px);
+            transform: translateZ(100px) rotateY(180deg);
+            /* backface-visibility设置是否显示元素背面 可选择visible */
+            backface-visibility: hidden;
+            backface-visibility: visible;
+        }
+        
+        .box19 {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: rgb(236, 192, 150);
+        }
+        
+        .box20 {
+            /* width: 100px;
+            height: 100px; */
+            background-color: rgb(158, 172, 255);
+            /* 这种方式的居中只适用于元素的大小确定 */
+            position: absolute;
+            /* top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto; */
+            /* 可以利用translate。水平和垂直方向同理 */
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            top: 50%;
+        }
+        
+        .box21 {
+            width: 230px;
+            height: 300px;
+            background-color: rgb(245, 245, 245);
+            /* box-shadow: 0 0 5px rgba(0, 0, 0, .2); */
+            margin: 20px;
+            /* 注意加上过渡，而且给阴影和位移都要加上过渡 */
+            transition: transform .3s;
+            transition: all .3s;
+        }
+        
+        .box21:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 16px rgba(0, 0, 0, .3);
+        }
+        
+        .clocks {
+            position: relative;
+            height: 420px;
+            width: 420px;
+            /* background-color: rgb(239, 255, 170); */
+            margin: 0 auto;
+            background-image: url("outer/Artboard-1.png");
+            background-size: cover;
+        }
+        /* 可以让.clock下的容器都居中就完事了 */
+        
+        .box22-wrapper,
+        .box23-wrapper,
+        .box24-wrapper {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        .box22-wrapper {
+            height: 400px;
+            width: 400px;
+            /* background-color: rgb(253, 159, 159); */
+            animation: clock 10s steps(60) infinite paused;
+            border-radius: 50%;
+            /* border: black 10px solid; */
+            /* padding: 40px; */
+            /* position: relative; */
+            position: absolute;
+        }
+        
+        .box22 {
+            height: 200px;
+            width: 2px;
+            background-color: rgb(151, 151, 151);
+            margin: 0 auto;
+        }
+        
+        @keyframes clock {
+            from {
+                transform: rotateZ(0);
+            }
+            to {
+                transform: rotateZ(360deg);
+            }
+        }
+        
+        .box23-wrapper {
+            height: 300px;
+            width: 300px;
+            /* margin: -360px auto; */
+            /* background-color: rgba(189, 189, 189, .5); */
+            animation: clock 600s steps(60) infinite paused;
+            border-radius: 50%;
+            /* border: rgb(255, 206, 206) 10px solid; */
+            position: absolute;
+            /* left: 60px;
+            top: 60px; */
+        }
+        
+        .box23 {
+            height: 150px;
+            width: 4px;
+            background-color: rgb(255, 187, 85);
+            margin: 0 auto;
+        }
+        
+        .box24-wrapper {
+            height: 200px;
+            width: 200px;
+            /* background-color: rgba(120, 163, 245, .5); */
+            /* animation: clock 43200s steps(12) infinite; */
+            /* 注意时针是在秒针和分针转时一点一点挪 */
+            animation: clock 7200s linear infinite paused;
+            border-radius: 50%;
+            /* border: rgb(255, 206, 206) 10px solid; */
+            position: absolute;
+            /* left: 110px;
+            top: 110px; */
+        }
+        
+        .box24 {
+            height: 100px;
+            width: 8px;
+            background-color: rgb(250, 94, 66);
+            margin: 0 auto;
+        }
+        
+        .box25 {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(217, 119, 241);
+            margin: 20px auto;
+            transition: 1s;
+            /* transform-origin指定变形的原点 默认值是center */
+            transform-origin: center;
+            transform-origin: 0 0;
+        }
+        
+        .box25:hover {
+            /* 对元素进行缩放  scaleX()水平方向  scaleY()垂直方向 scale()双方向 */
+            transform: scaleX(2);
+            transform: scaleX(.2);
+            transform: scaleY(2);
+            transform: scale(2);
+            transform: rotateZ(45deg);
+            /* scaleZ()表示拉长Z轴，对平面上的图形无影响。可在3D立方体里看到效果 */
+        }
+        
+        .box26 {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .box26 img {
+            vertical-align: top;
+            transition: .5s;
+        }
+        
+        .box26 span {
+            position: absolute;
+            font-size: 16px;
+            color: white;
+            bottom: 10px;
+            left: 16px;
+        }
+        /* .box27 {
+            width: 300px;
+            height: 150px;
+            transition: 1s;
+        } */
+        /* .box26:hover .box27 {
+            transform: scale(1.2);
+        } */
+        /* 可以直接对图片设置scale */
+        
+        .box26:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+    <br><br>
+    <div class="box4"></div><br><br>
+    <div class="box5">
+        <div class="box6"></div>
+    </div>
+    <div class="box7"></div>
+    <div class="box8">
+        <div class="box9"></div>
+    </div>
+    <div class="box10">
+        <div class="box11"></div>
+        <div class="box12"></div>
+        <div class="box13"></div>
+        <div class="box14"></div>
+        <div class="box15"></div>
+        <div class="box16"></div>
+        <div class="box17"></div>
+    </div>
+    <div class="box18"><img src="./outer/cheetah-5689870_1280.jpg" style="width: 100%;"></div>
+    <div class="box19"></div>
+    <div class="box20">aaa</div>
+    <div class="box21"></div>
+    <div class="clocks">
+        <div class="box22-wrapper">
+            <div class="box22"></div>
+        </div>
+        <div class="box23-wrapper">
+            <div class="box23"></div>
+        </div>
+        <div class="box24-wrapper">
+            <div class="box24"></div>
+        </div>
+    </div>
+    <div class="box25"></div>
+    <div class="box26">
+        <!-- <div class="box27"> -->
+        <img src="./outer/c240e3b4j00qkhq8u008yc0008c0046c.webp" alt="">
+        <!-- </div> -->
+        <span>坐底10909米深海！奋斗者号返航</span>
+    </div>
+
+</body>
+
+</html>

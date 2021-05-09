@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul.test1 {
+            width: 900px;
+            border: 10px solid orangered;
+            /* 将ul设置为块级弹性容器会独占一行。将ul设置为行内弹性容器不会独占一行 */
+            display: flex;
+            /* display: inline-flex; */
+            /* 弹性容器的属性
+            flex-direction 指定容器中弹性元素的排列方向 
+            默认值 row 表示弹性元素在容器中水平排列（从左向右 对于文字从左向右写的国家）
+            row-reverse 表示弹性元素在容器中反向水平排列（从右向左）
+            column 表示弹性元素纵向排列（自上向下）
+            colume-reverse 表示弹性元素反向纵向排列（自下向上） */
+            flex-direction: row;
+            /* flex-direction: row-reverse; */
+            /* flex-direction: column; */
+            /* flex-direction: column-reverse; */
+            /* 主轴是弹性元素的排列方向，由flex-direction决定 比如row的主轴是从左向右，row-reverse的主轴是自右向左 */
+            /* 与主轴垂直方向的称为侧轴 */
+            /* flex-wrap 设置弹性元素是否在弹性容器中换行
+            默认值 nowrap 表示元素不会自动换行
+            wrap 表示元素沿着辅轴方向自动换行 
+            wrap-reverse 表示元素沿着辅轴反方向换行 */
+            flex-wrap: nowrap;
+            /* flex-wrap: wrap;
+            flex-wrap: wrap-reverse; */
+            /* flex-flow  是flex-direction和flex-wrap的简写 */
+            flex-flow: row nowrap;
+            /* flex-flow: row-reverse wrap; */
+            /* justify-content 如何分配主轴上的空白空间（主轴上的元素如何排列）
+            默认值 flex-start 元素沿着主轴起边排列
+            flex-end 元素沿着主轴终边排列
+            center 元素居中排列
+            space-around 空白分布到元素两侧
+            space-evenly 空白分布到元素的单侧（兼容性不太好） 
+            space-between 空白均匀分布到元素间 */
+            justify-content: flex-start;
+            /* justify-content: flex-end;
+            justify-content: center;
+            justify-content: space-around;
+            justify-content: space-evenly;
+            justify-content: space-between; */
+            justify-content: space-between;
+        }
+        
+        .test1 li {
+            width: 200px;
+            height: 100px;
+            font-size: 50px;
+            text-align: center;
+            line-height: 100px;
+            /* display: flex; */
+            /* 弹性元素的属性
+            flex-grow 指定弹性元素的伸展的系数，表示当父元素有多余的空间时，子元素如何伸展。
+            父元素的剩余空间，会按照比例进行分配 默认值是0 */
+            /* flex-grow: 0;
+            flex-grow: 1; */
+            /* flex-shrink 指定弹性元素的收缩系数，表示当父元素的空间不足以容纳所有子元素时，如何对子元素进行收缩
+            缩减多少是根据缩减系数和元素大小来计算（元素越大，缩减系数越大，缩减越多）。 默认值是1，等比收缩 */
+            flex-shrink: 1;
+            flex-shrink: 0;
+            /* flex-basis 指定元素在主轴上的基础长度。如果主轴是横向，该值指定的是元素的宽度；如果主轴是纵向，该值指定的是元素的高度
+            默认值是auto,表示参考元素自身的高度或宽度。如果传递了一个具体的值，则以该值为主 */
+            flex-basis: 100px;
+            flex-basis: auto;
+            /* flex 是对flex-grow flex-shrink 和 flex-basis 三个属性的简写，需按顺序写 
+            flex的默认值是 flex:initial; 相当于 0 1 auto 
+            flex:auto; 相当于 1 1 auto 
+            flex:none;相当于 0 0 auto */
+            flex: 1 1 auto;
+            flex: initial;
+        }
+        
+        .test1 li:nth-child(1) {
+            background-color: rgb(177, 219, 99);
+            /* flex-grow: 1; */
+            /* flex-shrink: 1; */
+            /* order 指定弹性元素的排列顺序 */
+            order: 2;
+        }
+        
+        .test1 li:nth-child(2) {
+            background-color: rgb(100, 100, 221);
+            /* flex-grow: 2; */
+            /* flex-shrink: 1; */
+            order: 3;
+        }
+        
+        .test1 li:nth-child(3) {
+            background-color: rgb(98, 210, 218);
+            /* flex-grow: 3; */
+            /* flex-shrink: 5; */
+            order: 1;
+        }
+        
+        ul.test2 {
+            width: 600px;
+            height: 800px;
+            border: 10px solid orange;
+            /* 将ul设置为块级弹性容器会独占一行。将ul设置为行内弹性容器不会独占一行 */
+            display: flex;
+            flex-flow: row wrap;
+            /* align-items 指定容器中元素在辅轴上如何对齐  （justify-content指定主轴方向）
+            默认值 stretch 将元素的长度设置为相同的值
+            flex-start 元素不会拉伸，沿着辅轴起边对齐
+            flex-end 元素不会拉伸，沿着辅轴终边对齐
+            center 居中对齐
+            baseline 基线对齐  */
+            align-items: stretch;
+            align-items: flex-start;
+            /* align-items: flex-end;
+            align-items: center;
+            align-items: baseline; */
+            /* align-content 如何分配辅轴上的空白空间 （justify-content指定主轴方向） */
+            /* align-content: center;
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: space-around;
+            align-content: space-evenly; */
+            align-content: space-between;
+        }
+        
+        .test2 li {
+            width: 200px;
+            font-size: 50px;
+            text-align: center;
+            line-height: 100px;
+            flex-shrink: 0;
+        }
+        
+        .test2 li:nth-child(1) {
+            background-color: rgb(177, 219, 99);
+            /* align-self 用来覆盖当前弹性元素上的align-item */
+            align-self: flex-end;
+            align-self: stretch;
+        }
+        
+        .test2 li:nth-child(2) {
+            background-color: rgb(100, 100, 221);
+            /* font-size: 12px; */
+        }
+        
+        .test2 li:nth-child(3) {
+            background-color: rgb(98, 210, 218);
+        }
+        
+        .test2 li:nth-child(4) {
+            background-color: rgb(224, 212, 110);
+        }
+        
+        .test2 li:nth-child(5) {
+            background-color: rgb(209, 117, 221);
+        }
+        
+        .box1 {
+            width: 400px;
+            height: 400px;
+            border: 10px solid green;
+            /* 需要元素在容器中垂直水平双方向居中 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: #fba;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    flex(弹性盒、伸缩盒)是CSS中的又一种布局手段，它主要用来代替浮动来完成页面的布局
+    flex可以使元素具有弹性，让元素可以跟随页面的大小的改变而改变    
+    - 弹性容器
+    要使用弹性盒，必须先将一个元素设置为弹性容器
+    display:flex 设置为块级弹性容器
+    display:inline-flex 设置为行内弹性容器 
+    - 弹性元素
+    弹性容器的直接子元素是弹性元素（弹性项）
+    一个元素可以同时是弹性容器和弹性元素
+-->
+    <ul class="test1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    aaas
+    <br>
+    <br>
+    <br>
+    <ul class="test2">
+        <li>1</li>
+        <li>2
+            <div>2</div>
+        </li>
+        <li>3
+            <div>3</div>
+            <div>3</div>
+        </li>
+        <li>4</li>
+        <li>5
+            <div>5</div>
+        </li>
+    </ul>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+</body>
+
+</html>

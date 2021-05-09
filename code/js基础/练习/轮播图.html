@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        #frame {
+            border: 12px solid rgb(141, 84, 9);
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #box {
+            width: 1800px;
+            height: 300px;
+            position: absolute;
+        }
+        
+        .imgBox {
+            float: left;
+        }
+        
+        img {
+            vertical-align: top;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: gray;
+            float: left;
+            margin-right: 6px;
+        }
+        
+        .dot:hover {
+            background-color: red;
+        }
+        
+        #dots {
+            position: absolute;
+            bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="frame">
+        <div id="box">
+            <div class="imgBox"><img src="./素材/0001.png" alt=""></div>
+            <div class="imgBox"><img src="./素材/0002.png" alt=""></div>
+            <div class="imgBox"><img src="./素材/0003.png" alt=""></div>
+            <div class="imgBox"><img src="./素材/0004.png" alt=""></div>
+            <div class="imgBox"><img src="./素材/0005.png" alt=""></div>
+            <div class="imgBox"><img src="./素材/0006.png" alt=""></div>
+            <div class="imgBox"><img src="./素材/0001.png" alt=""></div>
+        </div>
+        <div id="dots">
+            <a href="javascript:;" class="dot"></a>
+            <a href="javascript:;" class="dot"></a>
+            <a href="javascript:;" class="dot"></a>
+            <a href="javascript:;" class="dot"></a>
+            <a href="javascript:;" class="dot"></a>
+            <a href="javascript:;" class="dot"></a>
+        </div>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var allA = document.getElementsByClassName("dot");
+        var dots = document.getElementById("dots");
+        dots.style.left = (frame.offsetWidth - dots.offsetWidth) / 2 + "px";
+        var imgBox = document.getElementsByTagName("img")
+        var imgNum = imgBox.length;
+        box.style.width = imgNum * 300 + "px";
+        allA[0].style.backgroundColor = "red"
+            // allA[1].onclick = function() {
+            //     var timer = setInterval(function() {
+            //         box.style.left = box.offsetLeft - 2 + "px";
+            //         if (parseInt(box.style.left) == -300) {
+            //             clearInterval(timer);
+            //         }
+            //     }, 10);
+            // }
+
+        function run(target, speed, callback) {
+            clearInterval(timer);
+            var current = parseInt(getComputedStyle(box, null).left);
+            // console.log(current);
+            if (current > target) {
+                speed = -speed;
+            }
+            var timer = setInterval(() => {
+                var oldPosition = parseInt(getComputedStyle(box, null).left);
+                var newPosition = oldPosition + speed;
+                if (speed > 0 && newPosition >= target || speed < 0 && newPosition <= target) {
+                    newPosition = target;
+                }
+                box.style.left = newPosition + "px";
+                if (newPosition == target) {
+                    clearInterval(timer);
+                    callback && callback();
+                }
+            }, 10);
+        }
+        var speed = 8;
+        // allA[0].onclick = function() {
+        //     run(0, speed);
+        //     this.style.backgroundColor = "red";
+        // }
+        // allA[1].onclick = function() {
+        //     run(-300, speed);
+        //     this.style.backgroundColor = "red";
+        // }
+
+        // function generateOnclick(i) {
+        //     return function() {
+        //         run(-300 * i, speed);
+        //         this.style.backgroundColor = "red";
+        //     }
+        // }
+        // for (let index = 0; index < allA.length; index++) {
+        //     allA[index].onclick = generateOnclick(index);
+        // }
+
+        // var current_red;
+        // changeToRed(allA[0])
+        //     // var current_red = allA[0];
+        //     // current_red.style.backgroundColor = 'red';
+        // function changeToRed(element) {
+        //     if (current_red) {
+        //         current_red.style.backgroundColor = 'gray';
+        //     }
+        //     // current_red.style.backgroundColor = 'gray';
+        //     current_red = element;
+        //     current_red.style.backgroundColor = 'red';
+        // }
+
+        // for (let index = 0; index < allA.length; index++) {
+        //     allA[index].onclick = function(i) {
+        //         return function() {
+        //             run(-300 * i, speed);
+        //             changeToRed(this);
+        //         }
+        //     }(index);
+        // }
+
+        var currentNum = 0;
+        for (let index = 0; index < allA.length; index++) {
+            allA[index].num = index; //为每一个超链接添加一个num属性用来保存索引
+            allA[index].onclick = function() {
+                clearInterval(timerAutoChange);
+                currentNum = this.num;
+                run(-300 * currentNum, speed, function() {
+                    autoChange();
+                });
+                // changeToRed(this);
+                changeColor()
+            }
+        }
+
+        function changeColor() {
+            if (currentNum == imgNum - 1) {
+                currentNum = 0;
+                box.style.left = "0px";
+            }
+            for (let index = 0; index < allA.length; index++) {
+                allA[index].style.backgroundColor = ""; //这里设为“gray”的话把所有a内联样式都设置为默认颜色灰色，导致hover出不来了
+                //设为空串后把内联样式的背景颜色清了，这样样式表里的背景颜色灰色就生效了
+                allA[currentNum].style.backgroundColor = "red"
+            }
+        }
+        autoChange();
+
+        var timerAutoChange;
+
+        function autoChange() {
+            timerAutoChange = setInterval(function() {
+                currentNum++;
+                currentNum = currentNum % imgNum; //注意在这里判断
+                run(-300 * currentNum, speed,
+                    function() {
+                        changeColor()
+                    });
+            }, 2000)
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        .box1,
+        .box2,
+        .box3 {
+            background-color: wheat;
+            width: 240px;
+            height: 210px;
+            margin-bottom: 10px;
+        }
+        
+        .small {
+            font-size: 14px;
+            color: peru;
+            width: 76px;
+            padding-top: 10px;
+            margin: 0 auto;
+        }
+        
+        .big {
+            font-size: 20px;
+            color: black;
+            width: 100px;
+            margin: 2px auto;
+        }
+        
+        .img {
+            display: block;
+            width: 200px;
+            margin: 0 auto;
+            padding-top: 18px;
+        }
+        /* ------------------------以下参考--------------------- */
+        
+        .img-list {
+            width: 190px;
+            height: 396px;
+            overflow: hidden;
+            background-color: rgb(141, 129, 252);
+        }
+        
+        .img-list li:not(:last-child) {
+            margin-bottom: 8px;
+        }
+        
+        .img-list img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <div class="small">优惠享不停</div>
+        <div class="big">美的净水机</div>
+        <img class=img src="../frogs.jpg" alt="tu">
+    </div>
+    <div class="box2">
+        <span>我想居中</span>
+    </div>
+    <div class="box3"></div>
+
+    <!-- -------------------以下参考----------------- -->
+    <!-- <div>
+        <a href="javascript:;">
+            <img src="./picture/135.webp" alt="tu">
+        </a>
+        <a href="javascript:;">
+            <img src="./picture/135.webp" alt="tu">
+        </a>
+        <a href="javascript:;">
+            <img src="./picture/135.webp" alt="tu">
+        </a>
+    </div> -->
+
+    <ul class="img-list">
+        <li>
+            <a href="javascript:;">
+                <img src="./picture/135.webp">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="./picture/246.webp">
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="./picture/135.webp">
+            </a>
+        </li>
+    </ul>
+    <div>zzzzzz</div>
+
+
+</body>
+
+</html>

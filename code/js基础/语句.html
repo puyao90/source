@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语句</title>
+    <script>
+        // 我们的程序是由一条一条语句构成的，语句是按从上到下的顺序一条条执行的
+        // JS中可以使用{}来为语句进行分组。同一个{}中的语句称为一组语句（也叫代码块，后不用写;），他们要么都执行要么都不执行
+        // JS中的代码块只具有分组的作用。代码块内部的内容在外部是完全可见的。
+        {
+            console.log("ya");
+            //alert("hello");
+            document.write("haha");
+        }
+
+
+        // 流程控制语句
+        // 通过流程控制语句可以控制程序执行流程，使程序可以根据一定的条件来选择执行
+
+        // 1.条件判断语句（if语句）：可以在执行某个语句之前进行判断，如果条件成立才会执行语句，条件不成立则语句不执行。
+        // 语法一：if(条件表达式){语句}   if语句在执行时，会先对条件表达式进行求值判断，如果条件表达式的值为true，则执行if后的语句，如果条件表达式的值为false，则不会执行if后的语句
+        a = 11;
+        if (a > 10)
+            document.write("a比10大");
+        document.write("谁也管不了我"); //if语句只能控制紧随其后的那个语句
+
+        if (a > 5) {
+            document.write("a比5大"); //如果希望if可以控制多条语句，可以将这些语句统一放到代码块中
+            document.write("代码块中的谁也管不了我"); //在开发中尽量写上代码块，即使if后只有一条语句
+        }
+
+        if (a > 5 && a <= 10) {
+            document.write("a大于5，并且a小于等于10");
+        }
+        //语法二：if(条件表达式){语句}else{语句}   if...else语句执行时，会先对if后的条件表达式进行求值判断，如果值为true，则执行if后的语句，如果值为false，则执行else后的语句
+        var age = 101;
+        if (age >= 75) {
+            document.write("你已经退休了");
+        } else {
+            document.write("你还没退休");
+        }
+        //语法三：if(条件表达式){语句}else if(条件表达式){语句}else if(条件表达式){语句}else{语句}     
+        //if...else if...else执行时会从上到下依次对条件表达式进行求值，如果值为true则执行当前的语句，如果值为false，则继续向下判断。如果所有条件都不满足，则执行最后一个else后的语句
+        //该语句中，只会有一个代码块被执行，一旦代码块执行了，则直接结束语句
+        if (age > 100) {
+            document.write("恭喜活到100岁");
+        } else if (age > 80) {
+            document.write("你过了80岁啦");
+        } else if (age > 50) {
+            document.write("你正当年");
+        } else {
+            document.write("好好奋斗吧");
+        }
+
+        if (age <= 50) {
+            document.write("好好奋斗吧");
+        } else if (age > 50 && age <= 80) { //注意语句的顺序，如果非要把小的写前面，注意完善条件
+            document.write("你正当年");
+        } else if (age > 80 && age <= 100) {
+            document.write("你过了80岁啦");
+        } else {
+            document.write("恭喜活到100岁");
+        }
+
+        // 2.条件分支语句（switch语句）
+        //语法：switch(条件表达式){case表达式：语句 break；case表达式：语句 break；default：语句 break；}
+        //执行时会依次将case后的表达式的值和switch后的条件表达式的值进行全等比较，如果比较结果为true，则从当前case处开始执行代码(当前case后的所有代码都会被执行)，如果比较结果为false，则继续向下比较
+        //使用break可以来退出switch语句
+        //如果所有的比较结果都为false，则执行default后的语句
+        //switch语句和if语句的功能实际上有重复，使用switch可以实现if的功能，使用if也可以实现switch的功能（switch的条件清楚点）
+        var num = 11;
+        // if (num == 1) {
+        //     console.log("一");
+        // } else if (num == 2) {
+        //     console.log("二");
+        // } else if (num == 3) {
+        //     console.log("三");
+        // }
+        switch (num) {
+            case 1:
+                console.log("一～");
+                break;
+            case 2:
+                console.log("二～");
+                break;
+            case 3:
+                console.log("三～");
+                break;
+            default:
+                console.log("非法数字");
+                break;
+        }
+
+        // 3.循环语句（while循环）
+        var n = 1;
+        document.write(n++ + "<br>"); // 写在网页中，换行需要用br标签
+        document.write(n++ + "<br>");
+        document.write(n++ + "<br>"); //希望反复执行这条语句就会用到循环语句
+        //语法：while(条件表达式){语句}  后面的代码块也叫循环体  通过循环语句可以反复执行一段代码多次
+        //while语句在执行时，先对条件表达式进行求值判断，如果值为true，则执行循环体，循环体执行完毕后，继续对表达式进行判断，如果为true则继续执行循环体，以此类推。如果值为false，则终止循环。
+        n = 1;
+        while (true) { //向这种将条件表达式写死为true的循环叫死循环，该循环不会停止，除非浏览器关闭。死循环慎用！
+            alert(n++);
+            if (n == 3) { //加上条件判断
+                break; //可以使用break终止循环
+            }
+        }
+        //以下为更常见的写法。创建一个循环，往往需要三个步骤
+        var i = 0; //1)创建初始化表达式
+        while (i < 10) { //2)在循环中设置一个条件表达式
+            //document.write(i);
+            //i++; //3)定义一个更新表达式，每次更新初始化变量
+            document.write(i++ + "<br>");
+        }
+        //do...while循环      语法：do{语句}while(条件表达式)
+        //执行时，会先执行循环体，循环体执行完毕后，再对while后的条件表达式进行判断，如果结果为true，则继续执行循环体，执行完毕后继续判断，以此类推，如果结果为false则终止循环
+        i = 11; //do...while可以保证循环体至少执行一次
+        do {
+            document.write(i++ + "<br>");
+        } while (i < 10);
+
+        //for循环
+        //在for循环中，为我们提供了专门的位置用来放三个表达式
+        //语法：for(初始化表达式;条件表达式;更新表达式;){语句}
+        //执行时1先执行初始化表达式，初始化变量；2再执行条件表达式，判断是否执行循环，如果为true则执行循环体到3，如果为false，则终止循环；3执行更新表达式，然后继续重复2
+        for (var i = 0; i < 10; i++) {
+            document.write(i + "<br>");
+        }
+        //for循环中的三个部分都可以省略，也可以写在外面
+        i = 0;
+        for (; i < 10;) {
+            document.write(i++);
+        }
+        // for (;;) { //如果在for循环中不写任何表达式，只写两个；此时循环是个死循环
+        //     alert("hello");
+        // }
+        //嵌套的for循环
+        for (var row = 0; row < 5; row++) {
+            for (var star = 0; star < 5 - row; star++) { //在循环内部再创建一个循环用来控制图形宽度。目前外部的for循环每执行1次，内部的就会执行5次。
+                document.write("*&nbsp;&nbsp;&nbsp;"); //&nbsp;用来加空格
+            }
+            //document.write("* * * * *<br>");
+            document.write("<br>");
+        }
+
+
+        //break可以用来退出switch或循环语句，不能在if语句中使用break和continue
+        for (var i = 0; i < 5; i++) {
+            console.log(i);
+            //break;
+            if (i == 2) {
+                break; //这里的break还是对for循环起作用
+            }
+        }
+
+        outer: //可以为循环语句创建一个lable，来标识当前的循环  label：循环语句
+            for (var w = 0; w < 5; w++) {
+                console.log("@外层循环" + w);
+                for (var n = 0; n < 5; n++) {
+                    break; //break只会对离它最近的循环起作用
+                    //break outer; //使用break语句时，可以在break后跟着一个label，这样break将会结束指定的循环，而不是最近的
+                    console.log("内层循环" + n);
+                }
+            }
+
+        //continue可以用来跳过当次循环。同样continue也是默认只会对离它最近的循环起作用
+        for (var i = 0; i < 5; i++) {
+            if (i == 2) {
+                // break;
+                continue;
+            }
+            console.log(i);
+        }
+        outer1:
+            for (var w = 0; w < 5; w++) {
+                for (var n = 0; n < 5; n++) {
+                    // if (n == 2) {
+                    //     continue;
+                    // }
+                    continue outer1; //和break一样，可以利用label来影响指定循环
+                    console.log("内层循环" + n);
+                }
+                console.log("@外层循环" + w);
+            }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+    <script>
+        //JS 数据类型中除了五种基本数据类型String，Number，Boolean，Null，Undefined就是 Object 引用数据类型
+        //基本数据类型都是单一的值“hello” 123 true，值和值之间没有任何的联系
+        var name = "小A", //比如表示一个人的信息（name gender age），如果使用基本数据类型，我们所创建的变量都是独立的，不能成为一个整体
+            gender = "male",
+            age = "18";
+        //对象属于一种复合的数据类型，在对象中可以保存多个不同数据类型的属性
+        //对象的分类
+        //1.内建对象 由ES标准中定义的对象，在任何的ES实现中都可以使用 比如Math String Number Boolean Function Object
+        //2.宿主对象 由JS的运行环境提供的对象，目前来讲主要指由浏览器提供的对象 比如BOM DOM
+        //3.自定义对象 由开发人员自己创建的对象
+
+        //创建对象
+        var obj = new Object(); //使用new调用的函数，是构造函数constructor 构造函数是专门用来创建对象的函数
+        console.log(obj);
+        console.log(typeof obj);
+        //在对象中保存的值称为属性 接下来像对象中添加属性 语法：对象.属性名=属性值
+        //这种先创建空Object对象再往里面添加属性/方法的模式适用于起始时不确定内部数据的情况。确定是语句太多
+        obj.name = "小A";
+        obj.gender = "male";
+        obj.age = "18";
+        console.log(obj);
+        //读取对象中的属性 语法：对象.属性名
+        console.log(obj.name)
+        console.log(obj.gender)
+        console.log(obj.hello) //如果读取对象中没有的属性，不会报错而是会返回undefined
+            //修改对象的属性值 语法：对象.属性名=新值
+        obj.name = "小B";
+        console.log(obj.name);
+        //删除对象的属性 语法：delete 对象.属性名
+        delete obj.name;
+        console.log(obj.name);
+
+        //对象的属性名
+        //对象的属性名不强制要求遵守标识符的规范，什么乱七八糟的名字都可以使用，但是使用时还是尽量按照标识符的规范去做
+        //如果要使用特殊的属性名，不能采用.的方式，需要使用 对象["属性名"]=属性值，读取时也需要采用这种方式
+        //使用[]这种形式去操作属性更加的灵活，在[]中可以传递一个变量，这样变量的值是多少就会读取那个属性
+        obj.var = "hello";
+        console.log(obj.var);
+        obj["123"] = 789;
+        console.log(obj["123"]);
+        obj["a4"] = 2;
+        var n = "a4";
+        console.log(obj[n]);
+
+        //对象的属性值
+        //JS对象的属性值可以是任意的数据类型，甚至也可以是一个对象
+        obj.test = undefined;
+        console.log(obj.test);
+        var obj2 = new Object();
+        obj.test = obj2;
+        obj2.n = "ah";
+        console.log(obj);
+        console.log(obj.test);
+        console.log(obj.test.n); //去找对象里面的对象的属性值
+        //通过in运算符可以检查一个对象中是否含有指定的属性，有则返回true，没有则返回false
+        //语法：“属性名”in对象
+        console.log("test2" in obj); //检查obj中是否含有test2属性
+        //通过for...in语句可以枚举对象中的属性
+        //语法：for(var变量 in对象){}
+        //对象中有几个属性，循环体就会执行几次，每次执行时，会将对象中的一个属性的名字赋值给变量
+        obj2.m = 12;
+        obj2.y = "ha";
+        console.log(obj2);
+        for (var n in obj2) {
+            // console.log("hello");
+            //console.log(n); //n就是obj2中属性的名字
+            //console.log(obj2[n]); //注意n的值是变量，因此不能用.n 得用[n]
+            console.log(n + ":" + obj2[n]);
+        }
+
+        // 对象的属性值也可以是函数
+        obj.sayGender = function() {
+            console.log(obj.gender);
+        };
+        console.log(obj.sayGender);
+        obj.sayGender(); //相当于调用函数
+        //如果一个函数作为对象的属性保存，那么我们称这个函数是这个对象的方法，调用函数就说调用对象的方法(method)
+        //这里sayGender属性对应的是函数，因此我们说sayGender是obj的方法，调用时说调用obj的sayGender方法
+        function fun2() {
+            console.log(obj.gender);
+        }
+        fun2(); //这叫调函数
+        obj.sayGender(); //这叫调方法  两者只是名称上的区别
+        // console.log(); 这是调用console对象的log方法
+        // document.write(); 这是调用document对象的write方法
+        // "hello".toString(); 这是调用“hello”对象的toString方法
+        var obj8 = {
+            name: "C",
+            sayName: function() { //这样写也行，也可以写很多方法
+                console.log(obj8.name);
+            }
+        }
+        obj8.sayName();
+
+        //基本数据类型和引用数据类型的区别
+        var a = 123;
+        var b = a; //将a的值在b那又复制了一份，复制完它俩没任何关系
+        a++;
+        console.log("a=" + a);
+        console.log("b=" + b); //a的值变了，b的值没有发生任何改变
+        var obj3 = new Object();
+        obj3.name = "AB";
+        var obj4 = obj3; //将地址往obj4又复制了一遍，实际上他俩指的是同一个对象
+        console.log(obj4.name); //obj4.name是会根据obj3.name去改变的
+        //JS中的变量都是保存到栈内存中的，基本数据类型的值直接在栈内存中存储，值与值之间是独立存在的，修改一个变量的值不会影响其他变量
+        //对象是保存到堆内存中的，每创建一个新的对象，就会在堆内存中开辟出一个新的空间，而变量保存的是对象的内存地址（对象的引用），如果两个变量保存的是同一个对象引用，当一个通过一个变量修改属性时，另一个也会受影响
+        obj4 = null;
+        console.log(obj3); //修改obj4的值只是把obj4和地址的联系断开了，对obj3没有任何影响
+        var obj5 = new Object();
+        obj5.name = "AB";
+        console.log(obj3);
+        console.log(obj5);
+        console.log(obj3 == obj4); //false
+        //当比较两个基本数据类型时，就是比较值，而当比较两个引用数据类型时，它是比较的对象的内存地址，地址都不同就不要看内容了
+
+        //使用对象字面量来创建一个对象，适用于起始时对象内部数据时确定的。确定为如果创建多个对象有重复代码
+        var obj6 = {}; //等同于用new的写法
+        obj6.name = "bll";
+        console.log(obj6.name);
+        //使用对象字面量，可以在创建对象时，直接指定对象中的属性  语法：{属性名：属性值，属性名：属性值}
+        //对象字面量的属性名可以加引号也可以不加，建议不加。如果要使用一些特殊的名字则必须加引号。
+        var obj7 = {
+            name: "小A",
+            gender: "male",
+            test: {
+                name: "C"
+            },
+            "2E%^%$#*)(^&%": 88 //如果一个属性后没有其他属性了，则不要写，
+        };
+        console.log(obj7);
+
+        //使用工厂方法创建对象 
+        //通过该方法可以大批量的创建对象 把重复的东西提取到一个函数里，用的时候直接调函数
+        //使用工厂方式创建的对象，使用的构造函数都是Object，所以创建的对象都是object这个类型，导致我们无法区分出多种不同类型的对象。因此我们用构造函数解决这个问题
+        function createPerson(name, age, gender) {
+            var obj = new Object(); //所有的对象都是用new Object创的，并不存在new Person
+            obj.name = name;
+            obj.age = age;
+            obj.gender = gender;
+            obj.sayName = function() {
+                console.log(this.name);
+            }
+            return obj; //返回一个对象的函数都可以称为工厂函数
+
+        }
+        var obj2 = createPerson("Q", 28, "male");
+        var obj3 = createPerson("S", 26, "female");
+        console.log(obj2);
+        console.log(obj3);
+        obj2.sayName();
+        obj3.sayName();
+
+        function createDog(name, age) {
+            var obj = new Object();
+            obj.name = name;
+            obj.age = age;
+            return obj;
+        }
+        var dog = createDog("旺财", 3);
+        console.log(dog); //人和狗输出来类型都是object
+
+
+        // var obj10 = {
+        //     name: "小C",
+        //     gender: "male",
+        //     age: 28,
+        //     sayName: function() {
+        //         console.log(this.name);
+        //     }
+        // }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 属性选择器[属性名] or [属性名=属性值] or [属性名^=属性值]表示属性值以指定值开头 or [属性名$=属性值]表示属性值以指定值结尾 or [属性名*=属性值]属性值中含有某值的元素*/
+        
+        p[title] {
+            color: darkolivegreen;
+        }
+        
+        p[title=abc] {
+            color: darkorange;
+        }
+        
+        p[title^=ab] {
+            color: darkturquoise;
+        }
+        
+        p[title$=abc] {
+            color: deeppink;
+        }
+        
+        p[title*=abc] {
+            color: gold;
+            font-size: 14px;
+        }
+        /* 伪类用来描述一个元素的特殊状态比如第一个子元素，鼠标移入的元素，被点击的元素等，用：开头*/
+        /* :first-child :last-child :nth-child() 这些伪类都是根据所有子元素进行排序 */
+        /* :first-of-type :last-of-type :nth-of-type() 是在同类型元素中进行排序 */
+        
+        ul>li:first-child {
+            color: gray;
+        }
+        
+        ul>li:last-child {
+            color: greenyellow;
+        }
+        /* 括号里可以写n or 2n or 2n+1 or odd or even*/
+        
+        ul>li:nth-child(3) {
+            color: hotpink;
+        }
+        
+        ul>li:first-of-type {
+            color: indigo;
+        }
+        
+        ul>li:not(:nth-child(2)) {
+            color: lightblue;
+        }
+        
+        ul>li:not(:nth-of-type(2n)) {
+            color: lightcoral;
+        }
+        /* :link表示没访问过的链接（正常的链接） ：visited表示访问过的链接,由于隐私的原因，visited的伪类只能修改链接的颜色 */
+        
+        a:visited {
+            color: lightgreen;
+        }
+        
+        a:link {
+            color: lightcoral;
+        }
+        
+        a:hover {
+            color: mediumpurple;
+        }
+        
+        a:active {
+            color: midnightblue;
+        }
+        
+        span {
+            font-size: xx-large;
+        }
+        /* 伪元素表示特殊的位置元素，使用：：开头 */
+        
+        p::first-letter {
+            font-size: 50px;
+            color: gray;
+        }
+        
+        p::first-line {
+            color: green;
+        }
+        
+        p::selection {
+            background-color: yellowgreen;
+        }
+        /* div::before {
+            content: "before";
+            color: tomato;
+        }
+        
+        div::after {
+            content: "after";
+            color: teal;
+        } */
+        
+        div::before {
+            content: "✿";
+        }
+        
+        div::after {
+            content: "✿";
+        }
+    </style>
+</head>
+
+<body>
+    <h1 title="123">我是target2</h1>
+    <p title="abc">我是第一句</p>
+    <p title="abcde">我是第二句</p>
+    <p title="defabc">我是第三句</p>
+    <p>我是第四句我是第四句我是第四句我是第四句我是第四句我是第四句我是第四句我是第四句我是第四句我是第四句我是第四句我是第四句</p>
+    <p>我是第五句</p>
+
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo ratione sit incidunt ex est veniam quod velit eius similique, ut cum ducimus officia distinctio quas placeat. Ducimus itaque ex totam!</p>
+
+    <div>Hello World Hello World</div>
+    <ul>
+        <span></span>
+        <li>第一个</li>
+        <li>第二个</li>
+        <li>第三个</li>
+        <li>第四个</li>
+        <li>第五个</li>
+    </ul>
+
+    <a href="https://dictionary.cambridge.org/us/" target="_self">Cambridge Dictionary</a><br><br>
+    <a href="https://www.baidu123.com" target="_blank">Baidu</a>
+
+</body>
+
+</html>

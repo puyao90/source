@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 使用媒体查询 语法 @media 查询规则{} 
+        媒体类型有 all所有设备 print打印设备 screen带屏幕的设备 speech屏幕阅读器 */
+        /* @media screen { */
+        /* @media print, screen { */
+        /* 表示对所有设备的背景颜色都是绿色 可以写多个类型 */
+        /* 可以在媒体类型前添加only，表示只有 （写不写都一样）只要为了兼容老版本浏览器*/
+        /*@media only screen {
+            body {
+                background-color: #bfa;
+            }
+        } */
+        /* 媒体特性 width视口宽度 height视口高度(一般不管高度) 
+        min-width视口最小宽度(视口大于指定宽度时生效) max-width视口最大宽度(视口小于指定宽度时生效)*/
+        /* @media (width:500px) { */
+        /* 表示当视口宽度是500px的时候背景才生效 */
+        /* @media (max-width:500px) {
+            body {
+                background-color: #bfa;
+            }
+        } */
+        /* 样式切换的分界点，我们称其为断点。网页的样式会在这个点时发生变化。
+        一般比较常用的断点
+         <768 超小屏幕 max-width=768px
+         >768 小屏幕 min-width=768px
+         >992 中型屏幕 min-width=992px
+         >1200 大屏幕 min-width=1200px     
+        */
+        /* 规则可连着写，可以写一个区间。逗号表示或，and表示且(记得有空格) */
+        /*         
+        @media(max-width: 500px),
+        (min-width: 700px) {
+            body {
+                background-color: #fba;
+            }
+        } */
+        /* @media(min-width: 500px) and (max-width: 700px) {
+            body {
+                background-color: #fba;
+            }
+        } */
+        /* 加上媒体类型，完整的写法是  */
+        /* @media only screen and (min-width: 500px) and (max-width:700px) {
+            body {
+                background-color: #bfa;
+            }
+        } */
+        /* 还有个连接词是not 表示除了 下面这句话表示对not后整个否定 */
+        
+        @media not screen and (min-width: 500px) and (max-width:700px) {
+            body {
+                background-color: #bfa;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    响应式布局
+        指网页可以根据不同的设备或窗口大小呈现出不同的效果。
+        使用响应式布局，可以使一个网页适用于所有设备。响应式布局的关键是 媒体查询。
+        通过媒体，可以为不同的设备（如有屏幕的设备电脑手机，没屏幕的打印机，还有其他的比如屏幕阅读器），
+        或设备不同状态（比如屏幕大小，横屏竖屏）来分别设置样式 
+
+        CSS文档 @media
+    -->
+</body>
+
+</html>

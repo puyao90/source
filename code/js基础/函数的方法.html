@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的方法</title>
+    <script>
+        //call()和apply() 这两个方法都是函数对象的方法，需要通过函数对象来调用
+        function fun() {
+            console.log("我是fun函数");
+        };
+        fun();
+        fun.call(); //当对函数调用call()和apply()都会调用函数执行
+        fun.apply();
+        //在调用call()和apply()时可以将一个对象指定为第一个参数,此时这个对象将会成为函数执行时的this
+        function fun1() {
+            console.log(this.name);
+        };
+        fun1();
+        var obj = {
+            name: "obj",
+            sayName: function() {
+                console.log(this.name);
+            }
+        };
+        var obj2 = {
+            name: "obj2"
+        };
+        fun1.call(obj2);
+        fun1.apply(obj2);
+        obj.sayName();
+        obj.sayName.apply(obj2);
+
+        //call方法可以将实参在对象之后依次传递
+        function fun2(a, b) {
+            console.log("a=" + a);
+            console.log("b=" + b);
+        }
+        fun2.call(obj);
+        fun2.call(obj, 2, 3);
+        // fun2.apply(obj, 2, 3);
+        //apply()方法需要将实参封装到一个数组中统一传递
+        fun2.apply(obj, [2, 3]);
+
+        //this总结
+        //1.以函数形式调用时，this永远都是window
+        //2.以方法的形式调用时，this是调用方法的对象
+        //3.以构造函数的形式调用时，this是新创建的那个对象
+        //4.使用call和apply调用时，this是指定的那个对象
+
+
+        //在调用函数时，浏览器每次都会传递两个隐含的参数：第一个是函数的上下文对象this，第二个是封装实参的对象arguments
+        //arguments是一个类数组对象，它也可以通过索引来操作数据，也可以获取长度
+        //在调用函数时，我们所传递的实参都会在arguments中保存（定不定义行参实参都可以在arguments中保存）
+        //argumengts里面有个属性是callee，这个属性对应一个函数对象，就是当前正在指向的函数对象
+        function fun4() {
+            console.log(arguments);
+            console.log(arguments instanceof Array);
+            console.log(Array.isArray(arguments)); //Array里面的isArray()可以检查一个对象是不是数组
+            console.log(arguments.length); //arguments.length可以用来获取实参的长度
+            console.log(arguments[0]); //即使函数不定义行参，也可以通过arguments来使用实参 arguments[0]表示第一个实参 arguments[1]表示第二个实参
+            console.log(arguments.callee);
+        }
+        fun4();
+        fun4("hello", true);
+
+
+
+
+
+
+
+
+        // function fun3() {
+        //     console.log("我是fun函数");
+        // };
+        // fun3();
+
+        // function fun3() {
+        //     console.log("hahaha");
+        // };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

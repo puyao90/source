@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组练习</title>
+    <script>
+        function Per(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var per1 = new Per("xiao A", "18");
+        var per2 = new Per("xiao B", "28");
+        var per3 = new Per("xiao C", "8");
+        var per4 = new Per("xiao D", "16");
+        var per5 = new Per("xiao E", "38");
+
+        var perArr = [per1, per2, per3, per4, per5];
+        console.log(perArr);
+
+        //题目：创建一个函数，可以将perArr中的满18岁的Person提取出来，然后封装到一个新的数组中并返回
+
+        function above18(arr) { //可以传一个行参作为要提取信息的数组
+            var per_above18 = [];
+            for (var i = 0; i < arr.length; i++) { //先遍历数组
+                if (arr[i].age >= 18) {
+                    per_above18.push(perArr[i]);
+                }
+            }
+            return console.log(per_above18);
+        }
+        above18(perArr);
+
+
+        var arr = [1, 2, 3, 2, 1, 3, 4, 2, 5];
+        //题目：去除数组中重复的数字
+
+        var modified = 0;
+        for (var i = 0; i < arr.length + modified; i++) {
+
+            for (var n = 0; n < i - modified; n++) {
+                if (arr[i - modified] == arr[n]) {
+                    arr.splice(i - modified, 1);
+                    modified++;
+                    break;
+                }
+            }
+            console.log(arr);
+        }
+        console.log(arr);
+
+
+        var arr = [1, 2, 3, 2, 1, 3, 4, 2, 5];
+        var deleted = 0
+        var len = arr.length
+        for (var i = 0; i < len; i++) {
+            var current = i - deleted
+            console.log("当前指针", current, "数字", arr[current], arr)
+            for (var n = 0; n < current; n++) {
+                if (arr[current] == arr[n]) {
+                    console.log("删除指针", current, "数字", arr[current])
+                    arr.splice(current, 1);
+                    deleted++
+                    break
+                }
+            }
+        }
+
+
+        var arr = [1, 2, 3, 2, 2, 1, 3, 4, 2, 5];
+        for (var i = 0; i < arr.length; i++) {
+            for (var n = arr.length; n > i; n--) {
+                if (arr[n] == arr[i]) {
+                    arr.splice(n, 1);
+                }
+            }
+            console.log(arr);
+        }
+        console.log(arr);
+
+
+        var arr = [1, 2, 3, 2, 1, 3, 4, 2, 5];
+        var current = 0;
+        while (current < arr.length) {
+            var deleted = false
+            for (var n = 0; n < current; n++) {
+                if (arr[current] == arr[n]) {
+                    arr.splice(current, 1)
+                    deleted = true
+                    break
+                }
+            }
+            // 如果删除， 重复当前数字，如果没有删除，下一个数
+            if (!deleted) {
+                current++
+            }
+        }
+        console.log(arr);
+
+
+        var arr = [1, 2, 3, 2, 2, 1, 3, 4, 2, 5];
+        for (var i = 0; i < arr.length; i++) {
+            for (var j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    arr.splice(j, 1); //当删除了当前j所在的元素后，后边的元素会自动补位，此时将不会再比较这个位置的元素，我需要再比较一次这个位置的元素
+                    j = j - 1; //或者写j--
+                }
+            }
+            console.log(arr);
+        }
+        console.log(arr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

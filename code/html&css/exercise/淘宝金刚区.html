@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        .jingang {
+            width: 750px;
+            height: 300px;
+            background-color: #eee;
+            display: flex;
+            flex-flow: row wrap;
+            align-content: center;
+            justify-content: center;
+        }
+        
+        .jingang img {
+            width: 84px;
+        }
+        
+        .jingang li {
+            background-color: #fba;
+        }
+        
+        .jingang li a {
+            background-color: rgb(221, 221, 160);
+            width: 148px;
+            display: block;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+            font-size: 24px;
+            padding: 12px 0;
+        }
+        
+        .jingang li a div {
+            margin-top: 12px;
+        }
+        /* ------------------------------ 以下为参考 ------------------------------ */
+        
+        .nav {
+            width: 100%;
+            background-color: #eee;
+        }
+        
+        .nav-inner+.nav-inner {
+            margin-top: 16px;
+        }
+        
+        .nav-inner {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .nav-inner .item {
+            /* background-color: #fba; */
+            /* 如果设置auto 图片会随之增长，中间的间距也出不来 */
+            /* flex: auto; */
+            width: 14%;
+            /* 注意设定每个item宽度为百分比，这样item会随着屏幕增大而增大，且中间可添加空白空间 */
+        }
+        
+        .item img {
+            width: 100%;
+        }
+        
+        .item {
+            text-align: center;
+        }
+        
+        .item a {
+            text-decoration: none;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="jingang">
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>天猫</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>聚划算</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>天猫国际</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>外卖</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>天猫超市</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>充值中心</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>飞猪旅行</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>领金币</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>拍卖</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                <div>分类</div>
+            </a>
+        </li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- ------------------------------ 以下为参考 ------------------------------ -->
+
+    <div class="nav">
+        <div class="nav-inner">
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>天猫</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>聚划算</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>天猫国际</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>外卖</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>天猫超市</span>
+                </a>
+            </div>
+        </div>
+        <div class="nav-inner">
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>充值中心</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>飞猪旅行</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>领金币</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>拍卖</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="./picture/016d275bc98e45a8012099c81dd8a1.png" alt="">
+                    <span>分类</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

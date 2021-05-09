@@ -1,0 +1,23 @@
+{
+  "id": "2204628",
+  "name": "京东顶导",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7609653",
+      "name": "地点",
+      "font_class": "xiaochengxu_tubiao",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "12593050",
+      "name": "下拉",
+      "font_class": "xiala",
+      "unicode": "e74e",
+      "unicode_decimal": 59214
+    }
+  ]
+}

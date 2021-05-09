@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        /* 子元素选择器 父元素>子元素{} */
+        /* div.first>span {
+            color: chocolate;
+        } */
+        /* 后代元素选择器 祖先 后代{} */
+        /* div span {
+            color: rgb(30, 144, 210);
+        } */
+        /* 选择下一个兄弟 兄+弟 */
+        /* p+span {
+            color: darkgreen;
+        } */
+        /* 选择下面所有的兄弟 兄～弟 */
+        /* p~span {
+            color: darkmagenta;
+        } */
+        /* 为一个元素设置的样式同时也会应用到它的后代上 但是有些样式，比如背景相关的，布局相关的不会继承 */
+        /* 当我们通过不同的选择器，选中相同的元素，并且为相同的相同的样式设置不同的值时，此时就发生了样式的冲突。 */
+        /* 内联样式                  1,0,0,0
+           id选择器                  0,1,0,0
+           类和伪类，属性选择器        0,0,1,0
+           元素和伪元素选择器          0,0,0,1
+           通配符                    0,0,0,0
+           继承                      没有优先级
+        比较优先级时，需要将所有选择器的优先级进行相加计算。但是分组选择器是单独计算，如div,p,span还是算1。如果优先级计算后相同则优先使用靠下的样式。*/
+        /* 可以在某一样式的后面添加！important，则此时该样式会获取到最高的优先级。但注意一定要慎用 */
+        /* body {
+            font-size: 12px;
+        }
+        
+        div {
+            color: tomato;
+        } */
+        /* p {
+            background-color: wheat;
+        } */
+        /* span,
+        p {
+            color: violet;
+        }
+        
+        p {
+            color: wheat;
+        } */
+        
+        p {
+            color: teal !important;
+        }
+        
+        * {
+            color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first div">我是一个div
+        <p style="color: yellow;">我是div中的p元素
+            <span>我是p中的span</span>
+        </p>
+        <div></div>
+        <span>我是div中的span1</span><br>
+        <span>我是div中的span2</span>
+    </div>
+    <br>
+    <br>
+    <div>
+        <span>我是第二个div中的span</span>
+    </div>
+</body>
+
+</html>

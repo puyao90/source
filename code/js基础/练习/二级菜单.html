@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二级菜单</title>
+    <style>
+        .my_menu {
+            width: 250px;
+            background-color: rgb(230, 230, 230);
+            margin: 15px auto;
+        }
+        
+        .my_menu>div {
+            overflow: hidden;
+        }
+        
+        .collapsed {
+            height: 28px;
+        }
+        
+        span {
+            display: block;
+            line-height: 28px;
+            background-color: rgb(61, 61, 61);
+            color: white;
+            padding-left: 12px;
+        }
+        
+        a {
+            text-decoration: none;
+            display: block;
+            line-height: 38px;
+            padding-left: 12px;
+            color: #000;
+        }
+        
+        a:hover {
+            background-color: rgb(0, 156, 122);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="my_menu">
+        <div class="unfold">
+            <span>在线工具</span>
+            <a href="#">图像优化1</a>
+            <a href="#">图像优化2</a>
+            <a href="#">图像优化3</a>
+            <a href="#">图像优化4</a>
+            <a href="#">图像优化5</a>
+            <a href="#">图像优化6</a>
+        </div>
+        <div class="collapsed">
+            <span>支持我们</span>
+            <a href="#">推荐我们1</a>
+            <a href="#">推荐我们2</a>
+            <a href="#">推荐我们3</a>
+        </div>
+        <div class="collapsed">
+            <span>合作伙伴</span>
+            <a href="#">工具包1</a>
+            <a href="#">工具包2</a>
+            <a href="#">工具包3</a>
+            <a href="#">工具包4</a>
+        </div>
+        <div class="collapsed">
+            <span>测试电流</span>
+            <a href="#">Current or not1</a>
+            <a href="#">Current or not2</a>
+            <a href="#">Current or not3</a>
+            <a href="#">Current or not4</a>
+        </div>
+    </div>
+    <script src="../tools.js">
+    </script>
+    <script>
+        var spans = document.getElementsByTagName("span");
+        var current = spans[0].parentNode;
+
+        // Array.prototype.remove = function() {
+        //     var what, a = arguments,
+        //         L = a.length,
+        //         ax;
+        //     while (L && this.length) {
+        //         what = a[--L];
+        //         while ((ax = this.indexOf(what)) !== -1) {
+        //             this.splice(ax, 1);
+        //         }
+        //     }
+        //     return this;
+        // };
+
+        for (let index = 0; index < spans.length; index++) {
+            spans[index].onclick = function() {
+                var clickObj = this.parentNode;
+                // var heightBefore = clickObj.offsetHeight;
+                // toggleClass(clickObj, "collapsed");
+                // var heightAfter = clickObj.offsetHeight;
+                // console.log(heightBefore + " >>> " + heightAfter);
+                // clickObj.style.height = heightBefore + "px"; //一旦动画执行完毕，内联样式的存在只会干扰下一次点击，就再也收不回来了。因此得删掉
+                // move(clickObj, "height", heightAfter, 2, function() {
+                //     clickObj.style.height = "";
+                // });
+                toggleAddMove(clickObj);
+                if (clickObj != current && !hasClass(current, "collapsed")) {
+                    // addClass(current, "collapsed");
+                    //为了可以统一处理动画过度效果，我们将这里的addClass改为toggleClass。但此时只希望它添加"collapsed"这个类，不希望它删除。要加判断，如果有这个类，就别进这个判断。
+                    // var height11 = current.offsetHeight;
+                    // toggleClass(current, "collapsed");
+                    // var height22 = current.offsetHeight;
+                    // console.log(height11 + " >>> " + height22);
+                    // current.style.height = height11 + "px";
+                    //      //console.log(current);
+                    // move(current, "height", height22, 2, function() {
+                    //     current.style.height = "";
+                    //     // console.log(current);
+                    // });
+                    toggleAddMove(current);
+                }
+                current = clickObj;
+            }
+        }
+
+        function toggleAddMove(obj) {
+            var heightBefore = obj.offsetHeight;
+            toggleClass(obj, "collapsed");
+            var heightAfter = obj.offsetHeight;
+            // console.log(heightBefore + " >>> " + heightAfter, clickObj);
+            obj.style.height = heightBefore + "px"; //一旦动画执行完毕，内联样式的存在只会干扰下一次点击，就再也收不回来了。因此得删掉
+            move(obj, "height", heightAfter, 2, function() {
+                obj.style.height = "";
+            });
+        }
+
+        // for (let index = 0; index < spans.length; index++) {
+        //     spans[index].onclick = function() {
+        //         var clickObj = this.parentNode
+        //         if (clickObj != current && !hasClass(current, "collapsed")) {
+        //             collapse(current)
+        //         }
+        //         collapse(clickObj)
+        //         current = clickObj;
+        //     }
+        // }
+
+
+        function collapse(obj) {
+            var heightBefore = obj.offsetHeight;
+            toggleClass(obj, "collapsed");
+            var heightAfter = obj.offsetHeight;
+            obj.style.height = heightBefore + "px"; //一旦动画执行完毕，内联样式的存在只会干扰下一次点击，就再也收不回来了。因此得删掉
+
+            move(obj, "height", heightAfter, 2, function() {
+                obj.style.height = "";
+            });
+
+            console.log(heightBefore + " >>> " + heightAfter, obj);
+        }
+
+        function hasClass(obj, cn) {
+            var reg = new RegExp("\\b" + cn + "\\b");
+            return reg.test(obj.className);
+        }
+
+        function addClass(obj, cn) {
+            if (!hasClass(obj, cn)) {
+                obj.className += " " + cn;
+            }
+        }
+
+        function removeClass(obj, cn) {
+            var reg = new RegExp("\\b" + cn + "\\b");
+            obj.className = obj.className.replace(reg, "")
+                // clsNameArray = obj.className.split(" ")
+                // obj.className = clsNameArray.remove(cn).join("")
+        }
+
+        function toggleClass(obj, cn) {
+            if (hasClass(obj, cn)) {
+                removeClass(obj, cn)
+            } else {
+                addClass(obj, cn)
+            }
+        }
+    </script>
+
+</body>
+
+</html>

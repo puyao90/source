@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的操作</title>
+    <style>
+        .c1 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+        
+        .c2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        
+        .c3 {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn01">变换方块</button> <button id="btn02">去除分类</button><br><br>
+    <div id="box1" class="c1"></div>
+    <script>
+        btn01.onclick = function() {
+            //我们可以通过修改元素的class属性来间接的修改样式，这样一来我们只需要修改一次即可同时修改多个样式。浏览器只需要重新渲染一次，性能比较好。这种方式可以使表现和行为分离。
+            // box1.className = "c2";
+            // box1.className += " c3" //如果只想添加某些属性
+            addClass(box1, "c3");
+        }
+        btn02.onclick = function() {
+            removeClass(box1, "c3");
+        }
+
+        function addClass(obj, cn) { //定义一个函数，用来向一个元素中添加指定的class属性值
+            if (!hasClass(obj, cn)) { //检测obj中是否含有cn
+                obj.className += " " + cn;
+            }
+        }
+
+        function hasClass(obj, cn) {
+            //var reg = /\bc3\b/; //加单词边界，表示得有c3且c3还要是独立的
+            //这里想把c3改为变量cn，因此不能直接写，需要用构造函数写正则表达式
+            var reg = new RegExp("\\b" + cn + "\\b"); //传变量c3进去后相当于reg=/c3/
+            // alert(reg);
+            return reg.test(obj.className);
+        }
+
+        function removeClass(obj, cn) {
+            var reg = new RegExp("\\b" + cn + "\\b");
+            obj.className = obj.className.replace(reg, "")
+        }
+
+        function toggleClass(obj, cn) { //可用来切换一个类，有就删除，没有就添加
+            if (hasClass(obj, cn)) {
+                removeClass(obj, cn)
+            } else {
+                addClass(obj, cn)
+            }
+        }
+    </script>
+</body>
+
+</html>
