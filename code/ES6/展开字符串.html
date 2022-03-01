@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr1 = [1, 3, 5, 7, 9]
+        let arr2 = [2, 4, 6, 8, 10]
+        console.log(...arr1) //展开一个数组
+        let arr3 = [...arr1, ...arr2] //连接数组
+        console.log(arr3)
+
+        //在函数中使用
+        function sum(...numbers) {
+            return numbers.reduce(
+                (accumulator, currentValue) => {
+                    return accumulator + currentValue
+                }
+            )
+        }
+        console.log(sum(1, 10, 22, 3))
+
+        //构造字面量对象时使用展开语法
+        let person = {
+            name: 'tom',
+            age: '18'
+        }
+        let person2 = {...person //对象的扩展运算符（...）用于取出参数对象的所有可遍历属性，拷贝到当前对象之中。
+        }
+        person.name = 'jerry'
+        console.log(person)
+        console.log(person2)
+        let person3 = {...person, //如果用户自定义的属性，放在扩展运算符后面，则扩展运算符内部的同名属性会被覆盖掉。
+            name: 'jack'
+        }
+        console.log(person3)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
