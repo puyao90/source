@@ -124,7 +124,7 @@
         Huawei.call()
 
         class Phone1 {
-            constructor(brand, price) {
+            constructor(brand, price) { //构造器，构造器中的this是实例对象
                 this.brand = brand;
                 this.price = price
             }
@@ -145,13 +145,17 @@
         console.log(nokia.name)
         console.log(Phone2.name)
 
+        //类中的构造器不是必须写的，要对实例进行一些初始化的操作如添加指定属性时才写
+        //如果A类继承了B类，且A类中写了构造器，那么A类构造器中的super是必须要调用的
+        //类中所定义的方法都是放在类的原型对象上，供实例使用。
+
         //类继承
         class Phone3 {
             constructor(brand, price) {
                 this.brand = brand
                 this.price = price
             }
-            call() {
+            call() { //call方法放在类的原型对象上，供实例使用。通过Phone3实例调用call时，call中的this就是Phone3实例
                 console.log('我可以打电话')
             }
         }
@@ -161,19 +165,138 @@
                 this.color = color
                 this.size = size
             }
-            photo() {
+            photo() { //photo方法放在类的原型对象上，供实例使用。通过SmartPhone实例调用photo时，photo中的this就是SmartPhone实例
                 console.log('拍照')
             }
             playGame() {
                 console.log('玩游戏')
             }
-            call() {
+            call() { //重写从父类型继承过来的方法
                 console.log('我可以进行视频通话')
             }
         }
         const xiaomi = new SmartPhone('xiaomi', 799, 'hei', '4.7inch')
         console.log(xiaomi)
         xiaomi.call()
+
+
+
+        function Timer() {
+            this.s1 = 0;
+            // setInterval(() => this.s1++, 1000);
+        }
+        var timer = new Timer();
+        console.log(timer)
+
+        var num = 0
+        for (var i = 1; i < 100; i++) {
+            if (i % 2 === 0 || i % 3 === 0 || i % 5 === 0) {
+                num++
+            }
+        }
+        console.log(num)
+
+
+
+        //Promise
+        //1创建对象
+        const xhr = new XMLHttpRequest()
+            //加上超时设置
+        xhr.timeout = 2000 //2s内如果请求还没有结果就取消
+        xhr.ontimeout = function() {
+                console.log('网络异常，请稍后重试')
+            }
+            //加上网络异常的回调
+        xhr.onerror = function() {
+                console.log('你的网络似乎出了一些问题')
+            }
+            //2初始化 设置请求方法和URL
+        xhr.open('GET', 'http://127.0.0.1:8000/server?a=100&b=200&c=300') //传参直接写这里
+            //3发送
+        xhr.send()
+            //4事件绑定 处理服务器返回的结果
+        xhr.onreadystatechange = function() { //readystate 是xhr对象中的属性，表示状态 0未初始化 1open方法调用完毕 2send方法调用完毕 3服务端返回了部分结果 4服务端返回了所有结果
+            if (xhr.readyState === 4) { //判断 服务器返回了所有的结果
+                if (xhr.status >= 200 && xhr.status < 300) { //判断响应状态码 一般2开头的都表示成功
+                    //处理结果 行 头 空行 体
+                    console.log(xhr.status) //状态码
+                    console.log(xhr.statusText) //状态字符串
+                    console.log(xhr.getAllResponseHeaders()) //所有响应头
+                    console.log(xhr.response) //响应体
+
+                    //设置result的文本
+                    result_get.innerHTML = xhr.response
+                }
+            }
+        }
+
+
+        // resovle input xhr 
+        // reject input String
+        function betterRequest(resovle, reject) {
+            const xhr = new XMLHttpRequest()
+            xhr.timeout = 2000
+            xhr.ontimeout = function() {
+                reject("timeout")
+            }
+            xhr.onerror = function() {
+                reject("onerror")
+            }
+            xhr.open('GET', 'http://127.0.0.1:8000/server?a=100&b=200&c=300')
+            xhr.send()
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resovle(xhr)
+                    }
+                }
+                reject("xhr.readyState == " + xhr.readyState)
+            }
+        }
+        var p = new Promise(betterRequest)
+
+        p.then(xhr => {
+            console.log("Success", xhr)
+            console.log(xhr.status) //状态码
+            console.log(xhr.statusText) //状态字符串
+            console.log(xhr.getAllResponseHeaders()) //所有响应头
+            console.log(xhr.response) //响应体
+        }, errMsg => {
+            cosole.log("Failed ", errMsg)
+        })
+
+
+        function makeRequest(method, url) {
+            return new Promise(function(resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.open(method, url);
+                xhr.onload = function() {
+                    if (this.status >= 200 && this.status < 300) {
+                        resolve(xhr.response);
+                    } else {
+                        reject({
+                            status: this.status,
+                            statusText: xhr.statusText
+                        });
+                    }
+                };
+                xhr.onerror = function() {
+                    reject({
+                        status: this.status,
+                        statusText: xhr.statusText
+                    });
+                };
+                xhr.send();
+            });
+        }
+
+        makeRequest('GET', 'http://example.com')
+            .then(function(datums) {
+                console.log(datums);
+            })
+            .catch(function(err) {
+                console.error('Augh, there was an error!', err.statusText);
+            });
     </script>
 </body>
 

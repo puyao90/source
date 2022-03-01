@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result_get {
+            width: 200px;
+            height: 100px;
+            border: solid 1px sandybrown;
+        }
+        
+        #result_post {
+            width: 200px;
+            height: 100px;
+            border: solid 1px blue;
+        }
+        
+        #result_key {
+            width: 200px;
+            height: 100px;
+            border: solid 1px green;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点击发送get请求</button>
+    <div id='result_get'></div>
+    <p>鼠标移入发送post请求</p>
+    <div id='result_post'></div>
+    <p>键盘按下发送请求</p>
+    <div id='result_key'></div>
+    <br>
+    <button id='button_send'>点击发送请求</button>
+    <button id='button_cancel'>点击取消请求</button>
+    <p>使用fetch函数发请求</p>
+    <button id='button_fetch'>点击发送请求</button>
+    <script>
+        //发送get请求
+        //获取button元素
+        const btn = document.getElementsByTagName('button')[0]
+        const result_get = document.getElementById('result_get')
+            //绑定事件
+        btn.onclick = function() {
+            //1创建对象
+            const xhr = new XMLHttpRequest()
+                //加上超时设置
+            xhr.timeout = 2000 //2s内如果请求还没有结果就取消
+            xhr.ontimeout = function() {
+                    console.log('网络异常，请稍后重试')
+                }
+                //加上网络异常的回调
+            xhr.onerror = function() {
+                    console.log('你的网络似乎出了一些问题')
+                }
+                //2初始化 设置请求方法和URL
+            xhr.open('GET', 'http://127.0.0.1:8000/server?a=100&b=200&c=300') //传参直接写这里
+                //3发送
+            xhr.send()
+                //4事件绑定 处理服务器返回的结果
+            xhr.onreadystatechange = function() { //readystate 是xhr对象中的属性，表示状态 0未初始化 1open方法调用完毕 2send方法调用完毕 3服务端返回了部分结果 4服务端返回了所有结果
+                if (xhr.readyState === 4) { //判断 服务器返回了所有的结果
+                    if (xhr.status >= 200 && xhr.status < 300) { //判断响应状态码 一般2开头的都表示成功
+                        //处理结果 行 头 空行 体
+                        console.log(xhr.status) //状态码
+                        console.log(xhr.statusText) //状态字符串
+                        console.log(xhr.getAllResponseHeaders()) //所有响应头
+                        console.log(xhr.response) //响应体
+
+                        //设置result的文本
+                        result_get.innerHTML = xhr.response
+                    }
+                }
+            }
+        }
+
+
+        //发送post请求
+        //获取元素对象
+        const result_post = document.getElementById('result_post')
+            //绑定事件
+        result_post.addEventListener('mouseover', function() {
+            //1创建对象
+            const xhr = new XMLHttpRequest()
+                //2初始化 设置类型和URL
+            xhr.open('POST', 'http://127.0.0.1:8000/server')
+                //设置请求头
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded') //这个方法用来设置头信息，两个参数：头的名字，头的值
+                //Content-Type（是预定义的头）是设置请求体内容的类型，application/x-www-form-urlencoded请求体参数查询字符串的类型
+            xhr.setRequestHeader('name', 'py')
+                //如果要加上自定义的头，需要在服务器端设置
+                //3发送
+            xhr.send('a=100&b=200&c=300') //请求体是send里设置  设置参数
+                //4事件绑定
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        //处理服务端返回结果
+                        result_post.innerHTML = xhr.response //response是响应体
+                    }
+                }
+            }
+        })
+
+
+        //服务端响应JSON数据
+        const result_key = document.getElementById('result_key')
+            //绑定键盘按下事件
+        window.onkeydown = function() {
+            //发送请求
+            const xhr = new XMLHttpRequest()
+            xhr.responseType = 'json' //设置响应体数据的类型,结果会自动转为对象
+                //初始化
+            xhr.open('GET', 'http://127.0.0.1:8000/json-server?t=' + Date.now()) //后面加的?t='+Date.now()是为了解决IE缓存问题
+                //发送
+            xhr.send()
+                //事件绑定
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        //1手动对数据进行转化
+                        // console.log(xhr.response)
+                        // let data = JSON.parse(xhr.response)
+                        // console.log(data)
+                        // result_key.innerHTML = data.name
+
+                        //2自动对数据进行转化 借助于xhr对象上的属性responseTyoe
+                        console.log(xhr.response)
+                        result_key.innerHTML = xhr.response.name
+                    }
+                }
+            }
+        }
+
+
+        const button_send = document.getElementById('button_send')
+        const button_cancel = document.getElementById('button_cancel')
+        let xhr //放在外面因为下面取消按钮里也要拿到发送按钮里的xhr
+
+        //处理重复请求问题
+        let isSending = false //标识变量 是否正在发送AJAX请求
+        button_send.onclick = function() {
+            if (isSending) {
+                xhr.abort()
+            } //判断标识变量 如果正在发送，则取消该请求，创建一个新的请求
+            xhr = new XMLHttpRequest()
+            isSending = true //修改标识变量
+            xhr.open('GET', 'http://127.0.0.1:8000/server')
+            xhr.send()
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    isSending = false //修改标识变量
+                }
+            }
+        }
+        button_cancel.onclick = function() {
+            xhr.abort() //取消请求发送
+        }
+
+
+        const button_fetch = document.getElementById("button_fetch")
+        button_fetch.onclick = function() {
+            fetch('http://127.0.0.1:8000/fetch?vip=10', {
+                method: 'POST',
+                headers: {
+                    name: 'atguigu'
+                },
+                body: 'username=admin&password=admin'
+            }).then(response => {
+                // return response.text()
+                return response.json()
+            }).then(response => {
+                console.log(response)
+            })
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios发送请求</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <button>GET</button>
+    <button>POST</button>
+    <button>通用型方法ajax</button>
+    <script>
+        const btns = document.querySelectorAll('button')
+        btns[0].onclick = function() {
+            axios.get('http://127.0.0.1:8000/axios', { //发的东西
+                params: { //url参数
+                    id: 100,
+                    vip: 7
+                },
+                headers: { //请求头参数
+                    name: 'atguigu',
+                    age: 20
+                }
+            }).then(value => { //基于promise 
+                console.log(value) //返回一个对象 config包含配置  data响应体 headers 请求的原生ajax对象 status响应状态码和字符串
+            })
+        }
+
+
+        btns[1].onclick = function() {
+            axios.post('http://127.0.0.1:8000/axios', { //第二个参数是请求体
+                //axios.post(url[, data[, config]])
+                username: 'admin',
+                password: 'admin'
+            }, {
+                params: { //url
+                    id: 200,
+                    vip: 9
+                },
+                headers: { //请求头参数
+                    height: 180,
+                    weight: 120
+                }
+            })
+        }
+
+
+        btns[2].onclick = function() {
+            axios({
+                method: "POST",
+                url: 'http://127.0.0.1:8000/axios',
+                params: {
+                    vip: 10,
+                    level: 30
+                },
+                headers: {
+                    a: 180,
+                    b: 100
+                },
+                data: {
+                    username: 'admin',
+                    password: 'admin'
+                }
+            }).then(response => {
+                console.log(response)
+                console.log(response.statusText)
+                console.log(response.headers)
+                console.log(response.data)
+            })
+        }
+    </script>
+</body>
+
+</html>
