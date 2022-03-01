@@ -20,10 +20,16 @@
     <script src="jquery-3.6.0.js"></script>
     <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
     <script>
-        $(function() { //绑定文档加载完成的监听 使用jQuery核心函数：$或Query
-            $('#btn2').click(function() { //给btn2绑定点击监听 使用jQuery核心对象：执行$()函数返回的对象
+        $(function() { //绑定文档加载完成的监听 使用jQuery核心函数：$或Query =>1）
+            $('#btn2').click(function() { //给btn2绑定点击监听 使用jQuery核心对象：执行$()函数返回的对象 =>2）
                 var username = $('#username').val()
                 console.log("jQuery", username)
+            })
+
+            $('#btn').click(function() {
+                // console.log(this.innerHTML)
+                console.log($(this).html()) //this指发生事件的dom元素对象 =>3）
+                $('<input type="text" name="msg2"><br>').appendTo('div')
             })
         })
 
@@ -32,6 +38,23 @@
         console.log(jQuery === $)
 
         console.log($()) //是对象
+
+        var arr = [2, 4, 7, ]
+        $.each(arr, function(index, item) { //=>1）
+            console.log("index:" + index + "item:" + item)
+        })
+        var str = '  hello world   '
+        console.log('---' + $.trim(str) + "---") //=>2）
+
+        //作为一般函数调用 $(param)
+        //1)参数为函数：当DOM加载完成后，完成此回调函数
+        //2)参数为选择器字符串：查找所有匹配的标签，并将它们封装成jQuery对象
+        //3)参数为DOM对象：将DOM对象封装成jQuary对象
+        //4)参数为html标签字符串（用得少）：创建标签对象并封装成jQuery对象
+
+        //作为对象使用：$.xxx()  这时把$称为工具对象
+        //1)$.each():隐式遍历数组
+        //2)$.trim():去除两端的空格
     </script>
 </head>
 
@@ -39,7 +62,12 @@
     <input type="text" id='username'>
     <button id="btn1">确定(原生版)</button>
     <button id="btn2">确定(jQuery版)</button>
-
+    <br><br>
+    <div>
+        <button id='btn'>测试</button>
+        <br>
+        <input type="text" name='msg1'><br>
+    </div>
 
 
 
