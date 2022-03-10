@@ -1,30 +1,29 @@
 var tamagotchi;
-var appleList = [];
-
-function copyVector(v) {
-  return createVector(v.x, v.y);
-}
+var appleBanner;
 
 class Apple {
-  constructor(x, y, size) {
+  constructor(x, y, size, color) {
     this.center = createVector(x, y);
     this.size = size;
-    this.original = copyVector(center);
+    this.original = copyVector(this.center);
     this.current = "";
     this.grabbed = false;
   }
 
   draw() {
+    fill(220, 20, 60);
     ellipse(this.center.x, this.center.y, this.size);
   }
 
   checkGrabbed() {
-    this.grabbed = mouseIsInObject(this.center.x, this.center.y, this.size);
+    this.grabbed = mouseTouchedObject(this.center.x, this.center.y, this.size);
   }
+
   reset() {
     this.grabbed = false;
     this.center = createVector(this.original.x, this.original.y);
   }
+
   followMouse() {
     if (this.grabbed) {
       this.center.x = mouseX - width / 2;
@@ -33,46 +32,53 @@ class Apple {
   }
 }
 
-function generateApples(number) {
-  for (let i = 0; i < number; i++) {
-    var v = createVector(
-      24 + i * 26 * 1.3 - width / 2,
-      height - 20 - height / 2
-    );
-    appleList.push({
-      appleCenter: v,
-      grabbed: false,
-      size: 26,
-      original: createVector(v.x, v.y),
-      draw: function () {
-        ellipse(this.appleCenter.x, this.appleCenter.y, this.size);
-      },
-      checkGrabbed: function () {
-        this.grabbed = mouseIsInObject(
-          this.appleCenter.x,
-          this.appleCenter.y,
-          this.size
-        );
-      },
-      reset: function () {
-        this.grabbed = false;
-        this.appleCenter = createVector(this.original.x, this.original.y);
-      },
-      followMouse: function () {
-        if (this.grabbed) {
-          this.appleCenter.x = mouseX - width / 2;
-          this.appleCenter.y = mouseY - height / 2;
+class AppleBanner {
+  constructor(appleNumber = 3) {
+    this.appleNumber = appleNumber;
+    this.appleList = [];
+    this.generateApples(3);
+  }
+
+  generateApples(appleNumber) {
+    this.appleList = [];
+    for (let i = 0; i < appleNumber; i++) {
+      this.appleList.push(
+        new Apple(24 + i * 26 * 1.3 - width / 2, height - 20 - height / 2, 26)
+      );
+    }
+  }
+
+  draw() {
+    this.applyFunction("draw");
+  }
+
+  applyFunction(func) {
+    for (let i = 0; i < this.appleList.length; i++) {
+      var apple = this.appleList[i];
+      apple[func]();
+    }
+  }
+
+  releaseApple() {
+    for (let index = 0; index < this.appleList.length; index++) {
+      const apple = this.appleList[index];
+      if (apple.grabbed) {
+        if (mouseTouchedObject(0, 0, tamagotchi.size * 1.2)) {
+          this.appleList.splice(index, 1);
+          tamagotchi.grow();
+        } else {
+          apple.reset();
         }
-      },
-    });
+      }
+    }
   }
 }
 
 function setup() {
   createCanvas(500, 500);
   noStroke();
-  generateApples(3);
 
+  appleBanner = new AppleBanner();
   tamagotchi = {
     points: [],
     size: 100,
@@ -127,63 +133,38 @@ function draw() {
 
   tamagotchi.drawTamagotchi();
   tamagotchi.shrink();
-
-  drawApples();
-}
-
-function drawApples() {
-  fill(220, 20, 60);
-  for (let i = 0; i < appleList.length; i++) {
-    var apple = appleList[i];
-    // console.log(i);
-    apple.draw();
-  }
+  appleBanner.draw();
 }
 
 function mousePressed() {
-  for (let index = 0; index < appleList.length; index++) {
-    appleList[index].checkGrabbed();
-  }
+  appleBanner.applyFunction("checkGrabbed");
 }
 
 function mouseReleased() {
-  for (let index = 0; index < appleList.length; index++) {
-    const apple = appleList[index];
-    if (apple.grabbed) {
-      if (mouseIsInObject(0, 0, tamagotchi.size * 1.2)) {
-        eatApple(index);
-        tamagotchi.grow();
-      } else {
-        apple.reset();
-      }
-    }
-  }
+  appleBanner.releaseApple();
 }
 
-function checkAppleIsEmpty() {
-  if (appleList.length == 0) generateApples(4);
+function checkAndRegenerateApples() {
+  if (appleBanner.appleList.length == 0) appleBanner.generateApples(4);
 }
 
 function keyPressed() {
-  if (keyCode == 32) checkAppleIsEmpty();
-}
-
-function eatApple(appleIndex) {
-  appleList.splice(appleIndex, 1);
+  if (keyCode == 32) checkAndRegenerateApples();
 }
 
 function mouseDragged() {
-  // move grabbed apple follow mouse x,y
-  for (let index = 0; index < appleList.length; index++) {
-    appleList[index].followMouse();
-  }
+  appleBanner.applyFunction("followMouse");
 }
 
-function mouseIsInObject(objectX, objectY, radius) {
+function mouseTouchedObject(objectX, objectY, radius) {
   return (
     mouseX - width / 2 < objectX + radius / 2 &&
     mouseX - width / 2 > objectX - radius / 2 &&
     mouseY - height / 2 > objectY - radius / 2 &&
     mouseY - height / 2 < objectY + radius / 2
   );
+}
+
+function copyVector(v) {
+  return createVector(v.x, v.y);
 }
