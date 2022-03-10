@@ -71,7 +71,7 @@ function searchCar_infront(car) {
       CarObject_Data[i].KmsDriven - car.KmsDriven < 200 &&
       CarObject_Data[i].KmsDriven - car.KmsDriven > 0
     ) {
-      return car;
+      return CarObject_Data[i];
     }
   }
   return false;
