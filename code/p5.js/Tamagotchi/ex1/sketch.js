@@ -6,7 +6,6 @@ function setup() {
   createCanvas(500, 500);
   noStroke();
 
-  appleBanner = new AppleBanner();
   tamagotchi = {
     points: [],
     size: 100,
@@ -51,8 +50,8 @@ function setup() {
       this.size = max(this.size, 30);
     },
   };
-
   tamagotchi.setup();
+  appleBanner = new AppleBanner(tamagotchi);
 }
 
 function draw() {
@@ -65,11 +64,11 @@ function draw() {
 }
 
 function mousePressed() {
-  appleBanner.grabApple();
+  appleBanner.mousePressed();
 }
 
 function mouseReleased() {
-  appleBanner.checkRelease(tamagotchi);
+  appleBanner.mouseReleased(tamagotchi);
 }
 
 function keyPressed() {
@@ -77,7 +76,7 @@ function keyPressed() {
 }
 
 function mouseDragged() {
-  appleBanner.moveApple();
+  appleBanner.mouseDragged();
 }
 
 window.setup = setup;
