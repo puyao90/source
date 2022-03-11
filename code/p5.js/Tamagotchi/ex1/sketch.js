@@ -1,119 +1,6 @@
+import {AppleBanner} from "./obj.js";
 var tamagotchi;
 var appleBanner;
-
-class Apple {
-  constructor(x, y, size, color) {
-    this.current = createVector(x, y);
-    this.size = size;
-    this.original = copyVector(this.current);
-    this.grabbed = false;
-    this.target = null;
-    this.speed = 0.03;
-    this.deleted = false;
-  }
-
-  draw() {
-    if (!this.deleted) {
-      fill(220, 20, 60);
-      if (this.target) {
-        let deltaX = this.target.x - this.current.x;
-        let deltaY = this.target.y - this.current.y;
-
-        this.current.x += this.deltaX * this.speed;
-        this.current.y += this.deltaY * this.speed;
-        if (abs(deltaX) < 10 && abs(deltaY) < 10) {
-          this.current = copyVector(this.target);
-          this.target = null;
-        }
-      }
-      ellipse(this.current.x, this.current.y, this.size);
-    }
-  }
-
-  checkGrabbed() {
-    this.grabbed = mouseTouchedObject(
-      this.current.x,
-      this.current.y,
-      this.size
-    );
-  }
-
-  release() {
-    if (this.grabbed) {
-      if (mouseTouchedObject(0, 0, tamagotchi.size * 1.2)) {
-        this.deleted = true;
-        tamagotchi.grow();
-      } else {
-        this.reset();
-      }
-    }
-  }
-
-  reset() {
-    this.grabbed = false;
-    this.target = createVector(this.original.x, this.original.y);
-    this.deltaX = this.target.x - this.current.x;
-    this.deltaY = this.target.y - this.current.y;
-  }
-
-  followMouse() {
-    if (this.grabbed) {
-      this.current.x = mouseX - width / 2;
-      this.current.y = mouseY - height / 2;
-    }
-  }
-}
-
-class AppleBanner {
-  constructor(appleNumber = 3) {
-    this.appleNumber = appleNumber;
-    this.appleList = [];
-    this.generateApples(appleNumber);
-    this.currentAppleNumber = appleNumber;
-  }
-
-  generateApples(appleNumber) {
-    // this.appleList = [];
-    for (let i = 0; i < appleNumber; i++) {
-      this.appleList.push(
-        new Apple(24 + i * 26 * 1.3 - width / 2, height - 20 - height / 2, 26)
-      );
-    }
-  }
-
-  draw() {
-    this.applyFunction("draw");
-  }
-
-  applyFunction(func) {
-    for (let i = 0; i < this.appleList.length; i++) {
-      var apple = this.appleList[i];
-      apple[func]();
-    }
-  }
-
-  noApples() {
-    let a = true;
-    for (let i = 0; i < this.appleList.length; i++) {
-      a = a && this.appleList[i].deleted;
-    }
-    return a;
-  }
-
-  //   releaseApple() {
-  //     for (let index = 0; index < this.appleList.length; index++) {
-  //       const apple = this.appleList[index];
-  //       if (apple.grabbed) {
-  //         if (mouseTouchedObject(0, 0, tamagotchi.size * 1.2)) {
-  //           this.appleList.splice(index, 1);
-  //           tamagotchi.grow();
-  //         } else {
-  //           apple.reset();
-  //         }
-  //       }
-  //     }
-  //   }
-}
 
 function setup() {
   createCanvas(500, 500);
@@ -178,35 +65,24 @@ function draw() {
 }
 
 function mousePressed() {
-  appleBanner.applyFunction("checkGrabbed");
+  appleBanner.grabApple();
 }
 
 function mouseReleased() {
-  //   appleBanner.releaseApple();
-  appleBanner.applyFunction("release");
-}
-
-function checkAndRegenerateApples() {
-  if (appleBanner.noApples()) appleBanner.generateApples(4);
+  appleBanner.checkRelease(tamagotchi);
 }
 
 function keyPressed() {
-  if (keyCode == 32) checkAndRegenerateApples();
+  if ((keyCode == 32) & appleBanner.noApples()) appleBanner = new AppleBanner();
 }
 
 function mouseDragged() {
-  appleBanner.applyFunction("followMouse");
+  appleBanner.moveApple();
 }
 
-function mouseTouchedObject(objectX, objectY, radius) {
-  return (
-    mouseX - width / 2 < objectX + radius / 2 &&
-    mouseX - width / 2 > objectX - radius / 2 &&
-    mouseY - height / 2 > objectY - radius / 2 &&
-    mouseY - height / 2 < objectY + radius / 2
-  );
-}
-
-function copyVector(v) {
-  return createVector(v.x, v.y);
-}
+window.setup = setup;
+window.draw = draw;
+window.mousePressed = mousePressed;
+window.mouseReleased = mouseReleased;
+window.keyPressed = keyPressed;
+window.mouseDragged = mouseDragged;
