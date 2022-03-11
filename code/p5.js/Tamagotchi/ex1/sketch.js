@@ -3,31 +3,63 @@ var appleBanner;
 
 class Apple {
   constructor(x, y, size, color) {
-    this.center = createVector(x, y);
+    this.current = createVector(x, y);
     this.size = size;
-    this.original = copyVector(this.center);
-    this.current = "";
+    this.original = copyVector(this.current);
     this.grabbed = false;
+    this.target = null;
+    this.speed = 0.03;
+    this.deleted = false;
   }
 
   draw() {
-    fill(220, 20, 60);
-    ellipse(this.center.x, this.center.y, this.size);
+    if (!this.deleted) {
+      fill(220, 20, 60);
+      if (this.target) {
+        let deltaX = this.target.x - this.current.x;
+        let deltaY = this.target.y - this.current.y;
+
+        this.current.x += this.deltaX * this.speed;
+        this.current.y += this.deltaY * this.speed;
+        if (abs(deltaX) < 10 && abs(deltaY) < 10) {
+          this.current = copyVector(this.target);
+          this.target = null;
+        }
+      }
+      ellipse(this.current.x, this.current.y, this.size);
+    }
   }
 
   checkGrabbed() {
-    this.grabbed = mouseTouchedObject(this.center.x, this.center.y, this.size);
+    this.grabbed = mouseTouchedObject(
+      this.current.x,
+      this.current.y,
+      this.size
+    );
+  }
+
+  release() {
+    if (this.grabbed) {
+      if (mouseTouchedObject(0, 0, tamagotchi.size * 1.2)) {
+        this.deleted = true;
+        tamagotchi.grow();
+      } else {
+        this.reset();
+      }
+    }
   }
 
   reset() {
     this.grabbed = false;
-    this.center = createVector(this.original.x, this.original.y);
+    this.target = createVector(this.original.x, this.original.y);
+    this.deltaX = this.target.x - this.current.x;
+    this.deltaY = this.target.y - this.current.y;
   }
 
   followMouse() {
     if (this.grabbed) {
-      this.center.x = mouseX - width / 2;
-      this.center.y = mouseY - height / 2;
+      this.current.x = mouseX - width / 2;
+      this.current.y = mouseY - height / 2;
     }
   }
 }
@@ -36,11 +68,12 @@ class AppleBanner {
   constructor(appleNumber = 3) {
     this.appleNumber = appleNumber;
     this.appleList = [];
-    this.generateApples(3);
+    this.generateApples(appleNumber);
+    this.currentAppleNumber = appleNumber;
   }
 
   generateApples(appleNumber) {
-    this.appleList = [];
+    // this.appleList = [];
     for (let i = 0; i < appleNumber; i++) {
       this.appleList.push(
         new Apple(24 + i * 26 * 1.3 - width / 2, height - 20 - height / 2, 26)
@@ -59,19 +92,27 @@ class AppleBanner {
     }
   }
 
-  releaseApple() {
-    for (let index = 0; index < this.appleList.length; index++) {
-      const apple = this.appleList[index];
-      if (apple.grabbed) {
-        if (mouseTouchedObject(0, 0, tamagotchi.size * 1.2)) {
-          this.appleList.splice(index, 1);
-          tamagotchi.grow();
-        } else {
-          apple.reset();
-        }
-      }
+  noApples() {
+    let a = true;
+    for (let i = 0; i < this.appleList.length; i++) {
+      a = a && this.appleList[i].deleted;
     }
+    return a;
   }
+
+  //   releaseApple() {
+  //     for (let index = 0; index < this.appleList.length; index++) {
+  //       const apple = this.appleList[index];
+  //       if (apple.grabbed) {
+  //         if (mouseTouchedObject(0, 0, tamagotchi.size * 1.2)) {
+  //           this.appleList.splice(index, 1);
+  //           tamagotchi.grow();
+  //         } else {
+  //           apple.reset();
+  //         }
+  //       }
+  //     }
+  //   }
 }
 
 function setup() {
@@ -141,11 +182,12 @@ function mousePressed() {
 }
 
 function mouseReleased() {
-  appleBanner.releaseApple();
+  //   appleBanner.releaseApple();
+  appleBanner.applyFunction("release");
 }
 
 function checkAndRegenerateApples() {
-  if (appleBanner.appleList.length == 0) appleBanner.generateApples(4);
+  if (appleBanner.noApples()) appleBanner.generateApples(4);
 }
 
 function keyPressed() {
