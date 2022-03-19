@@ -118,7 +118,7 @@ class AppleBanner {
       .map((apple) => {
         if (apple.grabbed && inRangeOfTamagotchi) {
           tamagotchi.grow();
-          apple.deleted = true;
+          // apple.deleted = true;
           return undefined;
         } else if (apple.grabbed) {
           apple.putBack();
