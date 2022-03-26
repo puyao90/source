@@ -212,6 +212,32 @@
             key: value
         }));
         console.log(reformattedArray2)
+
+        class Student {
+            constructor(name) {
+                this.name = name;
+            }
+
+            hello() {
+                console.log('Hello, ' + this.name + '!');
+            }
+        }
+        var xiaoming = new Student('小明');
+        xiaoming.hello();
+
+        class PrimaryStudent extends Student {
+            constructor(grade) {
+                //     // super(name);
+                this.grade = grade;
+            }
+
+            myGrade() {
+                console.log('I am at grade ' + this.grade);
+            }
+        }
+        var xiaoxiaoming = new PrimaryStudent("小小明");
+        xiaoxiaoming.hello()
+        xiaoxiaoming.myGrade()
     </script>
 </head>
 
