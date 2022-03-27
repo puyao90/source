@@ -186,6 +186,58 @@
 
         console.log(Math.sign(5)) //判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值。
         console.log(Math.sign(-5)) //正数，返回+1；负数返回-1；0返回0；-0返回-0;其他值返回NaN。
+
+        const kvArray = [{
+            key: 1,
+            value: 10
+        }, {
+            key: 2,
+            value: 20
+        }, {
+            key: 3,
+            value: 30
+        }];
+
+        const reformattedArray1 = kvArray.map(({
+            key,
+            value
+        }) => ({
+            [key]: value
+        }));
+        console.log(reformattedArray1)
+        const reformattedArray2 = kvArray.map(({
+            key,
+            value
+        }) => ({
+            key: value
+        }));
+        console.log(reformattedArray2)
+
+        class Student {
+            constructor(name) {
+                this.name = name;
+            }
+
+            hello() {
+                console.log('Hello, ' + this.name + '!');
+            }
+        }
+        var xiaoming = new Student('小明');
+        xiaoming.hello();
+
+        class PrimaryStudent extends Student {
+            constructor(grade) {
+                //     // super(name);
+                this.grade = grade;
+            }
+
+            myGrade() {
+                console.log('I am at grade ' + this.grade);
+            }
+        }
+        var xiaoxiaoming = new PrimaryStudent("小小明");
+        xiaoxiaoming.hello()
+        xiaoxiaoming.myGrade()
     </script>
 </head>
 

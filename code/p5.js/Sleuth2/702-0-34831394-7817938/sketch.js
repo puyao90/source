@@ -132,6 +132,7 @@ function Turnover_Car_engine(car) {
     if (car.exhaust[i].y > height) {
       car.exhaust.splice(i, 1);
     }
+    // console.log(car.exhaust[i].y);
   }
 }
 
@@ -139,6 +140,8 @@ function drawExhaust(car) {
   noStroke();
   for (var i = 0; i < car.exhaust.length; i++) {
     var alpha = map(car.exhaust[i].size, 0, 40, 50, 0);
+    // var alpha = car.exhaust[i].size;
+
     fill(125, alpha);
     ellipse(car.exhaust[i].x + 20, car.exhaust[i].y, car.exhaust[i].size);
   }
