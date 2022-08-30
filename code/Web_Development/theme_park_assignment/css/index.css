@@ -1,0 +1,88 @@
+#campaign_video {
+  position: relative;
+}
+
+#campaign_video h1 {
+  position: absolute;
+  color: white;
+  left: 200px;
+  top: 270px;
+  letter-spacing: 4px;
+}
+
+#promotions_and_news {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#promotions_and_news h3 {
+  font-size: 20px;
+  margin-top: 12px;
+  margin-left: 12px;
+}
+
+#promotions_and_news p {
+  font-size: 14px;
+  width: 255px;
+  margin-top: -4px;
+  margin-left: 12px;
+}
+
+#promotions_and_news .prosAndNews {
+  position: relative;
+}
+
+#promotions_and_news .hover_bg {
+  position: absolute;
+  bottom: 0px;
+  width: 280px;
+  height: 113px;
+  background-color: rgba(23, 23, 23, .66);
+  color: white;
+  display: none;
+}
+
+#promotions_and_news .prosAndNews a:hover .hover_bg {
+  display: block;
+}
+
+#recommend_activities {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#recommend_activities .activities_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+#brif_intro {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+#brif_intro p {
+  margin-top: 16px;
+}
+
+#map_and_social #map {
+  float: left;
+}
+
+#map_and_social #social {
+  float: right;
+}
+
+#map_and_social #social .container {
+  width: 386px;
+  margin-left: 0px;
+}
+
+#map_and_social #social .container .row {
+  padding-left: 0px;
+  padding-right: 0px;
+}

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- This head section contains all the invisible information about the page -->
+
+<head>
+    <title>South London Reading Club - Home</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a website for a community of people interested in reading books for discussion and sharing.">
+    <meta name="author" content="Online Reading Community">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="refresh" content="600">
+    <meta name="keywords" content="Book Reading Discussion 'Reading Club'">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.coursera.org/widget/coursera-connect.css">
+    <script src="https://www.coursera.org/widget/coursera-widget-connect-v0.js"></script>
+    <link rel="stylesheet" type="text/css" href="StyleSheet/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+</head>
+
+<!-- This body section contains the structure for all the visble content -->
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 nopadding">
+                <header>
+                    <script id="template" type="template/handlebars">
+                        <h1>{{caps h1 lower='no'}}</h1>
+                    </script>
+                    <span id="target"></span>
+                    <object data="img/logo.svg"> 
+                 </object>
+                </header>
+                <script>
+                    var src = document.getElementById('template').innerHTML
+                    var template = Handlebars.compile(src)
+                    Handlebars.registerHelper('caps', function(text, options) {
+                        if (!options.hash.lower || options.hash.lower === 'no') {
+                            return text.toUpperCase()
+                        }
+                        return text.toLowerCase()
+                    })
+                    var rendered = template({
+                        h1: "South London Bookclub**"
+                    })
+                    document.getElementById('target').innerHTML = rendered
+                </script>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        <nav>
+                            <label for="toggle">&#9776;</label>
+                            <input type="checkbox" id="toggle" />
+                            <div id="menu">
+                                <ol>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="onlineRead.html">Online reads</a></li>
+                                    <li><a href="localReadingGroups.html">Local reading groups</a></li>
+                                    <li><a href="localBookShops.html">Local bookshops</a></li>
+                                </ol>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 nopadding">
+                <div id="fpIntro">
+                    <div id="fpintroTitle">
+                        <script id="greet_template" type="template/handlebars">
+                            <p>{{greetings}} South London Reading Club.</p>
+                        </script>
+                        <span id="greet_target"></span>
+                    </div>
+                    <script>
+                        var greet_src = document.getElementById('greet_template').innerHTML
+                        var greet_template = Handlebars.compile(greet_src)
+                        Handlebars.registerHelper('greetings', function(options) {
+                            switch (options.data.language) {
+                                case 'en':
+                                    return 'Welcome to'
+                                case 'ch':
+                                    return '欢迎来'
+                                case 'fr':
+                                    return 'Bienvenue a'
+                                default:
+                                    return 'Welcome to'
+                            }
+                        })
+                        var greet_rendered = greet_template({}, {
+                            data: {
+                                language: 'en'
+                            }
+                        })
+                        document.getElementById('greet_target').innerHTML = greet_rendered
+                    </script>
+                    <div id="fpintroText">
+                        <script id="greet_template" type="template/handlebars">
+                            <p>{{greetings}} South London Reading Club.</p>
+                        </script>
+                        <p>The South London Reading Club is an online community of book readers based in South East London.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 nopadding">
+                <div id="fplinkArea">
+                    <script id="read_template" type="template/handlebars">
+                        {{#unless beingread}}
+                        <div class="fplinkAreaContent">
+                            <h2>Books being read</h2>
+                            <p>There are a number of books being read online. You can join any one of the groups and read along with the other members</p>
+                            <p>To find out more, go to the <a href="onlineRead.html">online reads page</a>.</p>
+                        </div>
+                        {{/unless}}
+                    </script>
+                    <span id="read_target"></span>
+                    <script>
+                        var read_src = document.getElementById('read_template').innerHTML
+                        var read_template = Handlebars.compile(read_src)
+                        var read_rendered = read_template({
+                            beingread: false
+                        })
+                        document.getElementById('read_target').innerHTML = read_rendered
+                    </script>
+
+                    <div class="fplinkAreaContent">
+                        <h2>Local reading groups</h2>
+                        <p>There are a variety of different reading groups in your area...</p>
+                        <p>To find out more, go to the <a href="localReadingGroups.html">local reading groups page</a>.</p>
+                    </div>
+
+                    <div class="fplinkAreaContent">
+                        <h2>Local bookshops</h2>
+                        <!-- <p>The South London Reading Club supports local bookshops, who often have special offers to coincide with the books being read.</p> -->
+                        <script id="publish_template" type="template/handlebars">
+                            {{#bookpublished books}} {{name}} is {{publishedyear}}<br> {{/bookpublished}}
+                        </script>
+                        <span id="publish_target"></span>
+                        <script>
+                            var publish_src = document.getElementById('publish_template').innerHTML
+                            var publish_template = Handlebars.compile(publish_src)
+                            Handlebars.registerHelper('bookpublished', function(data, options) {
+                                var returnData = ''
+                                for (let i = 0; i < data.length; i++) {
+                                    data[i].publishedyear = (data[i].publishedyear < 2019) ? 'published' : 'not published';
+                                    returnData += options.fn(data[i])
+                                    console.log(options.fn(data[i]))
+                                }
+                                return returnData
+                            })
+                            var publish_rendered = publish_template({
+                                "books": [{
+                                    "name": "book1",
+                                    "publishedyear": 2013
+                                }, {
+                                    "name": "book2",
+                                    "publishedyear": 2020
+                                }]
+                            })
+                            document.getElementById('publish_target').innerHTML = publish_rendered
+                        </script>
+
+                        <script id="partials_template" type="template/handlebars">
+                            {{>Thisis_partials}}
+                        </script>
+                        <span id="partials_target"></span>
+                        <script>
+                            Handlebars.registerPartial('Thisis_partials', 'Hello {{text}}')
+                            var partials_src = document.getElementById('partials_template').innerHTML
+                            var partials_template = Handlebars.compile(partials_src)
+                            var partials_rendered = partials_template({
+                                text: 'yao yao'
+                            })
+                            document.getElementById('partials_target').innerHTML = partials_rendered
+                        </script>
+                        <p>To find out more, go to the <a href="localBookShops.html">local bookshops page</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 nopadding">
+                <div id="bestSellersList">
+                    <h2>Best Sellers</h2>
+                    <script id="bs_template" type="template/handlebars">
+                        {{!--list bestSellers--}}
+                        <ol>
+                            {{#each bestSeller}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ol>
+                    </script>
+                    <span id="bs_target"></span>
+                    <!-- <ol>
+                        <li><b>The Woman in the Window</b> by <em>A.J.Finn</em></li>
+                        <li><b>Stand By Me</b> by <em>S.D.Robertson</em></li>
+                        <li><b>One in a Million</b> by <em>Lindsey Kelk</em></li>
+                        <li><b>The Secret Wife</b> by <em>Gill Paul</em></li>
+                        <li><b>Try Not to Breathe</b> by <em>Holly Seddon</em></li>
+                        <li><b>The Stranger</b> by <em>Saskia Sarginson </em></li>
+                    </ol> -->
+                </div>
+            </div>
+        </div>
+        <script>
+            var bs_src = document.getElementById('bs_template').innerHTML
+            var bs_template = Handlebars.compile(bs_src)
+
+            // Handlebars.registerHelper('list', function(list) {
+            //     var output = "<ol>"
+            //     for (const i in list) {
+            //         output += "<li>" + Handlebars.Utils.escapeExpression(list[i]) + "</li>"
+            //     }
+            //     output += "</ol>"
+            //     return new Handlebars.SafeString(output)
+            // })
+            var bs_rendered = bs_template({
+                bestSeller: ['The Woman in the Window by A.J.Finn', 'Stand By Me by S.D.Robertson', 'Stand By Me by S.D.Robertson', 'Stand By Me by S.D.Robertson']
+            })
+            document.getElementById('bs_target').innerHTML = bs_rendered
+        </script>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding">
+                <footer>
+                    <div id="fpcontactInformation">
+                        <ul>
+                            <li id="contact">Contact Us:</li>
+                            <li id="name">Mrs S Smith</li>
+                            <li id="email"><a href="s.smithatemail.com">s.smithatemail.com</a></li>
+                            <li id="charity">Charity number: 987654321RR0001</li>
+                        </ul>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

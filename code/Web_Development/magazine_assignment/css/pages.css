@@ -1,0 +1,270 @@
+        .firstNews {
+          /* background-color: aquamarine; */
+        }
+        
+        .secondNewsCon {
+          /* background-color: rgb(194, 238, 170); */
+        }
+        
+        .thirdNewsList {
+          background-color: #F4F4F4;
+          border-radius: 6px;
+          height: 100%;
+        }
+        
+        .thirdNewsListCon {
+          padding-top: 24px;
+          padding-left: 24px;
+        }
+        
+        .thirdNewsList .title {
+          font: 20px Roboto-Bold;
+        }
+        
+        .thirdNewsList .item {
+          margin-top: 28px;
+        }
+        
+        .thirdNewsListCon>div:last-child {
+          padding-bottom: 28px;
+        }
+        
+        .thirdNewsList .item .itemTitle {
+          padding-left: 28px;
+          padding-right: 28px;
+        }
+        
+        .thirdNewsList .item .type {
+          padding-left: 28px;
+          padding-right: 28px;
+          margin-bottom: 8px;
+          margin-top: -20px;
+        }
+        
+        .editorsPicks {
+          /* background-color: rgb(255, 187, 221); */
+          margin-top: 32px;
+        }
+        
+        .popularVideos {
+          /* background-color: aquamarine; */
+          margin-top: 32px;
+        }
+        
+        .videoNewsMain {
+          /* background-color: rgb(194, 238, 170); */
+        }
+        
+        .videoNewsMain .videoicon {
+          width: 34px;
+          margin-top: -4px;
+          margin-right: 20px;
+        }
+        
+        .videoNewsSmall .videoiconSmall {
+          width: 22px;
+          margin-right: 12px;
+        }
+        
+        .videoNewsSmallCon>div {
+          margin-bottom: 30px;
+        }
+        
+        .ourWriters {
+          margin-top: 32px;
+        }
+        
+        .ourWritersCon .writer {
+          margin-top: 22px;
+        }
+        
+        .ourWritersCon .name {
+          font: 18px Roboto-Bold;
+        }
+        
+        .ourWritersCon .intro {
+          font-size: 14px;
+          color: #A0A0A0;
+          margin-top: 12px;
+          margin-bottom: 16px;
+        }
+        
+        .ourWritersCon .link {
+          margin-bottom: 16px;
+        }
+        
+        .latest .latestTitle {
+          margin-top: 32px;
+        }
+        
+        .latestNews {
+          display: none;
+        }
+        
+        .latest .showBottom,
+        .featuresCon .showBottom {
+          font: 16px Roboto-Medium;
+          color: #b9b9b9;
+          text-align: center;
+          margin-top: 40px;
+          margin-bottom: 40px;
+          display: none;
+        }
+        
+        .latest .showBottom a {
+          color: #b9b9b9;
+          text-decoration: underline;
+        }
+        
+        .latestCon .latestNews:nth-child(1),
+        .latestCon .latestNews:nth-child(2) {
+          display: block;
+        }
+        
+        .loadMoreButt {
+          text-align: center;
+        }
+        
+        .loadMoreButt button {
+          line-height: 51px;
+          width: 200px;
+          background-color: white;
+          font-size: 14px;
+          letter-spacing: 1px;
+          border-radius: 3px;
+          border: 1px solid black;
+          margin-top: 28px;
+          margin-bottom: 80px;
+        }
+        
+        .articleCon {
+          text-align: center;
+          line-height: 1.6;
+        }
+        
+        .articleCon .type {
+          margin-top: -10px;
+        }
+        
+        .articleCon .articleTitle {
+          width: 60%;
+          margin: 30px auto 26px auto;
+        }
+        
+        .articleCon .abstract {
+          width: 60%;
+          margin: 0px auto 26px auto;
+        }
+        
+        .articleCon .articleImgBig img {
+          width: 70%;
+          margin-top: 48px;
+          border-radius: 6px;
+        }
+        
+        .articleCon .articleAndShare {
+          margin-left: 14px;
+          margin-right: 14px;
+        }
+        
+        .articleCon .articleTextCon {
+          width: 52%;
+          margin: 48px auto 100px auto;
+        }
+        
+        .articleTextCon .articleText {
+          margin-bottom: 30px;
+        }
+        
+        .socialShare>div {
+          margin-top: -1px;
+        }
+        
+        .socialShare {
+          float: left;
+          position: sticky;
+          top: 0px;
+        }
+        
+        .magazineCon {
+          width: 65%;
+          margin: 0 auto 112px auto;
+        }
+        
+        .magazineCover img {
+          width: 97%;
+        }
+        
+        .magazineCover .issue {
+          margin-top: 8px;
+          font: 16px Roboto-Bold;
+        }
+        /* .selectYear .dropdown {
+          width: 200px;
+          margin: 12px auto 60px auto;
+        }
+        
+        .selectYear .dropdown button {
+          width: 200px;
+          height: 51px;
+          border-radius: 3px;
+          font: 18px Roboto-Medium;
+        } */
+        
+        .selectYear .form-select {
+          width: 200px;
+          margin: 12px auto 60px auto;
+          height: 51px;
+          border-radius: 3px;
+          font: 18px Roboto-Medium;
+        }
+        
+        .magazineCoverSmall .goBack {
+          margin-bottom: 12px;
+        }
+        
+        .magazineCoverSmall .goBack img {
+          margin-top: -3px;
+          margin-right: 8px;
+        }
+        
+        .magazineCoverSmall .goBack span {
+          font: 16px Roboto-Medium;
+        }
+        
+        .magazineCoverSmall .magazineCoverSmallImg img {
+          width: 75%;
+        }
+        
+        .oneIssueTitle {
+          margin-bottom: 48px;
+        }
+        
+        .issueMainArticleCon .issueMainArticleImgBig {
+          text-align: left;
+        }
+        
+        .issueMainArticleCon .issueMainArticleImgBig img {
+          width: 70%;
+          margin-left: 5%;
+          border-radius: 6px;
+        }
+        
+        .imgDescription {
+          font: 16px Roboto-Medium;
+          margin-top: 16px;
+        }
+        
+        .alignCenter {
+          width: 60%;
+          margin: 0px auto 0 auto;
+        }
+        
+        .Pic4colLeftCenter .Pic4colLeftTextCon {
+          margin-right: 0px;
+        }
+        
+        .oneIssueSectionTitle {
+          text-align: center;
+          margin-top: 66px;
+        }

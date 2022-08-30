@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roller Coaster Park</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div id="header_top">
+            <div class="w clearfix">
+                <ul id="service_info">
+                    <li>
+                        <a href="javascript:;"><img src="./assets/icons/location.png"> &nbsp;Tampa Florida</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">Today’s hours: 9AM -9PM</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">Thursday&nbsp;&nbsp;&nbsp;
+                        <img src="./assets/icons/sun.png">&nbsp;73ºF</a>
+                    </li>
+                </ul>
+                <ul id="account">
+                    <li>
+                        <a href="javascript:;">Create Account</a>
+                    </li>
+                    <li id="line">|</li>
+                    <li>
+                        <a href="javascript:;">Sign In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="header_primary">
+            <div class="w clearfix">
+                <div id="logo" class="headerPrimaryItem">
+                    <a href="index.html"><img src="img/rollerCoaster-Logo.png" alt="website logo" width="100"></a>
+                </div>
+                <nav class="headerPrimaryItem">
+                    <ul>
+                        <li><a href="./rides&attractions.html">Rides & attractions</a></li>
+                        <li><a href="javascript:;">Shows & activities</a></li>
+                        <li><a href="javascript:;">Dining</a></li>
+                        <li><a href="javascript:;">Before your visit</a></li>
+                    </ul>
+                </nav>
+                <div id="search" class="headerPrimaryItem">
+                    <img src="./assets/icons/search.png">
+                </div>
+                <div id="CTA_button_primary" class="headerPrimaryItem">
+                    <form method="get" action="./buy_tickets.html">
+                        <button id="CTA_primary" type="submit">Buy tickets</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="campaign_video">
+        <h1>Ride the most excited roller coaster this summer</h1>
+        <video controls autoplay="autoplay">
+                <source src="img/Intro-video.mp4" type="video/mp4" >
+        </video>
+    </div>
+    <div class="w">
+        <div id="promotions_and_news">
+            <div class="prosAndNews">
+                <a href="javascript:;">
+                    <img src="img/prosAndNews1.png" alt="promotions and news image" width="280" height="290">
+                    <div class="hover_bg">
+                        <h3>Become a Pass Member!</h3>
+                        <p>For less than the cost of three visits, enjoy a full year of AWESOME!</p>
+                    </div>
+                </a>
+            </div>
+            <div class="prosAndNews">
+                <a href="javascript:;">
+                    <img src="img/prosAndNews2.png" alt="promotions and news image" width="280" height="290">
+                    <div class="hover_bg">
+                        <h3>Nighttime Spectaculars</h3>
+                        <p>Exerience the sights, sounds and wonder of these ultra eye-catching extravaganzas.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="prosAndNews">
+                <a href="javascript:;">
+                    <img src="img/prosAndNews3.png" alt="promotions and news image" width="280" height="290">
+                    <div class="hover_bg">
+                        <h3>Plan Ahead - Save time</h3>
+                        <p>Mobile order food from wherever you are, for less wait time at mealtime.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="prosAndNews">
+                <a href="javascript:;">
+                    <img src="img/prosAndNews4.png" alt="promotions and news image" width="280" height="290">
+                    <div class="hover_bg">
+                        <h3>Now Hiring!</h3>
+                        <p>Jobs now available for attractions, lifeguards, food & beverage, security, and more!</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="top_attractions">
+            <h2 class="page title">Top Attractions</h2>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./img/carousel1.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/carousel2.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/carousel3.png" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+            </div>
+        </div>
+        <div id="recommend_activities">
+            <h2 class="page title">Can’t miss activities</h2>
+            <div class="activities_container">
+                <div class="activities">
+                    <a href="javascript:;">
+                        <img src="img/activities1.png" alt="activities image" width="384">
+                    </a>
+                </div>
+                <div class="activities">
+                    <a href="javascript:;">
+                        <img src="img/activities2.png" alt="activities image" width="384">
+                    </a>
+                </div>
+                <div class="activities">
+                    <a href="javascript:;">
+                        <img src="img/activities3.png" alt="activities image" width="384">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="brif_intro">
+            <h2 class="page title">Welcome to Roller Coaster park</h2>
+            <p>Located on the world-famous Florida beach, Roller Coaster® is the family place to play! Featuring 42 thrilling rides, including the tallest and most exciting roller coaster, the first solar-powered Ferris wheel. Millions of visitors each year
+                enjoy all the rides, games and fun you’d expect from one of North America’s leading entertainment destinations. </p>
+        </div>
+        <div id="map_and_social" class="clearfix">
+            <div id="map">
+                <h2 class="page title">Map</h2>
+                <div><img src="img/map.png" alt="map image"></div>
+            </div>
+            <div id="social">
+                <h2 class="page title">Social</h2>
+                <div class="container px-0">
+                    <div class="row row-cols-3 gx-0 gy-1">
+                        <div class="col">
+                            <a href="javascript:;"><img src="img/social1.png" alt="social image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="javascript:;"><img src="img/social2.png" alt="social image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="javascript:;"><img src="img/social3.png" alt="social image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="javascript:;"><img src="img/social4.png" alt="social image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="javascript:;"><img src="img/social5.png" alt="social image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="javascript:;"><img src="img/social6.png" alt="social image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="javascript:;"><img src="img/social7.png" alt="social image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="javascript:;"><img src="img/social8.png" alt="social image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="javascript:;"><img src="img/social9.png" alt="social image"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="foot_bg">
+            <div id="foot_container" class="w">
+                <div id="vistor_information" class="footCol">
+                    <h4 class="footTitle">Vistor Information</h4>
+                    <ul>
+                        <li class="footLink">
+                            <a href="javascript:;">Opening Hours</a>
+                        </li>
+                        <li class="footLink">
+                            <a href="javascript:;">Tickets</a>
+                        </li>
+                        <li class="footLink">
+                            <a href="javascript:;">Reservations Required</a>
+                        </li>
+                        <li class="footLink">
+                            <a href="javascript:;">Directions</a>
+                        </li>
+                        <li class="footLink">
+                            <a href="javascript:;">Frequently Asked Questions</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="things_to_do" class="footCol">
+                    <h4 class=" footTitle ">Things to Do</h4>
+                    <ul>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Rides & attractions</a>
+                        </li>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Shows & activities</a>
+                        </li>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Dining</a>
+                        </li>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Shopping</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="about_us " class="footCol">
+                    <h4 class="footTitle ">About us</h4>
+                    <ul>
+                        <li class="footLink ">
+                            <a href="javascript:; ">About Roller Coaster Park</a>
+                        </li>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Contact Us</a>
+                        </li>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Jobs</a>
+                        </li>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Lost and Found</a>
+                        </li>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Sign up for Email Alerts</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="security_and_privacy " class="footCol">
+                    <h4 class=" footTitle ">Security & Privacy</h4>
+                    <ul>
+                        <li class="footLink ">
+                            <a href="javascript:; ">COVID-19</a>
+                        </li>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Privacy Policy</a>
+                        </li>
+                        <li class="footLink ">
+                            <a href="javascript:; ">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js " integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2 " crossorigin="anonymous "></script>
+</body>
+
+</html>

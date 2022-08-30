@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("../assets/font/Roboto-Medium.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("../assets/font/Roboto-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("../assets/font/Roboto-Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CopperplateGothicBold";
+  src: url("../assets/font/CopperplateGothicBold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Stack 受限的线性结构，后进先出LIFO
+        //仅允许在表的一段（栈顶）进行插入和删除操作
+        //两种实现方案：基于数组，基于链表
+        class Stack {
+            constructor() {
+                this.items = []
+            }
+            push(element) {
+                this.items.push(element)
+            }
+            pop() {
+                return this.items.pop()
+            }
+            peek() {
+                return this.items[this.items.length - 1]
+            }
+            isEmpty() {
+                return this.items.length == 0
+            }
+            size() {
+                return this.items.length
+            }
+            toString() {
+                var resultString = ''
+                for (let i = 0; i < this.items.length; i++) {
+                    resultString += this.items[i] + ' ';
+                }
+                return resultString
+            }
+        }
+        var s = new Stack()
+        s.push(1)
+        s.push(3)
+        s.push(5)
+        s.push(7)
+        console.log(s)
+        console.log(s.pop())
+        console.log(s)
+        console.log(s.peek())
+        console.log(s)
+        console.log(s.isEmpty())
+        console.log(s.size())
+        console.log(s.toString())
+
+        //将十进制转化为二进制
+        function dec2bin(decNum) {
+            var s1 = new Stack()
+            while (decNum > 0) {
+                s1.push(decNum % 2)
+                decNum = Math.floor(decNum / 2)
+            }
+            result = ""
+            while (!s1.isEmpty()) {
+                result += s1.pop()
+            }
+            return result
+        }
+        console.log(dec2bin(8))
+
+
+        //Queue 另一种受限的线性结构，先进先出FIFO 
+        //只允许在表前端front进行删除操作，而在表后端rear进行插入操作
+        //两种实现方案：基于数组，基于链表
+        class Queue {
+            constructor() {
+                this.items = []
+            }
+            enqueue(element) { //向队列尾部添加一个或多个新的项
+                this.items.push(element)
+            }
+            dequeue() {} //移除队列的第一项，并返回被移除的元素
+                //front() 返回队列中第一个元素（与Stack的peek类似）
+
+        }
+
+        var q = new Queue()
+    </script>
+</body>
+
+</html>

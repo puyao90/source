@@ -1,0 +1,410 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  font: 16px Roboto-Regular;
+  line-height: 1.5;
+}
+
+.hoverChangeColor a:hover {
+  color: #EF6C00;
+}
+
+#nav div a {
+  font-family: Roboto-Bold;
+}
+
+.type {
+  font: 12px CopperplateGothicBold;
+  color: #EF6C00;
+  letter-spacing: 1px;
+  margin-top: 16px;
+}
+
+.author {
+  font: 14px Roboto-Medium;
+  color: #b9b9b9;
+  margin-top: 14px;
+}
+
+.pageTitle {
+  font: 36px Roboto-Medium;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-top: 30px;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font: 22px Roboto-Bold;
+  letter-spacing: 2px;
+  line-height: 52px;
+  border-bottom: 1px solid #e4e4e4;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 20px;
+}
+
+.Pic6colUp img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.Pic6colUp .Pic6colUpTitle {
+  font: 30px Roboto-Bold;
+  line-height: 1.3;
+  margin-top: 16px;
+}
+
+.Pic6colUp .abstract {
+  margin-top: 20px;
+}
+
+.Pic6colUp .authorWithImg img {
+  width: 38px;
+}
+
+.Pic6colUp .author {
+  margin-top: 22px;
+  padding-bottom: 28px;
+}
+
+.Pic3colUp img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.Pic3colUp .Pic3colUpTitle {
+  font: 18px Roboto-Bold;
+  line-height: 1.4;
+  margin-top: 16px;
+}
+
+.Pic3colUp .author {
+  padding-bottom: 32px;
+}
+
+.Pic2colLeft img,
+.Pic4colLeft img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.Pic2colLeft .type {
+  margin-top: 0px;
+}
+
+.Pic2colLeft .author {
+  margin-top: 10px;
+}
+
+.Pic2colLeft .Pic2colLeftTitle {
+  font: 18px Roboto-Bold;
+  line-height: 1.4;
+  margin-top: 12px;
+}
+
+.Pic4colLeft>.row {
+  margin-bottom: 24px;
+}
+
+.Pic4colLeft .Pic4colLeftImg {
+  margin-bottom: 8px;
+}
+
+.Pic4colLeft .Pic4colLeftTextCon {
+  margin-left: 10px;
+  margin-right: 40px;
+}
+
+.Pic4colLeft .Pic4colLeftTitle {
+  font: 20px Roboto-Bold;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.Pic4colLeft .author {
+  margin-top: 24px;
+  padding-bottom: 32px;
+}
+
+.Pic4colLeft .time {
+  font: 14px Roboto-Medium;
+  color: #EF6C00;
+  margin-left: 16px;
+}
+
+
+/*footer style */
+
+footer {
+  background-color: #2D2C2C;
+  margin-top: 32px;
+  color: white;
+}
+
+.logofooter {
+  padding-top: 14px;
+  margin-left: 12px;
+  line-height: 90px;
+}
+
+.logofooter img {
+  width: 250px;
+}
+
+.linksCon {
+  margin-bottom: 10px;
+}
+
+.linksCon .oneColLinks {
+  border-top: 1px solid #e4e4e4;
+  margin-bottom: 24px;
+}
+
+.colLinksTitle {
+  font: 16px Roboto-Medium;
+  letter-spacing: 0.5px;
+  margin-top: 24px;
+}
+
+.oneColLinks .link {
+  font: 14px Roboto-Medium;
+  margin-top: 16px;
+}
+
+.oneColLinks .link a {
+  color: white;
+}
+
+.oneColLinks .link a:hover {
+  text-decoration: underline;
+}
+
+.connectUs {
+  border-top: 1px solid #e4e4e4;
+}
+
+.connectUs .socialCon {
+  margin-top: 18px;
+}
+
+.connectUs .socialCon img {
+  margin-right: 20px;
+  margin-top: 12px;
+}
+
+.connectUs .CTA_footer button {
+  line-height: 51px;
+  width: 188px;
+  background-color: #EF6C00;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border-radius: 3px;
+  border: none;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+
+/*header style */
+
+@media only screen and (max-width: 785px) {
+  #header_top {
+    background-color: white;
+    height: 90px;
+    line-height: 90px;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 12px;
+  }
+  #toggle {
+    position: absolute;
+    top: 40px;
+    left: 32px;
+    display: none;
+  }
+  #logo {
+    position: absolute;
+    width: 256px;
+    left: 50%;
+    margin-left: -128px;
+  }
+  #logo img {
+    width: 240px;
+  }
+  #menu,
+  #toolbar {
+    height: 90px;
+  }
+  #toolbar .toolbar_iconlink span {
+    display: none;
+  }
+  #toolbar button {
+    display: none;
+  }
+  #toolbar li {
+    float: right;
+  }
+  #toolbar li a {
+    text-decoration: none;
+    color: black;
+  }
+  #toolbar #CTA_header {
+    line-height: 31px;
+    width: 102px;
+    background-color: #EF6C00;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 3px;
+    border: none;
+  }
+  #nav {
+    display: none;
+    background-color: white;
+    line-height: 49px;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1);
+  }
+  #nav_container div {
+    border-bottom: 1px solid #e4e4e4;
+  }
+  #nav_container div a {
+    margin-left: 14px;
+  }
+  #nav_container :last-child {
+    margin-right: 12px;
+  }
+  #nav div a {
+    text-decoration: none;
+    color: black;
+  }
+  #toggle:checked+#nav {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 786px) and (max-width: 950px) {
+  #header_top {
+    background-color: white;
+    height: 90px;
+    line-height: 90px;
+  }
+  #toggle {
+    position: absolute;
+    display: none;
+  }
+  #menu {
+    display: none;
+  }
+  #logo,
+  #toolbar {
+    height: 90px;
+  }
+  #toolbar .toolbar_iconlink span {
+    display: none;
+  }
+  #subscribe_icon {
+    display: none;
+  }
+  #toolbar li {
+    float: right;
+  }
+  #toolbar li a {
+    text-decoration: none;
+    color: black;
+  }
+  #toolbar #CTA_header {
+    line-height: 31px;
+    width: 102px;
+    background-color: #EF6C00;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 3px;
+    border: none;
+  }
+  #nav {
+    background-color: white;
+    line-height: 49px;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 16px;
+  }
+  #nav_container {
+    display: flex;
+    justify-content: space-between;
+  }
+  #nav_container :first-child {
+    margin-left: 7px;
+  }
+  #nav_container :last-child {
+    margin-right: 7px;
+  }
+  #nav div a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+@media only screen and (min-width: 951px) {
+  #header_top {
+    background-color: white;
+    height: 90px;
+    line-height: 90px;
+  }
+  #toggle {
+    position: absolute;
+    display: none;
+  }
+  #menu {
+    display: none;
+  }
+  #logo,
+  #toolbar {
+    height: 90px;
+  }
+  #subscribe_icon {
+    display: none;
+  }
+  #toolbar li {
+    float: right;
+  }
+  #toolbar li a {
+    text-decoration: none;
+    color: black;
+  }
+  #toolbar #CTA_header {
+    line-height: 31px;
+    width: 102px;
+    background-color: #EF6C00;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 3px;
+    border: none;
+  }
+  #nav {
+    background-color: white;
+    height: 49px;
+    line-height: 49px;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 24px;
+  }
+  #nav_container {
+    display: flex;
+    justify-content: space-between;
+  }
+  #nav_container :first-child {
+    margin-left: 7px;
+  }
+  #nav_container :last-child {
+    margin-right: 7px;
+  }
+  #nav div a {
+    text-decoration: none;
+    color: black;
+  }
+}

@@ -1,0 +1,69 @@
+#buy_tickets_stepBar {
+  margin-top: 32px;
+  margin-bottom: 56px;
+}
+
+#multi_step_progress_bar {
+  margin-top: 28px;
+  padding-left: 60px;
+  border: 1px solid #02182D;
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  font-size: 18px;
+}
+
+#multi_step_progress_bar_container div {
+  float: left;
+}
+
+#multi_step_progress_bar_container .arrow {
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.tickets_card_container {
+  width: 100%;
+  background-color: white;
+  position: relative;
+  box-shadow: 0px 0px 11px 2px rgba(209, 209, 209, 50);
+  margin-bottom: 32px;
+}
+
+.tickets_card_container .ticketImg {
+  float: left;
+}
+
+.tickets_card_container .ticketDescription_container {
+  float: right;
+}
+
+.tickets_card_container .ticketDescription {
+  width: 700px;
+  margin-top: 32px;
+}
+
+.tickets_card_container .ticketDescription h3 {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.tickets_card_container .ticketDescription ul {
+  font-size: 16px;
+  list-style-type: disc !important;
+  padding-left: 1em !important;
+  margin-left: 5px;
+  line-height: 32px;
+}
+
+.tickets_card_container .CTA_button_secondary {
+  line-height: 56px;
+  width: 120px;
+  background-color: #02182D;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+}
