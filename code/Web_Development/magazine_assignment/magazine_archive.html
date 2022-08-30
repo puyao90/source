@@ -13,15 +13,53 @@
     <script type="text/javascript" src="./base.js"></script>
     <title>Magazine Archive</title>
     <script>
+        let currentYear = 2022
+        let nodeString = '<a href="./magazine_oneIssue.html"><img src="./img/magazineCover1.jpg" alt=""> <div class="issue">DATE_AND_YEAR</div> </a>'
+        var monthIdx2String = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+        // monthIdx from 0 to 11
+        function generateInnerHtml(monthIdx, year) {
+            let monthString = monthIdx2String[monthIdx - 1]
+            let monthYear = monthString + " " + year
+            return nodeString.replace('DATE_AND_YEAR', monthYear.toUpperCase())
+        }
+
+
+        function appendNewMonth(year) {
+            let magzContainer = getMagzContainer()
+            let currentMonth = magzContainer.childElementCount
+            let nextMonth = currentMonth + 1
+            let newMonthDiv = magzContainer.children[0].cloneNode()
+            newMonthDiv.innerHTML = generateInnerHtml(nextMonth, year)
+            magzContainer.appendChild(newMonthDiv)
+        }
+
+        function getMagzContainer() {
+            return document.getElementsByClassName('magazineCoverCon')[0]
+        }
+
+
+        function ensure12months(selectedYear) {
+            let needed = 12 - getMagzContainer().childElementCount
+            console.log("add more magz " + needed)
+            while (needed != 0) {
+                appendNewMonth(selectedYear)
+                needed--
+            }
+        }
         window.onload = function() {
             const selectYear = document.getElementsByClassName('selectYear')[0];
             selectYear.addEventListener('change', (event) => {
-                if (event.target.value == 'YEAR ：2021') {
+                let selectedYear = parseInt(event.target.value.split(':')[1].trim())
+                if (selectedYear == currentYear) {} else {
+                    ensure12months(selectedYear)
+                }
+                if (event.target.value.includes(currentYear)) {
                     const itemParent = document.getElementsByClassName('magazineCoverCon')[0]
                     const items = document.getElementsByClassName('magazineCover')
 
                     var newItem = document.createElement("div")
-                    itemParent.appendChild(newItem)
+                    itemParent.appendChild(items[0])
                 }
             })
         }
@@ -67,10 +105,10 @@
     <div class="pageTitle">Magazine Archive</div>
     <div class="selectYear">
         <select class="form-select form-select-lg" aria-label=".form-select-lg example">
-        <option selected>YEAR ：2022</option>
-        <option value="YEAR ：2021">YEAR ：2021</option>
-        <option value="YEAR ：2020">YEAR ：2020</option>
-        <option value="YEAR ：2019">YEAR ：2019</option>
+        <option selected>YEAR : 2022</option>
+        <option value="YEAR : 2021">YEAR : 2021</option>
+        <option value="YEAR : 2020">YEAR : 2020</option>
+        <option value="YEAR : 2019">YEAR : 2019</option>
         </select>
         <!-- <div class="dropdown">
             <button class="btn btn-outline-dark btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
