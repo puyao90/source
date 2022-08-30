@@ -14,14 +14,23 @@
     <title>Magazine Archive</title>
     <script>
         let currentYear = 2022
-        let nodeString = '<a href="./magazine_oneIssue.html"><img src="./img/magazineCover1.jpg" alt=""> <div class="issue">DATE_AND_YEAR</div> </a>'
-        var monthIdx2String = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+        let nodeString = '<a href="./magazine_oneIssue.html"><img src="IMAGE" alt=""> <div class="issue">DATE_AND_YEAR</div> </a>'
+        let monthIdx2String = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+        let coverDict = {
+            2021: "./img/magazineCover2.jpg",
+            2020: "./img/magazineCover3.jpg",
+            2019: "./img/magazineCover4.jpg",
+
+
+        }
 
         // monthIdx from 0 to 11
         function generateInnerHtml(monthIdx, year) {
             let monthString = monthIdx2String[monthIdx - 1]
             let monthYear = monthString + " " + year
-            return nodeString.replace('DATE_AND_YEAR', monthYear.toUpperCase())
+            return nodeString
+                .replace('DATE_AND_YEAR', monthYear.toUpperCase())
+                .replace('IMAGE', coverDict[year])
         }
 
 
@@ -29,7 +38,8 @@
             let magzContainer = getMagzContainer()
             let currentMonth = magzContainer.childElementCount
             let nextMonth = currentMonth + 1
-            let newMonthDiv = magzContainer.children[0].cloneNode()
+            let newMonthDiv = document.createElement("div")
+            newMonthDiv.className = "magazineCover hoverChangeColor col-xxl-3 col-lg-4 col-sm-6"
             newMonthDiv.innerHTML = generateInnerHtml(nextMonth, year)
             magzContainer.appendChild(newMonthDiv)
         }
@@ -47,20 +57,20 @@
                 needed--
             }
         }
+
+        function clearMagzContainer() {
+            let div = getMagzContainer()
+            div.innerHTML = ''
+        }
         window.onload = function() {
             const selectYear = document.getElementsByClassName('selectYear')[0];
             selectYear.addEventListener('change', (event) => {
                 let selectedYear = parseInt(event.target.value.split(':')[1].trim())
                 if (selectedYear == currentYear) {} else {
+                    clearMagzContainer()
                     ensure12months(selectedYear)
                 }
-                if (event.target.value.includes(currentYear)) {
-                    const itemParent = document.getElementsByClassName('magazineCoverCon')[0]
-                    const items = document.getElementsByClassName('magazineCover')
 
-                    var newItem = document.createElement("div")
-                    itemParent.appendChild(items[0])
-                }
             })
         }
     </script>
